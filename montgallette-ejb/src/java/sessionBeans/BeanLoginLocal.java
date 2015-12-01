@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+import entites.Employe;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +14,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface BeanLoginLocal {
+
+    public Employe identifierEmploye(String code);
     
 }
