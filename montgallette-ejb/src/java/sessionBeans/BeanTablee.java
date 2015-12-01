@@ -7,7 +7,16 @@ import javax.ejb.LocalBean;
 @LocalBean
 public class BeanTablee {
 
+    public void lier(){
+        
+    }
     
+    public void genererPlanResto(){
+        
+    }
     
+    public void appelerGarcon(){
+        
+    }
     
 }
