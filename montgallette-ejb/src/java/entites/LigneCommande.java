@@ -3,6 +3,8 @@ package entites;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -13,17 +15,26 @@ import javax.persistence.ManyToOne;
 @Entity
 public class LigneCommande implements Serializable {
   
+     private static final long serialVersionUID = 1L;
+     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-   
 
     private Integer qte;
+     
+    private Integer etat;
     
    
     
     @ManyToOne
     private Commande commande;
 
+    public LigneCommande() {
+    }
+
+    
+    
     public Long getId() {
         return id;
     }
@@ -32,14 +43,20 @@ public class LigneCommande implements Serializable {
         this.id = id;
     }
 
-    public LigneCommande(Long id, Integer qte, Commande commande) {
-        this.id = id;
+    public LigneCommande(Integer qte, Integer etat, Commande commande) {
         this.qte = qte;
+        this.etat = etat;
         this.commande = commande;
     }
 
-    public LigneCommande() {
+    public Integer getEtat() {
+        return etat;
     }
+
+    public void setEtat(Integer etat) {
+        this.etat = etat;
+    }
+
 
     public Integer getQte() {
         return qte;
