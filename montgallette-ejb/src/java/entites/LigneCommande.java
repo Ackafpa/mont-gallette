@@ -20,9 +20,8 @@ public class LigneCommande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Integer qte;
-     
+    private Produit produit;
+    private Integer qte;    
     private Integer etat;
     
    
@@ -43,7 +42,8 @@ public class LigneCommande implements Serializable {
         this.id = id;
     }
 
-    public LigneCommande(Integer qte, Integer etat, Commande commande) {
+    public LigneCommande(Produit produit, Integer qte, Integer etat, Commande commande) {
+        this.produit = produit;
         this.qte = qte;
         this.etat = etat;
         this.commande = commande;

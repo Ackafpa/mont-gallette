@@ -37,9 +37,8 @@ public class Commande implements Serializable {
         this.produits = new ArrayList();
     }
 
-    public Commande(Long id, List<LigneCommande> produits, String numero, Date date) {
-        this.id = id;
-        this.produits = produits;
+    public Commande(List<LigneCommande> produits, String numero, Date date) {
+        this();     
         this.numero = numero;
         this.date = date;
     }
