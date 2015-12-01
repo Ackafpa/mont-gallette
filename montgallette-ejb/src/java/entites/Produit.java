@@ -2,10 +2,13 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Produit implements Serializable {
@@ -18,21 +21,31 @@ public class Produit implements Serializable {
     private Integer etat;
     private boolean dispo;
     private Double prixHT;
-    private Integer gte;
+    private Integer qte;
     private String descriptionCourte;
     private String descriptionComplete;
+    
+    @ManyToMany(mappedBy = "produits")
+    private Collection<Offre> offres;
 
     public Produit() {
+        offres = new ArrayList();
     }
 
-    public Produit(String nom, Integer etat, boolean dispo, Double prixHT, Integer gte, String descriptionCourte, String descriptionComplete) {
+    public Produit(String nom, Integer etat, boolean dispo, Double prixHT, Integer qte, String descriptionCourte, String descriptionComplete, Collection<Offre> offres) {
+        this();
         this.nom = nom;
         this.etat = etat;
         this.dispo = dispo;
         this.prixHT = prixHT;
-        this.gte = gte;
+        this.qte = qte;
         this.descriptionCourte = descriptionCourte;
         this.descriptionComplete = descriptionComplete;
+        this.offres = offres;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNom() {
@@ -43,11 +56,11 @@ public class Produit implements Serializable {
         this.nom = nom;
     }
 
-    public int getEtat() {
+    public Integer getEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(Integer etat) {
         this.etat = etat;
     }
 
@@ -59,12 +72,20 @@ public class Produit implements Serializable {
         this.dispo = dispo;
     }
 
-    public double getPrix() {
+    public Double getPrixHT() {
         return prixHT;
     }
 
-    public void setPrix(double prix) {
-        this.prixHT = prix;
+    public void setPrixHT(Double prixHT) {
+        this.prixHT = prixHT;
+    }
+
+    public Integer getQte() {
+        return qte;
+    }
+
+    public void setQte(Integer qte) {
+        this.qte = qte;
     }
 
     public String getDescriptionCourte() {
@@ -83,17 +104,14 @@ public class Produit implements Serializable {
         this.descriptionComplete = descriptionComplete;
     }
 
-    
-    public Long getId() {
-        return id;
+    public Collection<Offre> getOffres() {
+        return offres;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOffres(Collection<Offre> offres) {
+        this.offres = offres;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
