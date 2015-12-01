@@ -8,6 +8,7 @@ import javax.ejb.LocalBean;
 public class BeanTablee {
 
     public void lier(){
+        //pour lier une commande avec une tablee
         
     }
     
@@ -16,6 +17,8 @@ public class BeanTablee {
     }
     
     public void appelerGarcon(){
+        // appel garçon
+        
         
     }
     

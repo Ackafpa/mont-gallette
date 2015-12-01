@@ -12,6 +12,33 @@ public class Tablee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private int numero;
+    private boolean dispo;
+
+    public Tablee() {
+    }
+
+    public Tablee(Long id, int numero, boolean dispo) {
+        this.id = id;
+        this.numero = numero;
+        this.dispo = dispo;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public boolean isDispo() {
+        return dispo;
+    }
+
+    public void setDispo(boolean dispo) {
+        this.dispo = dispo;
+    }
 
     public Long getId() {
         return id;
@@ -43,7 +70,7 @@ public class Tablee implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Tablee[ id=" + id + " ]";
+        return "Tablee N°" + numero + ", disponibilité : "+ dispo;
     }
     
 }
