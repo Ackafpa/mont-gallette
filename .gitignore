@@ -1,3 +1,9 @@
 /nbproject/private/
 /montgallette-war/nbproject/private/
 /montgallette-ejb/nbproject/private/
+/montgallette-ejb/build/
+/montgallette-war/build/
+/montgallette-ejb/dist/
+/build/
+/dist/
+/montgallette-war/dist/

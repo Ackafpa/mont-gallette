@@ -9,7 +9,7 @@
         <h1>MONT GALLETTE !</h1>
         
         <p>
-            <a href="Controleur?section=identification.acka">Identification</a>
+            <a href="Controller?section=login.acka">Identification</a>
         </p>
     </body>
 </html>

@@ -16,5 +16,7 @@ import javax.ejb.Local;
 public interface BeanLoginLocal {
 
     public Employe identifierEmploye(String code);
+
+    public Employe deconnexion(Employe e);
     
 }

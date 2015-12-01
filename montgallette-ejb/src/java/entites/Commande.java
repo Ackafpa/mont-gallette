@@ -3,10 +3,9 @@ package entites;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +25,8 @@ public class Commande implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany (mappedBy="commande")
-    private List produits;   
+    @OneToMany(mappedBy="commande")
+    private List<LigneCommande> produits;   
     
     private String numero;
     // @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -38,18 +37,18 @@ public class Commande implements Serializable {
         this.produits = new ArrayList();
     }
 
-    public Commande(Long id, List produits, String numero, Date date) {
+    public Commande(Long id, List<LigneCommande> produits, String numero, Date date) {
         this.id = id;
         this.produits = produits;
         this.numero = numero;
         this.date = date;
     }
 
-    public List getProduits() {
+    public List<LigneCommande> getProduits() {
         return produits;
     }
 
-    public void setProduits(List produits) {
+    public void setProduits(List<LigneCommande> produits) {
         this.produits = produits;
     }
 

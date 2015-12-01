@@ -43,7 +43,7 @@ public class Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String section = request.getParameter("section");
         String prefixe = "/WEB-INF/jsp/";
-        String url = "index.jsp";
+        String url = "login.jsp";
         
         if(section != null && section.endsWith(".acka")){
             ControllerInterface ctrl = subcont.get(section);

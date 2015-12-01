@@ -2,7 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="montgallette-ejbPU" transaction-type="JTA">
     <jta-data-source>jdbc/resto</jta-data-source>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <class>entites.Categorie</class>
+    <class>entites.Employe</class>
+    <class>entites.Produit</class>
+    <class>entites.Tablee</class>
+    <class>entites.Commande</class>
+    <class>entites.LigneCommande</class>
+    <class>entites.Offre</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>

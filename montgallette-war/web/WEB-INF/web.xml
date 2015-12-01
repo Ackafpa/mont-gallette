@@ -3,6 +3,10 @@
     <servlet>
         <servlet-name>Controller</servlet-name>
         <servlet-class>controller.Controller</servlet-class>
+        <init-param>
+            <param-name>login.acka</param-name>
+            <param-value>subcontrollers.Login</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
@@ -13,4 +17,10 @@
             30
         </session-timeout>
     </session-config>
+    <ejb-local-ref>
+        <ejb-ref-name>BeanLogin</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanLoginLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanLogin</ejb-link>
+    </ejb-local-ref>
 </web-app>

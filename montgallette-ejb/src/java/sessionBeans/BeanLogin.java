@@ -26,6 +26,12 @@ public class BeanLogin implements BeanLoginLocal {
         return e;
     }
     
-    
+    @Override
+    public Employe deconnexion(Employe e){
+        if(e != null){
+            e = null;
+        }
+        return e;
+    }
     
 }
