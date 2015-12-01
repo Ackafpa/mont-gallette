@@ -25,4 +25,5 @@ public class BeanProduit implements BeanProduitLocal {
         return produits;
     }
     
+    
 }
