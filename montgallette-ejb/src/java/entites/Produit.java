@@ -15,20 +15,22 @@ public class Produit implements Serializable {
     private Long id;
     
     private String nom;
-    private int etat;
+    private Integer etat;
     private boolean dispo;
-    private double prix;
+    private Double prixHT;
+    private Integer gte;
     private String descriptionCourte;
     private String descriptionComplete;
 
     public Produit() {
     }
 
-    public Produit(String nom, int etat, boolean dispo, double prix, String descriptionCourte, String descriptionComplete) {
+    public Produit(String nom, Integer etat, boolean dispo, Double prixHT, Integer gte, String descriptionCourte, String descriptionComplete) {
         this.nom = nom;
         this.etat = etat;
         this.dispo = dispo;
-        this.prix = prix;
+        this.prixHT = prixHT;
+        this.gte = gte;
         this.descriptionCourte = descriptionCourte;
         this.descriptionComplete = descriptionComplete;
     }
@@ -58,11 +60,11 @@ public class Produit implements Serializable {
     }
 
     public double getPrix() {
-        return prix;
+        return prixHT;
     }
 
     public void setPrix(double prix) {
-        this.prix = prix;
+        this.prixHT = prix;
     }
 
     public String getDescriptionCourte() {
