@@ -17,7 +17,7 @@ public class BeanProduit implements BeanProduitLocal {
     
     public ArrayList<Produit> consulterMenu(){
         
-        String req = "select ";
+        //String req = "select ";
         ArrayList<Produit> produits = new ArrayList();
         
         
