@@ -1,25 +1,16 @@
 package sessionBeans;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
+import javax.ejb.Stateful;
 
-@Stateless
-@LocalBean
-public class BeanTablee {
+@Stateful
+public class BeanTablee implements BeanTableeLocal {
 
+   
     public void lier(){
-        //pour lier une commande avec une tablee
-        
-    }
-    
-    public void genererPlanResto(){
         
     }
     
     public void appelerGarcon(){
-        // appel garçon
-        
         
     }
-    
 }
