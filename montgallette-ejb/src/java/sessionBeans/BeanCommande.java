@@ -2,6 +2,9 @@
 package sessionBeans;
 
 import entites.Commande;
+import entites.LigneCommande;
+import entites.Produit;
+import java.util.Collection;
 import javax.ejb.Stateful;
 
 /**
@@ -11,22 +14,34 @@ import javax.ejb.Stateful;
 @Stateful
 public class BeanCommande implements BeanCommandeLocal {
 
- 
-    public Commande passerCommande(){
     
     
-Commande commande = new Commande();
+ private Commande commande;
 
-return commande;
+
+    public BeanCommande() {
+        this.commande = commande;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    public void passerCommande(){
+    
+    
+
 }
 
-public Commande afficherCommande(){
+public void afficherCommande(){
     
-    Commande commande = new Commande();
+   
 
-return commande;
+
 }
-
 
 public void appliquerOffre(){
     
