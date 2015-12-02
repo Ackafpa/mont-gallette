@@ -1,6 +1,7 @@
 package subcontrollers;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -10,33 +11,64 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import outils.CustomException;
 import sessionBeans.BeanLoginLocal;
 
 /**
  *
  * @author cdi406
  */
-public class Login implements ControllerInterface, Serializable{
+public class Login implements ControllerInterface, Serializable {
+
     BeanLoginLocal beanLogin = lookupBeanLoginLocal();
 
-    
-    
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
         String url = "login.jsp";
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
-        
-        if("login".equalsIgnoreCase(action)){
+
+        //Connexion à l'interface
+        if ("login".equalsIgnoreCase(action)) {
             String code = request.getParameter("id");
-            
-            if(session.getAttribute("user") == null){
-                session.setAttribute("user", beanLogin.identifierEmploye(code));
+
+            //Reconnaissance de la catégorie d'employé et envoi vers la bonne interface
+            if (session.getAttribute("user") == null) {
+                try {
+                    if (beanLogin.identifierEmploye(code) != null) {
+                        session.setAttribute("user", beanLogin.identifierEmploye(code));
+                        if (code.startsWith("1")) {
+                            url = "garcon.jsp";
+                        } else if (code.startsWith("2")) {
+                            url = "cuisine.jsp";
+                        }
+                    } else {
+                        request.setAttribute("msg", "Code non reconnu");
+                        url = "home.jsp";
+                    }
+                } catch (CustomException ex) {
+                   HashMap<String, String> mp = ex.getErreurs();
+                    request.setAttribute("msgERR", ex.getMessage());
+                    for (String clef : mp.keySet()) {
+                        request.setAttribute(clef, mp.get(clef));
+                    }
+                }
             }
-            
-            url = "garcon.jsp";
+
         }
-        
+
+        //Création d'un jeu d'essai
+        if ("test".equalsIgnoreCase(action)) {
+            beanLogin.creerJeuTest();
+            request.setAttribute("msg", "Jeu d'essai crée!");
+            url = "home.jsp";
+        }
+
+        if ("deco".equalsIgnoreCase(action)) {
+            session.removeAttribute("user");
+            url = "home.jsp";
+        }
+
         return url;
     }
 
@@ -49,5 +81,5 @@ public class Login implements ControllerInterface, Serializable{
             throw new RuntimeException(ne);
         }
     }
-    
+
 }

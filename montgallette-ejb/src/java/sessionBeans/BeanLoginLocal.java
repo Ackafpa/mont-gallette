@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sessionBeans;
 
 import entites.Employe;
 import javax.ejb.Local;
+import outils.CustomException;
 
 /**
  *
@@ -15,8 +11,10 @@ import javax.ejb.Local;
 @Local
 public interface BeanLoginLocal {
 
-    public Employe identifierEmploye(String code);
+    public Employe identifierEmploye(String code)throws CustomException;
 
     public Employe deconnexion(Employe e);
+
+    public void creerJeuTest();
     
 }

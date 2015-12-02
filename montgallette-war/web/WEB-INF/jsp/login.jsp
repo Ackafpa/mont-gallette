@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,13 +13,18 @@
         <title>Login</title>
     </head>
     <body>
-        <form action="Controller" method="get">
+        <a href="Controller?section=login.acka&action=test">Créer jeu de test Employés</a>
+        <hr>
+        <form action="Controller" method="post">
             Entrez votre code</br>
-            <input type="password" name="code"/>
+            <input type="password" name="id"/>
             <input type="hidden" name="section" value="login.acka"/>
+            <input type="hidden" name="action" value="login"/>
             </br>
             
             <a href="Controller?section=login.acka&action=login"><input type="submit" name="login" value="Connexion"/></a>
-        </form>    
+        </form>   
+        <hr>
+        ${msg}
     </body>
 </html>
