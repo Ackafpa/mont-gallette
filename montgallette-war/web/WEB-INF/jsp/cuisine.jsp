@@ -1,6 +1,6 @@
 <%-- 
-    Document   : newjspgarcon
-    Created on : 2 déc. 2015, 13:53:02
+    Document   : cuisine.jsp
+    Created on : 3 déc. 2015, 13:15:26
     Author     : cdi406
 --%>
 
@@ -9,12 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cuisine</title>
     </head>
     <body>
-        <h1>Hello Garçon</h1>
-        <a href="Controller?section=login.acka">Home</a> | 
+        <h1>Hello Cuisine!</h1>
+         <a href="Controller?section=login.acka">Home</a> | 
         <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
-        
     </body>
 </html>

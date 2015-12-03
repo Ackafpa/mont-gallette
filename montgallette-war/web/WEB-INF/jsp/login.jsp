@@ -13,18 +13,26 @@
         <title>Login</title>
     </head>
     <body>
-        <a href="Controller?section=login.acka&action=test">Créer jeu de test Employés</a>
+        
+        <a href="Controller?section=login.acka&action=test">Créer jeu de test Employés</a> | 
+        
         <hr>
-        <form action="Controller" method="post">
+        <form action="Controller" method="get">
             Entrez votre code</br>
-            <input type="password" name="id"/>
+            <input type="password" name="id" maxlength="4"/>
             <input type="hidden" name="section" value="login.acka"/>
             <input type="hidden" name="action" value="login"/>
-            </br>
             
+            </br>
             <a href="Controller?section=login.acka&action=login"><input type="submit" name="login" value="Connexion"/></a>
         </form>   
         <hr>
-        ${msg}
+        <c:if test="${deco}">
+            ${msgDeco}${user.prenom} ${user.nom} ?
+            <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
+        </c:if>
+        ${msg}${errCode}
+        </br>
+        
     </body>
 </html>

@@ -1,5 +1,6 @@
 package subcontrollers;
 
+import entites.Employe;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -24,35 +25,63 @@ public class Login implements ControllerInterface, Serializable {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
-        String url = "login.jsp";
+        String url = "home.jsp";
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
 
         //Connexion à l'interface
         if ("login".equalsIgnoreCase(action)) {
+
             String code = request.getParameter("id");
 
-            //Reconnaissance de la catégorie d'employé et envoi vers la bonne interface
-            if (session.getAttribute("user") == null) {
-                try {
-                    if (beanLogin.identifierEmploye(code) != null) {
-                        session.setAttribute("user", beanLogin.identifierEmploye(code));
+            //Verif de la longueur du code entré
+            if (code.length() == 4) {
+
+                //Reconnaissance de la catégorie d'employé et envoi vers la bonne interface
+                if (session.getAttribute("user") == null) {
+                    try {
+                        entites.Employe e = beanLogin.identifierEmploye(code);
+
+                        if (code.startsWith("1")) {
+                            url = "garcon.jsp";
+                            session.setAttribute("user", e);
+                        } else if (code.startsWith("2")) {
+                            url = "cuisine.jsp";
+                            session.setAttribute("user", e);
+                        } else {
+                            request.setAttribute("msg", "Code non reconnu");
+                            url = "home.jsp";
+                        }
+
+                    } catch (CustomException ex) {
+
+                        HashMap<String, String> mp = ex.getErreurs();
+                        request.setAttribute("msgErr", ex.getMessage());
+                        for (String clef : mp.keySet()) {
+                            request.setAttribute(clef, mp.get(clef));
+                        }
+                        url = "home.jsp";
+                    }
+
+                } else {
+
+                    String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
+                    if (code.equals(eCode)) {
                         if (code.startsWith("1")) {
                             url = "garcon.jsp";
                         } else if (code.startsWith("2")) {
                             url = "cuisine.jsp";
                         }
+
                     } else {
-                        request.setAttribute("msg", "Code non reconnu");
-                        url = "home.jsp";
-                    }
-                } catch (CustomException ex) {
-                   HashMap<String, String> mp = ex.getErreurs();
-                    request.setAttribute("msgERR", ex.getMessage());
-                    for (String clef : mp.keySet()) {
-                        request.setAttribute(clef, mp.get(clef));
+                        boolean deco = true;
+                        request.setAttribute("msgDeco", "Vous n'êtes pas ");
+                        request.setAttribute("deco", deco);
                     }
                 }
+            } else {
+                request.setAttribute("msg", "Code invalide");
+                url = "home.jsp";
             }
 
         }
