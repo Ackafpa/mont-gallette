@@ -1,4 +1,3 @@
-
 package entites;
 
 import java.io.Serializable;
@@ -10,36 +9,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Produit implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String nom;
     private boolean dispo;
     private Double prixHT;
-    private Integer qte;
     private String descriptionCourte;
     private String descriptionComplete;
-    private List <Produit> accompagnements;
-    
-    
+
+    @ManyToOne
+    private Categorie categorie;
+
     @ManyToMany(mappedBy = "produits")
     private Collection<Offre> offres;
-    
+
+    @ManyToMany
+    private Collection<Garniture> garnitures;
+
     public Produit() {
         offres = new ArrayList();
     }
 
-    public Produit(String nom, boolean dispo, Double prixHT, Integer qte, String descriptionCourte, String descriptionComplete, Collection<Offre> offres, List <Produit> produits) {
+    public Produit(String nom, boolean dispo, Double prixHT, Integer qte, String descriptionCourte, String descriptionComplete, Collection<Offre> offres, List<Produit> produits) {
         this();
         this.nom = nom;
         this.dispo = dispo;
         this.prixHT = prixHT;
-        this.qte = qte;
         this.descriptionCourte = descriptionCourte;
         this.descriptionComplete = descriptionComplete;
         this.offres = offres;
@@ -57,10 +60,6 @@ public class Produit implements Serializable {
         this.nom = nom;
     }
 
-    
-
-    
-
     public boolean isDispo() {
         return dispo;
     }
@@ -75,14 +74,6 @@ public class Produit implements Serializable {
 
     public void setPrixHT(Double prixHT) {
         this.prixHT = prixHT;
-    }
-
-    public Integer getQte() {
-        return qte;
-    }
-
-    public void setQte(Integer qte) {
-        this.qte = qte;
     }
 
     public String getDescriptionCourte() {

@@ -1,4 +1,3 @@
-
 package entites;
 
 import java.io.Serializable;
@@ -14,19 +13,17 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 public class Garniture implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
     private Boolean dispo;
-    
-    @ManyToMany (mappedBy = "garnitures")
+
+    @ManyToMany(mappedBy = "garnitures")
     private Produit produit;
-    
-    
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -59,5 +56,5 @@ public class Garniture implements Serializable {
     public String toString() {
         return "entites.Garniture[ id=" + id + " ]";
     }
-    
+
 }

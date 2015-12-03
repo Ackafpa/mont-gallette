@@ -27,7 +27,7 @@ public class LigneCommande implements Serializable {
 
     private List<String> preferences;
     private Integer etat;
-    
+
     private List<Garniture> garnitures;
 
     @ManyToOne

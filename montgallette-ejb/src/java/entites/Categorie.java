@@ -1,14 +1,16 @@
-
 package entites;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categorie implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +18,9 @@ public class Categorie implements Serializable {
 
     private String nom;
     private boolean preparation;
+
+    @OneToMany(mappedBy = "categories")
+    private Collection<Produit> produits;
 
     public Categorie() {
     }
@@ -71,7 +76,7 @@ public class Categorie implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Categorie[ id=" + id + " ]";
+        return "Categorie : " + nom + " ]";
     }
 
 }

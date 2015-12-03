@@ -1,4 +1,3 @@
-
 package entites;
 
 import java.io.Serializable;
@@ -20,36 +19,37 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Commande implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy="commande")
-    private List<LigneCommande> produits;   
-    
-    @ManyToOne 
+    @OneToMany(mappedBy = "commande")
+    private List<LigneCommande> produits;
+
+    @ManyToOne
     private Tablee tablee;
-    
+
     private String numero;
     // @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Temporal(TemporalType.DATE)
     private Date date;
-    
+
     private int nbPersonnes;
 
     public Commande() {
         this.produits = new ArrayList();
-        
+
     }
 
     public Commande(Tablee tablee, List<LigneCommande> produits, String numero, Date date, int nbPersonnes) {
-        this();  
+        this();
         this.tablee = tablee;
         this.numero = numero;
         this.date = date;
         this.nbPersonnes = nbPersonnes;
-        
+
     }
 
     public Tablee getTablee() {
@@ -92,11 +92,6 @@ public class Commande implements Serializable {
         this.nbPersonnes = nbPersonnes;
     }
 
-  
-    
-    
-    
-    
     public Long getId() {
         return id;
     }
@@ -129,5 +124,5 @@ public class Commande implements Serializable {
     public String toString() {
         return "entites.Commande  id=" + id;
     }
-    
+
 }

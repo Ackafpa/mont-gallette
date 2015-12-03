@@ -16,23 +16,16 @@ public class BeanLigne implements BeanLigneLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
-     public void ajouterLigne () {
-         
-         
-     }
-            public void consulterEtat (){
-                
-                
-                
-            }
-             
-             
-            public void changerEtat (){
-                
-                
-                
-            }
-    
-    
+    public void ajouterLigne() {
+
+    }
+
+    public void consulterEtat() {
+
+    }
+
+    public void changerEtat() {
+
+    }
+
 }
