@@ -1,6 +1,7 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,13 +20,15 @@ public class Categorie implements Serializable {
     private String nom;
     private boolean preparation;
 
-    @OneToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "categorie")
     private Collection<Produit> produits;
 
     public Categorie() {
+        produits = new ArrayList();
     }
 
     public Categorie(String nom, boolean preparation) {
+        this();
         this.nom = nom;
         this.preparation = preparation;
     }

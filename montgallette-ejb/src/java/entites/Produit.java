@@ -3,7 +3,6 @@ package entites;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +30,7 @@ public class Produit implements Serializable {
     @ManyToMany(mappedBy = "produits")
     private Collection<Offre> offres;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "produits")
     private Collection<Garniture> garnitures;
 
     public Produit() {
@@ -41,17 +40,17 @@ public class Produit implements Serializable {
         
     }
 
-    public Produit(String nom, boolean dispo, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie, Collection<Offre> offres, Collection<Garniture> garnitures) {
+    public Produit(String nom, boolean dispo, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie) {
         
-        this ();
+        this();
         this.nom = nom;
         this.dispo = dispo;
         this.prixHT = prixHT;
         this.descriptionCourte = descriptionCourte;
         this.descriptionComplete = descriptionComplete;
         this.categorie = categorie;
-        this.offres = offres;
-        this.garnitures = garnitures;
+        
+        
     }
 
     
@@ -107,6 +106,23 @@ public class Produit implements Serializable {
     public void setOffres(Collection<Offre> offres) {
         this.offres = offres;
     }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public Collection<Garniture> getGarnitures() {
+        return garnitures;
+    }
+
+    public void setGarnitures(Collection<Garniture> garnitures) {
+        this.garnitures = garnitures;
+    }
+    
 
     @Override
     public int hashCode() {

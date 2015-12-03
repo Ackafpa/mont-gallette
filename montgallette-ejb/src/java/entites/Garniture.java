@@ -23,21 +23,22 @@ public class Garniture implements Serializable {
     private String nom;
     private Boolean dispo;
 
-    @ManyToMany(mappedBy = "garnitures")
+    @ManyToMany
     private Collection<Produit> produits;
 
     
     
-    public Garniture () {
-        produits = new ArrayList<>();       
+    public Garniture() {
+        produits = new ArrayList();       
     }
     
     
-    public Garniture(String nom, Boolean dispo, Collection<Produit> produits) {
+    public Garniture(String nom, Boolean dispo) {
+        
         this();
         this.nom = nom;
         this.dispo = dispo;
-        this.produits = produits;
+       
     }
 
     public String getNom() {
