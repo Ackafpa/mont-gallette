@@ -1,4 +1,3 @@
-
 package entites;
 
 import java.io.Serializable;
@@ -12,11 +11,12 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Offre implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String nom;
     private String code;
     private Double prixHT;
 
@@ -27,8 +27,9 @@ public class Offre implements Serializable {
         produits = new ArrayList();
     }
 
-    public Offre(String code, Double prixHT) {
+    public Offre(String nom, String code, Double prixHT) {
         this();
+        this.nom=nom;
         this.code = code;
         this.prixHT = prixHT;
     }
@@ -37,6 +38,16 @@ public class Offre implements Serializable {
         return id;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    
+    
     public String getCode() {
         return code;
     }
@@ -83,7 +94,7 @@ public class Offre implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Offre[ id=" + id + " ]";
+        return "Offre" + nom + " ]";
     }
 
 }

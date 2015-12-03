@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Tablee implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,7 +71,7 @@ public class Tablee implements Serializable {
 
     @Override
     public String toString() {
-        return "Tablee N°" + numero + ", disponibilité : "+ dispo;
+        return "Tablee N°" + numero + ", disponibilité : " + dispo;
     }
-    
+
 }

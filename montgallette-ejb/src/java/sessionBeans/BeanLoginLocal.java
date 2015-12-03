@@ -11,10 +11,10 @@ import outils.CustomException;
 @Local
 public interface BeanLoginLocal {
 
-    public Employe identifierEmploye(String code)throws CustomException;
+    public Employe identifierEmploye(String code) throws CustomException;
 
     public Employe deconnexion(Employe e);
 
     public void creerJeuTest();
-    
+
 }

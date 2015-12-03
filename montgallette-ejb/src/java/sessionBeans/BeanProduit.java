@@ -1,4 +1,3 @@
-
 package sessionBeans;
 
 import entites.Produit;
@@ -10,19 +9,15 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class BeanProduit implements BeanProduitLocal {
 
-    @PersistenceContext(unitName="montgallette-ejbPU")
+    @PersistenceContext(unitName = "montgallette-ejbPU")
     private EntityManager em;
-    
-    
-    
-    public ArrayList<Produit> consulterMenu(){
-        
+
+    public ArrayList<Produit> consulterMenu() {
+
         String req = "select ";
         ArrayList<Produit> produits = new ArrayList();
-        
-        
-        
+
         return produits;
     }
-    
+
 }

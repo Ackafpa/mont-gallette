@@ -35,18 +35,26 @@ public class Produit implements Serializable {
     private Collection<Garniture> garnitures;
 
     public Produit() {
+        
         offres = new ArrayList();
+        garnitures = new ArrayList();
+        
     }
 
-    public Produit(String nom, boolean dispo, Double prixHT, Integer qte, String descriptionCourte, String descriptionComplete, Collection<Offre> offres, List<Produit> produits) {
-        this();
+    public Produit(String nom, boolean dispo, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie, Collection<Offre> offres, Collection<Garniture> garnitures) {
+        
+        this ();
         this.nom = nom;
         this.dispo = dispo;
         this.prixHT = prixHT;
         this.descriptionCourte = descriptionCourte;
         this.descriptionComplete = descriptionComplete;
+        this.categorie = categorie;
         this.offres = offres;
+        this.garnitures = garnitures;
     }
+
+    
 
     public Long getId() {
         return id;
@@ -122,7 +130,7 @@ public class Produit implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Produit[ id=" + id + " ]";
+        return "Produits : " + nom + " ]";
     }
 
 }

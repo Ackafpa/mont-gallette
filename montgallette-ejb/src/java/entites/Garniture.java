@@ -1,6 +1,8 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +24,51 @@ public class Garniture implements Serializable {
     private Boolean dispo;
 
     @ManyToMany(mappedBy = "garnitures")
-    private Produit produit;
+    private Collection<Produit> produits;
 
+    
+    
+    public Garniture () {
+        produits = new ArrayList<>();       
+    }
+    
+    
+    public Garniture(String nom, Boolean dispo, Collection<Produit> produits) {
+        this();
+        this.nom = nom;
+        this.dispo = dispo;
+        this.produits = produits;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Boolean getDispo() {
+        return dispo;
+    }
+
+    public void setDispo(Boolean dispo) {
+        this.dispo = dispo;
+    }
+
+    public Collection<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(Collection<Produit> produits) {
+        this.produits = produits;
+    }
+
+    
+    
+    
+    
+    
     public Long getId() {
         return id;
     }
@@ -54,7 +99,7 @@ public class Garniture implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Garniture[ id=" + id + " ]";
+        return "Garniture : " + nom + " ]";
     }
 
 }

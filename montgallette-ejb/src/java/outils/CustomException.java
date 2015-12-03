@@ -6,13 +6,14 @@ import java.util.HashMap;
  *
  * @author cdi406
  */
-public class CustomException extends Exception{
+public class CustomException extends Exception {
+
     public static final String err_Id;
-    
-    static{
+
+    static {
         err_Id = "Code non reconnu";
     }
-    
+
     private HashMap erreurs;
 
     public CustomException() {
@@ -31,8 +32,5 @@ public class CustomException extends Exception{
     public void setErreurs(HashMap erreurs) {
         this.erreurs = erreurs;
     }
-    
-    
-    
-    
+
 }
