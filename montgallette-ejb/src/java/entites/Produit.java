@@ -41,7 +41,7 @@ public class Produit implements Serializable {
         
     }
 
-    public Produit(String nom, boolean dispo, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie, Collection<Offre> offres, Collection<Garniture> garnitures) {
+    public Produit(String nom, boolean dispo, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie, Collection<Offre> offres) {
         
         this ();
         this.nom = nom;
@@ -51,7 +51,7 @@ public class Produit implements Serializable {
         this.descriptionComplete = descriptionComplete;
         this.categorie = categorie;
         this.offres = offres;
-        this.garnitures = garnitures;
+        
     }
 
     
