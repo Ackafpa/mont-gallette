@@ -41,6 +41,11 @@ public class BeanLogin implements BeanLoginLocal {
         return e;
 
     }
+    @Override
+    public Employe recupEmploye(Object o){
+        Employe e = (Employe)o;
+        return e;
+    }
 
     @Override
     public Employe deconnexion(Employe e) {

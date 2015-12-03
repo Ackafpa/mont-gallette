@@ -17,4 +17,6 @@ public interface BeanLoginLocal {
 
     public void creerJeuTest();
 
+    public Employe recupEmploye(Object o);
+
 }
