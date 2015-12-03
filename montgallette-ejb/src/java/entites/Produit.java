@@ -4,6 +4,7 @@ package entites;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,24 +19,24 @@ public class Produit implements Serializable {
     private Long id;
     
     private String nom;
-    private Integer etat;
     private boolean dispo;
     private Double prixHT;
     private Integer qte;
     private String descriptionCourte;
     private String descriptionComplete;
+    private List <Produit> accompagnements;
+    
     
     @ManyToMany(mappedBy = "produits")
     private Collection<Offre> offres;
-
+    
     public Produit() {
         offres = new ArrayList();
     }
 
-    public Produit(String nom, Integer etat, boolean dispo, Double prixHT, Integer qte, String descriptionCourte, String descriptionComplete, Collection<Offre> offres) {
+    public Produit(String nom, boolean dispo, Double prixHT, Integer qte, String descriptionCourte, String descriptionComplete, Collection<Offre> offres, List <Produit> produits) {
         this();
         this.nom = nom;
-        this.etat = etat;
         this.dispo = dispo;
         this.prixHT = prixHT;
         this.qte = qte;
@@ -56,13 +57,9 @@ public class Produit implements Serializable {
         this.nom = nom;
     }
 
-    public Integer getEtat() {
-        return etat;
-    }
+    
 
-    public void setEtat(Integer etat) {
-        this.etat = etat;
-    }
+    
 
     public boolean isDispo() {
         return dispo;

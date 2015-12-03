@@ -3,13 +3,13 @@ package entites;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,19 +28,36 @@ public class Commande implements Serializable {
     @OneToMany(mappedBy="commande")
     private List<LigneCommande> produits;   
     
+    @ManyToOne 
+    private Tablee tablee;
+    
     private String numero;
     // @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Temporal(TemporalType.DATE)
     private Date date;
+    
+    private int nbPersonnes;
 
     public Commande() {
         this.produits = new ArrayList();
+        
     }
 
-    public Commande(List<LigneCommande> produits, String numero, Date date) {
-        this();     
+    public Commande(Tablee tablee, List<LigneCommande> produits, String numero, Date date, int nbPersonnes) {
+        this();  
+        this.tablee = tablee;
         this.numero = numero;
         this.date = date;
+        this.nbPersonnes = nbPersonnes;
+        
+    }
+
+    public Tablee getTablee() {
+        return tablee;
+    }
+
+    public void setTablee(Tablee tablee) {
+        this.tablee = tablee;
     }
 
     public List<LigneCommande> getProduits() {
@@ -65,6 +82,14 @@ public class Commande implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getNbPersonnes() {
+        return nbPersonnes;
+    }
+
+    public void setNbPersonnes(int nbPersonnes) {
+        this.nbPersonnes = nbPersonnes;
     }
 
   

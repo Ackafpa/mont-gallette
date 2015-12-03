@@ -1,7 +1,7 @@
-
 package entites;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,29 +15,27 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class LigneCommande implements Serializable {
-  
-     private static final long serialVersionUID = 1L;
-     
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @OneToOne
     private Produit produit;
-    
-    private Integer qte;    
+
+    private List<String> preferences;
     private Integer etat;
     
-   
-    
+    private List<Garniture> garnitures;
+
     @ManyToOne
     private Commande commande;
 
     public LigneCommande() {
     }
 
-    
-    
     public Long getId() {
         return id;
     }
@@ -46,9 +44,8 @@ public class LigneCommande implements Serializable {
         this.id = id;
     }
 
-    public LigneCommande(Produit produit, Integer qte, Integer etat, Commande commande) {
+    public LigneCommande(Produit produit, Integer etat, Commande commande) {
         this.produit = produit;
-        this.qte = qte;
         this.etat = etat;
         this.commande = commande;
     }
@@ -61,15 +58,6 @@ public class LigneCommande implements Serializable {
         this.etat = etat;
     }
 
-
-    public Integer getQte() {
-        return qte;
-    }
-
-    public void setQte(Integer qte) {
-        this.qte = qte;
-    }
-
     public Commande getCommande() {
         return commande;
     }
@@ -77,15 +65,5 @@ public class LigneCommande implements Serializable {
     public void setCommande(Commande commande) {
         this.commande = commande;
     }
-    
-    
-    
-    
-    
-    
-  
 
-
-   
-    
 }
