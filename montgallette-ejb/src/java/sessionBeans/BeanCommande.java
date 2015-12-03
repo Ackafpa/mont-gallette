@@ -1,7 +1,8 @@
 package sessionBeans;
 
-import entites.Commande;
 import javax.ejb.Stateful;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -10,11 +11,8 @@ import javax.ejb.Stateful;
 @Stateful
 public class BeanCommande implements BeanCommandeLocal {
 
-    private Commande commande;
-
-    public BeanCommande() {
-        this.commande = commande;
-    }
+   @PersistenceContext(unitName = "montgallette-ejbPU")
+    private EntityManager em;
 
     public void passerCommande() {
 

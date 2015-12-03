@@ -6,6 +6,8 @@
 package sessionBeans;
 
 import javax.ejb.Stateful;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -13,9 +15,11 @@ import javax.ejb.Stateful;
  */
 @Stateful
 public class BeanLigne implements BeanLigneLocal {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    
+    
+  @PersistenceContext(unitName = "montgallette-ejbPU")
+    private EntityManager em;
+  
     public void ajouterLigne() {
 
     }
