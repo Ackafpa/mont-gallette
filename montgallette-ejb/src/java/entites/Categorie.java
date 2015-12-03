@@ -19,7 +19,7 @@ public class Categorie implements Serializable {
     private String nom;
     private boolean preparation;
 
-    @OneToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "categorie")
     private Collection<Produit> produits;
 
     public Categorie() {

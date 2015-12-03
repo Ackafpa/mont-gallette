@@ -1,11 +1,13 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -28,7 +30,8 @@ public class LigneCommande implements Serializable {
     private List<String> preferences;
     private Integer etat;
 
-    private List<Garniture> garnitures;
+    @ManyToMany
+    private Collection<Garniture> garnitures;
 
     @ManyToOne
     private Commande commande;
