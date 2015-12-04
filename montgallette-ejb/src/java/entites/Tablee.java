@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Tablee implements Serializable {
@@ -15,7 +17,10 @@ public class Tablee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int couverts;
-    private Date date;
+    
+    @Temporal(value=TemporalType.TIMESTAMP)
+    private Date dateFacture;
+    
     private double montantTotal;
 
     public Tablee() {
@@ -24,7 +29,7 @@ public class Tablee implements Serializable {
     public Tablee(Long id, int couverts, Date date, double montantTotal) {
         this.id = id;
         this.couverts = couverts;
-        this.date = date;
+        this.dateFacture = date;
         this.montantTotal = montantTotal;
     }
 
@@ -44,12 +49,12 @@ public class Tablee implements Serializable {
         this.couverts = couverts;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateFacture() {
+        return dateFacture;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateFacture(Date date) {
+        this.dateFacture = date;
     }
 
     public double getMontantTotal() {
@@ -82,7 +87,7 @@ public class Tablee implements Serializable {
 
     @Override
     public String toString() {
-        return "Tablee id = " + id + ", couverts=" + couverts + ", date=" + date + ", montantTotal=" + montantTotal + "€.";
+        return "Tablee id = " + id + ", couverts=" + couverts + ", date=" + dateFacture + ", montantTotal=" + montantTotal + "€.";
     }
 
 }
