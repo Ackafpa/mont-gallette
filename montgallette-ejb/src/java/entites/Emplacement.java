@@ -13,7 +13,7 @@ public class Emplacement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;                //--> idem numero de table ??
-    private int dispo;
+    private boolean dispo;
 
 //    @ManyToMany
 //    //TODO 
@@ -21,7 +21,7 @@ public class Emplacement implements Serializable {
     public Emplacement() {
     }
 
-    public Emplacement(Long id, int dispo) {
+    public Emplacement(Long id, boolean dispo) {
         this.id = id;
         this.dispo = dispo;
     }
@@ -34,11 +34,11 @@ public class Emplacement implements Serializable {
         this.id = id;
     }
 
-    public int getDispo() {
+    public boolean getDispo() {
         return dispo;
     }
 
-    public void setDispo(int dispo) {
+    public void setDispo(boolean dispo) {
         this.dispo = dispo;
     }
 

@@ -12,18 +12,24 @@ public class BeanEmplacement implements BeanEmplacementLocal {
     Emplacement e = new Emplacement();
     
     
-    public int modifierDispo(int i){        //
-        if (e.getDispo() == 0 && i == 1){
-            e.setDispo(i); 
+    public void rendreIndispo(){        // true=dispo      false=occupee
+        if (e.getDispo() == false){
+            e.setDispo(true); 
+        }else{
+            //MESSAGE ERREUR "DEJA DISPO ???"
         }
-        
-        
-        
-//        return i;
+    }
+    
+    public void rendreDispo(){        // true=dispo      false=occupee
+        if (e.getDispo() == true){
+            e.setDispo(false); 
+        }else{
+            //MESSAGE ERREUR "DEJA INDISPO ???"
+        }
     }
     
     public void lierTables(){
-        
+        //Remplir arrayList Tablee ?
     }
     
     public double calculerMontant(){
