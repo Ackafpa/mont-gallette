@@ -84,6 +84,11 @@ public class Login implements ControllerInterface, Serializable {
             }
 
         }
+        
+        if("client".equalsIgnoreCase(action)){
+            request.setAttribute("idGarcon", beanLogin.recupEmploye(session.getAttribute("user")).getId());
+            url = "client.jsp";
+        }
 
         //Création d'un jeu d'essai
         if ("test".equalsIgnoreCase(action)) {
