@@ -7,21 +7,40 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-/**
- *
- * @author CDI417
- */
 @Entity
 public class Emplacement implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;                //--> idem numero de table ??
-    private int dispo;
+    private boolean dispo;
 
 //    @ManyToMany
 //    //TODO 
-    
+
+    public Emplacement() {
+    }
+
+    public Emplacement(Long id, boolean dispo) {
+        this.id = id;
+        this.dispo = dispo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean getDispo() {
+        return dispo;
+    }
+
+    public void setDispo(boolean dispo) {
+        this.dispo = dispo;
+    }
 
     @Override
     public int hashCode() {
