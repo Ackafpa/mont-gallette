@@ -5,6 +5,11 @@
  */
 package sessionBeans;
 
+import entites.Commande;
+import entites.LigneCommande;
+import entites.Produit;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,15 +20,45 @@ import javax.persistence.PersistenceContext;
  */
 @Stateful
 public class BeanLigne implements BeanLigneLocal {
-    
-    
-  @PersistenceContext(unitName = "montgallette-ejbPU")
-    private EntityManager em;
-  
-    public void ajouterLigne() {
 
+    @PersistenceContext(unitName = "montgallette-ejbPU")
+    private EntityManager em;
+
+    public Commande creerLigne(Produit produit, Collection<String> preferences, Integer etat, Commande commande) {
+
+        LigneCommande ligne = new LigneCommande(produit, preferences, etat, commande);
+        
+        if (commande != null) {
+
+
+            Collection<LigneCommande> p = commande.getProduits();           
+            em.persist(p);
+
+        } else {
+            commande = new Commande();
+            commande.setProduits((Collection<LigneCommande>) ligne);
+            
+            em.persist(commande);
+      
+            
+        }
+        return commande;
+            
+
+        }
+       
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public void consulterEtat() {
 
     }

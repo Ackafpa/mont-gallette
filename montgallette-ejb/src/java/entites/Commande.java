@@ -2,6 +2,7 @@ package entites;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class Commande implements Serializable {
     private Long id;
 
     @OneToMany(mappedBy = "commande")
-    private List<LigneCommande> produits;
+    private Collection<LigneCommande> produits;
 
     @ManyToOne
     private Tablee tablee;
@@ -60,11 +61,11 @@ public class Commande implements Serializable {
         this.tablee = tablee;
     }
 
-    public List<LigneCommande> getProduits() {
+    public Collection<LigneCommande> getProduits() {
         return produits;
     }
 
-    public void setProduits(List<LigneCommande> produits) {
+    public void setProduits(Collection<LigneCommande> produits) {
         this.produits = produits;
     }
 
