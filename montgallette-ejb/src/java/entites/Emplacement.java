@@ -7,10 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-/**
- *
- * @author CDI417
- */
 @Entity
 public class Emplacement implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -21,7 +17,30 @@ public class Emplacement implements Serializable {
 
 //    @ManyToMany
 //    //TODO 
-    
+
+    public Emplacement() {
+    }
+
+    public Emplacement(Long id, int dispo) {
+        this.id = id;
+        this.dispo = dispo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getDispo() {
+        return dispo;
+    }
+
+    public void setDispo(int dispo) {
+        this.dispo = dispo;
+    }
 
     @Override
     public int hashCode() {

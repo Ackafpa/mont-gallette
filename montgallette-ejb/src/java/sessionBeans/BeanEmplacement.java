@@ -1,5 +1,6 @@
 package sessionBeans;
 
+import entites.Emplacement;
 import javax.ejb.Stateful;
 
 /**
@@ -8,9 +9,17 @@ import javax.ejb.Stateful;
  */
 @Stateful
 public class BeanEmplacement implements BeanEmplacementLocal {
-
-    public int modifierDispo(){
-        return 1;
+    Emplacement e = new Emplacement();
+    
+    
+    public int modifierDispo(int i){        //
+        if (e.getDispo() == 0 && i == 1){
+            e.setDispo(i); 
+        }
+        
+        
+        
+//        return i;
     }
     
     public void lierTables(){
