@@ -8,11 +8,13 @@ and open the template in the editor.
     Author     : cdi406
 */
 body {
-    background-color: black;
+    background-color: #663300;
 }
 
 h1 {
     color: orange; 
     text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 3.5em;
 }
 
