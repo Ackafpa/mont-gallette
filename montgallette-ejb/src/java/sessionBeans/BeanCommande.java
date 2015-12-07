@@ -1,8 +1,11 @@
-
 package sessionBeans;
 
 import entites.Commande;
+import entites.LigneCommande;
+import java.util.Collection;
 import javax.ejb.Stateful;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -11,27 +14,35 @@ import javax.ejb.Stateful;
 @Stateful
 public class BeanCommande implements BeanCommandeLocal {
 
- 
-    public Commande passerCommande(){
-    
-    
-Commande commande = new Commande();
+    @PersistenceContext(unitName = "montgallette-ejbPU")
+    private EntityManager em;
 
-return commande;
-}
+    public Commande ajouterLigne(LigneCommande ligne, Commande commande) {
 
-public Commande afficherCommande(){
-    
-    Commande commande = new Commande();
+        if (commande != null) {
 
-return commande;
-}
+            Collection<LigneCommande> p = commande.getProduits();
+            em.persist(p);
 
+        } else {
+            commande = new Commande();
+            commande.setProduits((Collection<LigneCommande>) ligne);
+            
 
-public void appliquerOffre(){
-    
-    
-}
-    
-    
+        }
+        return commande;
+    }
+
+    public void passerCommande() {
+
+    }
+
+    public void afficherCommande() {
+
+    }
+
+    public void appliquerOffre() {
+
+    }
+
 }

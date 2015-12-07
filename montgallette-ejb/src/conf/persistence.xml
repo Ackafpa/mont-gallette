@@ -7,8 +7,7 @@
     <class>entites.Employe</class>
     <class>entites.LigneCommande</class>
     <class>entites.Offre</class>
-    <class>entites.Produit</class>
-    <class>entites.Tablee</class>
+    <class>entites.Garniture</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

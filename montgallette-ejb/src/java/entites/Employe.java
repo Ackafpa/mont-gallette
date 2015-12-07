@@ -20,7 +20,7 @@ public class Employe implements Serializable {
     public Long getId() {
         return id;
     }
-    
+
     private String nom;
     private String prenom;
     private String adresse;
@@ -87,7 +87,7 @@ public class Employe implements Serializable {
     public void setCode(String code) {
         this.code = code;
     }
-    
+
     
 
     public void setId(Long id) {
@@ -100,5 +100,5 @@ public class Employe implements Serializable {
     public String toString() {
         return nom+" "+prenom+" ("+id+")";
     }
-    
+
 }

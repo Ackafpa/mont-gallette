@@ -12,6 +12,7 @@ import javax.ejb.Local;
  * @author cdi404
  */
 @Local
-public interface BeanCommandeLocal {
+public interface BeanLigneLocal {
 
+    
 }

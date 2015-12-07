@@ -9,9 +9,9 @@ import javax.ejb.Local;
 
 /**
  *
- * @author cdi404
+ * @author CDI417
  */
 @Local
-public interface BeanCommandeLocal {
-
+public interface BeanEmplacementLocal {
+    
 }

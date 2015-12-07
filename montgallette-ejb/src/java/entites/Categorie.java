@@ -1,28 +1,34 @@
-
 package entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categorie implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nom;
-    private boolean preparation;
+
+    @OneToMany(mappedBy = "categorie")
+    private Collection<Produit> produits;
 
     public Categorie() {
+        produits = new ArrayList();
     }
 
-    public Categorie(String nom, boolean preparation) {
+    public Categorie(String nom) {
+        this();
         this.nom = nom;
-        this.preparation = preparation;
     }
 
     public Long getId() {
@@ -39,14 +45,6 @@ public class Categorie implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public boolean isPreparation() {
-        return preparation;
-    }
-
-    public void setPreparation(boolean preparation) {
-        this.preparation = preparation;
     }
 
     @Override
@@ -71,7 +69,7 @@ public class Categorie implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Categorie[ id=" + id + " ]";
+        return "Categorie : " + nom + " ]";
     }
 
 }

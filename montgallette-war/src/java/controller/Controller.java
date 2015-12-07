@@ -3,8 +3,6 @@ package controller;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +41,7 @@ public class Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String section = request.getParameter("section");
         String prefixe = "/WEB-INF/jsp/";
-        String url = "login.jsp";
+        String url = "home.jsp";
         
         if(section != null && section.endsWith(".acka")){
             ControllerInterface ctrl = subcont.get(section);

@@ -1,43 +1,36 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Tablee implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int numero;
-    private boolean dispo;
+    private int couverts;
+    
+    @Temporal(value=TemporalType.TIMESTAMP)
+    private Date dateFacture;
+    
+    private double montantTotal;
 
     public Tablee() {
     }
 
-    public Tablee(Long id, int numero, boolean dispo) {
+    public Tablee(Long id, int couverts, Date date, double montantTotal) {
         this.id = id;
-        this.numero = numero;
-        this.dispo = dispo;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public boolean isDispo() {
-        return dispo;
-    }
-
-    public void setDispo(boolean dispo) {
-        this.dispo = dispo;
+        this.couverts = couverts;
+        this.dateFacture = date;
+        this.montantTotal = montantTotal;
     }
 
     public Long getId() {
@@ -46,6 +39,30 @@ public class Tablee implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getCouverts() {
+        return couverts;
+    }
+
+    public void setCouverts(int couverts) {
+        this.couverts = couverts;
+    }
+
+    public Date getDateFacture() {
+        return dateFacture;
+    }
+
+    public void setDateFacture(Date date) {
+        this.dateFacture = date;
+    }
+
+    public double getMontantTotal() {
+        return montantTotal;
+    }
+
+    public void setMontantTotal(double montantTotal) {
+        this.montantTotal = montantTotal;
     }
 
     @Override
@@ -70,7 +87,7 @@ public class Tablee implements Serializable {
 
     @Override
     public String toString() {
-        return "Tablee N°" + numero + ", disponibilité : "+ dispo;
+        return "Tablee id = " + id + ", couverts=" + couverts + ", date=" + dateFacture + ", montantTotal=" + montantTotal + "€.";
     }
-    
+
 }

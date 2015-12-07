@@ -1,4 +1,3 @@
-
 package entites;
 
 import java.io.Serializable;
@@ -10,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,34 +20,52 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Commande implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy="commande")
-    private List<LigneCommande> produits;   
-    
+    @OneToMany(mappedBy = "commande")
+    private Collection<LigneCommande> produits;
+
+    @ManyToOne
+    private Tablee tablee;
+
     private String numero;
     // @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    private int nbPersonnes;
+
     public Commande() {
         this.produits = new ArrayList();
+
     }
 
-    public Commande(List<LigneCommande> produits, String numero, Date date) {
-        this();     
+    public Commande(Tablee tablee, List<LigneCommande> produits, String numero, Date date, int nbPersonnes) {
+        this();
+        this.tablee = tablee;
         this.numero = numero;
         this.date = date;
+        this.nbPersonnes = nbPersonnes;
+
     }
 
-    public List<LigneCommande> getProduits() {
+    public Tablee getTablee() {
+        return tablee;
+    }
+
+    public void setTablee(Tablee tablee) {
+        this.tablee = tablee;
+    }
+
+    public Collection<LigneCommande> getProduits() {
         return produits;
     }
 
-    public void setProduits(List<LigneCommande> produits) {
+    public void setProduits(Collection<LigneCommande> produits) {
         this.produits = produits;
     }
 
@@ -67,11 +85,14 @@ public class Commande implements Serializable {
         this.date = date;
     }
 
-  
-    
-    
-    
-    
+    public int getNbPersonnes() {
+        return nbPersonnes;
+    }
+
+    public void setNbPersonnes(int nbPersonnes) {
+        this.nbPersonnes = nbPersonnes;
+    }
+
     public Long getId() {
         return id;
     }
@@ -104,5 +125,5 @@ public class Commande implements Serializable {
     public String toString() {
         return "entites.Commande  id=" + id;
     }
-    
+
 }

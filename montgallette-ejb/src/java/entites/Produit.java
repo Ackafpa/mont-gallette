@@ -1,4 +1,3 @@
-
 package entites;
 
 import java.io.Serializable;
@@ -9,39 +8,50 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Produit implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String nom;
-    private Integer etat;
     private boolean dispo;
+    private boolean preparation;
     private Double prixHT;
-    private Integer qte;
     private String descriptionCourte;
     private String descriptionComplete;
-    
+
+    @ManyToOne
+    private Categorie categorie;
+
     @ManyToMany(mappedBy = "produits")
     private Collection<Offre> offres;
 
+    @ManyToMany(mappedBy = "produits")
+    private Collection<Garniture> garnitures;
+
     public Produit() {
+        
         offres = new ArrayList();
+        garnitures = new ArrayList();
+        
     }
 
-    public Produit(String nom, Integer etat, boolean dispo, Double prixHT, Integer qte, String descriptionCourte, String descriptionComplete, Collection<Offre> offres) {
+    public Produit(String nom, boolean dispo, boolean preparation, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie) {
+        
         this();
         this.nom = nom;
-        this.etat = etat;
         this.dispo = dispo;
+        this.preparation = preparation;
         this.prixHT = prixHT;
-        this.qte = qte;
         this.descriptionCourte = descriptionCourte;
         this.descriptionComplete = descriptionComplete;
-        this.offres = offres;
+        this.categorie = categorie;
+        
     }
 
     public Long getId() {
@@ -56,14 +66,6 @@ public class Produit implements Serializable {
         this.nom = nom;
     }
 
-    public Integer getEtat() {
-        return etat;
-    }
-
-    public void setEtat(Integer etat) {
-        this.etat = etat;
-    }
-
     public boolean isDispo() {
         return dispo;
     }
@@ -72,20 +74,20 @@ public class Produit implements Serializable {
         this.dispo = dispo;
     }
 
+    public boolean isPreparation() {
+        return preparation;
+    }
+
+    public void setPreparation(boolean preparation) {
+        this.preparation = preparation;
+    }
+
     public Double getPrixHT() {
         return prixHT;
     }
 
     public void setPrixHT(Double prixHT) {
         this.prixHT = prixHT;
-    }
-
-    public Integer getQte() {
-        return qte;
-    }
-
-    public void setQte(Integer qte) {
-        this.qte = qte;
     }
 
     public String getDescriptionCourte() {
@@ -112,6 +114,22 @@ public class Produit implements Serializable {
         this.offres = offres;
     }
 
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public Collection<Garniture> getGarnitures() {
+        return garnitures;
+    }
+
+    public void setGarnitures(Collection<Garniture> garnitures) {
+        this.garnitures = garnitures;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -134,7 +152,7 @@ public class Produit implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Produit[ id=" + id + " ]";
+        return "Produits : " + nom + " ]";
     }
 
 }
