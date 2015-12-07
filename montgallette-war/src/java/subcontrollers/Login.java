@@ -63,31 +63,36 @@ public class Login implements ControllerInterface, Serializable {
                     }
 
                 } else {
-
-                    String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
-                    if (code.equals(eCode)) {
-                        if (code.startsWith("1")) {
-                            url = "garcon.jsp";
-                        } else if (code.startsWith("2")) {
-                            url = "cuisine.jsp";
+                    //Si le nouveau code entré ne vient pas du mode client
+                    if (!("client".equalsIgnoreCase("prov"))) {
+                        String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
+                        if (code.equals(eCode)) {
+                            if (code.startsWith("1")) {
+                                url = "garcon.jsp";
+                            }
+                        } else {
+                            //accès à la possibilité de deconnexion
+                            boolean deco = true;
+                            request.setAttribute("msgDeco", "Vous n'êtes pas ");
+                            request.setAttribute("deco", deco);
                         }
-
                     } else {
-                        boolean deco = true;
-                        request.setAttribute("msgDeco", "Vous n'êtes pas ");
-                        request.setAttribute("deco", deco);
+                        //Si le code vient du mode client : pas de déco possible, seulement rentrer le code exact du garçon
+                        String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
+                        if (code.equals(eCode)) {
+                            url = "garcon.jsp";
+                        }
                     }
                 }
             } else {
                 request.setAttribute("msg", "Code invalide");
                 url = "home.jsp";
             }
-
         }
-        
-        if("client".equalsIgnoreCase(action)){
+
+        if ("client".equalsIgnoreCase(action)) {
             request.setAttribute("idGarcon", beanLogin.recupEmploye(session.getAttribute("user")).getId());
-            
+
             url = "client.jsp";
         }
 

@@ -16,6 +16,6 @@
         
        ID du garçon : ${idGarcon}
        
-       <a href="Controller">Mode Serveur</a>
+       <a href="Controller?section=login.acka&prov=client">Mode Serveur</a>
     </body>
 </html>
