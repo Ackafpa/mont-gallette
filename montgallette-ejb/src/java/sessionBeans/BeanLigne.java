@@ -9,7 +9,6 @@ import entites.Commande;
 import entites.LigneCommande;
 import entites.Produit;
 import java.util.Collection;
-import java.util.List;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -49,22 +48,4 @@ public class BeanLigne implements BeanLigneLocal {
        
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public void consulterEtat() {
 
-    }
-
-    public void changerEtat() {
-
-    }
-
-}
