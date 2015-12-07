@@ -126,4 +126,10 @@ public class Commande implements Serializable {
         return "entites.Commande  id=" + id;
     }
 
+
+    public void setProduits(LigneCommande ligne) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }

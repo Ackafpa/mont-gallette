@@ -38,6 +38,7 @@ public class LigneCommande implements Serializable {
 
     public LigneCommande() {
         garnitures = new ArrayList();
+        preferences = new ArrayList();
     }
 
     public LigneCommande(Produit produit, Collection<String> preferences, Integer etat, Commande commande) {
@@ -47,6 +48,30 @@ public class LigneCommande implements Serializable {
         this.preferences = preferences;
         this.etat = etat;
         this.commande = commande;
+    }
+
+    public LigneCommande(Produit produit, Integer etat, Commande commande) {
+        
+        this();
+        this.produit = produit;
+        this.etat = etat;
+        this.commande = commande;
+    }
+
+    @Override
+    public String toString() {
+        String etatS = null;
+        if (etat == 0){
+            etatS= "validé";        
+        }
+        if(etat == 1){
+            etatS= "en préparation";
+        }
+        if (etat == 2){
+             etatS= "en prêt";  
+        }
+        
+        return produit + " " + preferences + " " + garnitures + " est " + etatS;
     }
     
     

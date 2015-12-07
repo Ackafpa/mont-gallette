@@ -38,7 +38,8 @@ public class Login implements ControllerInterface, Serializable {
                 if (session.getAttribute("prov") == null) {
                     String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
                     if (code.equals(eCode)) {
-                            url = "garcon.jsp";
+
+                        url = "garcon.jsp";
                     } else {
                         //accès à la possibilité de deconnexion
                         boolean deco = true;
@@ -89,7 +90,7 @@ public class Login implements ControllerInterface, Serializable {
                             String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
                             if (code.equals(eCode)) {
                                 session.removeAttribute("prov");
-                                    url = "garcon.jsp";
+                                url = "garcon.jsp";
                             } else {
                                 //accès à la possibilité de deconnexion
                                 boolean deco = true;

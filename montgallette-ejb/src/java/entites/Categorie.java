@@ -26,6 +26,7 @@ public class Categorie implements Serializable {
         produits = new ArrayList();
     }
 
+
     public Categorie(String nom) {
         this();
         this.nom = nom;

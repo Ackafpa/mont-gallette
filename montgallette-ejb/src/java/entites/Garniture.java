@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+/**
+ *
+ * @author cdi404
+ */
 @Entity
 public class Garniture implements Serializable {
 
@@ -22,9 +26,12 @@ public class Garniture implements Serializable {
     @ManyToMany
     private Collection<Produit> produits;
 
+    
+    
     public Garniture() {
         produits = new ArrayList();       
     }
+    
     
     public Garniture(String nom, Boolean dispo) {
         
@@ -58,8 +65,17 @@ public class Garniture implements Serializable {
         this.produits = produits;
     }
 
+    
+    
+    
+    
+    
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

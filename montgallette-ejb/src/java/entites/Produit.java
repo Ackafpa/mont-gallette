@@ -41,8 +41,9 @@ public class Produit implements Serializable {
         
     }
 
+
     public Produit(String nom, boolean dispo, boolean preparation, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie) {
-        
+
         this();
         this.nom = nom;
         this.dispo = dispo;
@@ -52,7 +53,10 @@ public class Produit implements Serializable {
         this.descriptionComplete = descriptionComplete;
         this.categorie = categorie;
         
+
     }
+
+    
 
     public Long getId() {
         return id;
@@ -130,6 +134,7 @@ public class Produit implements Serializable {
         this.garnitures = garnitures;
     }
     
+
     @Override
     public int hashCode() {
         int hash = 0;

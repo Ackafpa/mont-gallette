@@ -1,4 +1,5 @@
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -16,5 +17,9 @@
             <c:url value="/WEB-INF/jsp/commande.jsp" var="urlc02"/>
             <c:import url="${urlc02}"/>
         </div>
+
+
+
+
     </body>
 </html>

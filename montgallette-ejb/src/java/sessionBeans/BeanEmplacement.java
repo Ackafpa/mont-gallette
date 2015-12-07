@@ -1,42 +1,42 @@
 package sessionBeans;
 
 import entites.Emplacement;
+import entites.Tablee;
 import javax.ejb.Stateful;
 
 /**
  *
  * @author CDI417
  */
+
 @Stateful
 public class BeanEmplacement implements BeanEmplacementLocal {
-    Emplacement e = new Emplacement();
-    
-    
-    public void rendreIndispo(){        // true=dispo      false=occupee
-        if (e.getDispo() == false){
-            e.setDispo(true); 
-        }else{
-            //MESSAGE ERREUR "DEJA DISPO ???"
+
+    public void modifierDispo(Emplacement e) {        
+// true=dispo      false=occupee
+        if (e.isDispo() == false) {
+            e.setDispo(true);
+        } else {
+            e.setDispo(false);
         }
     }
-    
-    public void rendreDispo(){        // true=dispo      false=occupee
-        if (e.getDispo() == true){
-            e.setDispo(false); 
-        }else{
-            //MESSAGE ERREUR "DEJA INDISPO ???"
+
+    public void ajouterEmplacement(Tablee t, Emplacement e) {
+        if (e.isDispo()) {
+            t.getEmplacements().add(e);
+            modifierDispo(e);
+        } else {
+            System.out.println("ERREUR : L'emplacement " + e + " n'est pas disponible!");
         }
     }
-    
-    public void lierTables(){
-        //Remplir arrayList Tablee ?
+
+    public void supprimerEmplacement(Tablee t, Emplacement e) {
+        if (t.getEmplacements().contains(e)) {
+            t.getEmplacements().remove(e);
+        } else {
+            System.out.println("ERREUR : L'emplacement " + e + " n'est pas lié à la tablée");
+        }
     }
-    
-    public double calculerMontant(){
-        double somme = 0;
-        
-        return somme;
-    }
-            
-            
+
+
 }
