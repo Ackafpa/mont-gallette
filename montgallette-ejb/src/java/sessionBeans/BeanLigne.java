@@ -15,21 +15,9 @@ import javax.persistence.PersistenceContext;
  */
 @Stateful
 public class BeanLigne implements BeanLigneLocal {
-    
-    
-  @PersistenceContext(unitName = "montgallette-ejbPU")
+
+    @PersistenceContext(unitName = "montgallette-ejbPU")
     private EntityManager em;
-  
-    public void ajouterLigne() {
 
-    }
-
-    public void consulterEtat() {
-
-    }
-
-    public void changerEtat() {
-
-    }
-
+ 
 }

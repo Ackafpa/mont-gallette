@@ -33,56 +33,68 @@ public class Login implements ControllerInterface, Serializable {
 
             String code = request.getParameter("id");
 
-            //Verif de la longueur du code entré
-            if (code.length() == 4) {
-
-                //Reconnaissance de la catégorie d'employé et envoi vers la bonne interface
-                if (session.getAttribute("user") == null) {
-                    try {
-                        entites.Employe e = beanLogin.identifierEmploye(code);
-
-                        if (code.startsWith("1")) {
-                            url = "garcon.jsp";
-                            session.setAttribute("user", e);
-                        } else if (code.startsWith("2")) {
-                            url = "cuisine.jsp";
-                            session.setAttribute("user", e);
-                        } else {
-                            request.setAttribute("msg", "Code non reconnu");
-                            url = "home.jsp";
-                        }
-
-                    } catch (CustomException ex) {
-
-                        HashMap<String, String> mp = ex.getErreurs();
-                        request.setAttribute("msgErr", ex.getMessage());
-                        for (String clef : mp.keySet()) {
-                            request.setAttribute(clef, mp.get(clef));
-                        }
-                        url = "home.jsp";
-                    }
-
-                } else {
-
+            if (session.getAttribute("user") != null) {
+                //Si le nouveau code entré ne vient pas du mode client
+                if (session.getAttribute("prov") == null) {
                     String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
                     if (code.equals(eCode)) {
-                        if (code.startsWith("1")) {
-                            url = "garcon.jsp";
-                        } else if (code.startsWith("2")) {
-                            url = "cuisine.jsp";
-                        }
 
+                        url = "garcon.jsp";
                     } else {
+                        //accès à la possibilité de deconnexion
                         boolean deco = true;
                         request.setAttribute("msgDeco", "Vous n'êtes pas ");
                         request.setAttribute("deco", deco);
                     }
+                } else {
+                    //Si le code vient du mode client : pas de déco possible, seulement rentrer le code exact du garçon
+                    String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
+                    if (code.equals(eCode)) {
+                        session.removeAttribute("prov");
+                        url = "garcon.jsp";
+                    }
                 }
             } else {
-                request.setAttribute("msg", "Code invalide");
-                url = "home.jsp";
-            }
 
+                //Verif de la longueur du code entré
+                if (code.length() == 4) {
+
+                    //Reconnaissance de la catégorie d'employé et envoi vers la bonne interface
+                    if (session.getAttribute("user") == null) {
+                        try {
+                            entites.Employe e = beanLogin.identifierEmploye(code);
+
+                            if (code.startsWith("1")) {
+                                url = "garcon.jsp";
+                                session.setAttribute("user", e);
+                            } else if (code.startsWith("2")) {
+                                url = "cuisine.jsp";
+                                session.setAttribute("user", e);
+                            }
+
+                        } catch (CustomException ex) {
+
+                            HashMap<String, String> mp = ex.getErreurs();
+                            request.setAttribute("msgErr", ex.getMessage());
+                            for (String clef : mp.keySet()) {
+                                request.setAttribute(clef, mp.get(clef));
+                            }
+                            url = "home.jsp";
+                        }
+
+                    }
+                } else {
+                    request.setAttribute("msg", "Code invalide");
+                    url = "home.jsp";
+                }
+            }
+        }
+
+        if ("client".equalsIgnoreCase(action)) {
+            session.setAttribute("prov", "client");
+            request.setAttribute("idGarcon", beanLogin.recupEmploye(session.getAttribute("user")).getId());
+
+            url = "client.jsp";
         }
 
         //Création d'un jeu d'essai

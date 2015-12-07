@@ -14,6 +14,7 @@
     <body>
         <h1>Hello Garçon</h1>
         <a href="Controller?section=login.acka">Home</a> | 
+        <a href="Controller?section=login.acka&action=client">Mode Client</a> | 
         <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
         
     </body>
