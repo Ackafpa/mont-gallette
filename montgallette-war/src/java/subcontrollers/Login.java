@@ -35,7 +35,7 @@ public class Login implements ControllerInterface, Serializable {
 
             if (session.getAttribute("user") != null) {
                 //Si le nouveau code entré ne vient pas du mode client
-                if (session.getAttribute("prov") != null) {
+                if (session.getAttribute("prov") == null) {
                     String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
                     if (code.equals(eCode)) {
                             url = "garcon.jsp";
