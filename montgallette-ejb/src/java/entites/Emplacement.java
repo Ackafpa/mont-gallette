@@ -1,6 +1,7 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +16,9 @@ public class Emplacement implements Serializable {
     private Long id;                //--> idem numero de table ??
     private boolean dispo;
 
-//    @ManyToMany
-//    //TODO 
+    @ManyToMany
+    private Collection<Tablee> tablees;
+    
 
     public Emplacement() {
     }
@@ -34,13 +36,22 @@ public class Emplacement implements Serializable {
         this.id = id;
     }
 
-    public boolean getDispo() {
+    public boolean isDispo() {
         return dispo;
     }
 
     public void setDispo(boolean dispo) {
         this.dispo = dispo;
     }
+
+    public Collection<Tablee> getTablees() {
+        return tablees;
+    }
+
+    public void setTablees(Collection<Tablee> tablees) {
+        this.tablees = tablees;
+    }
+    
 
     @Override
     public int hashCode() {
