@@ -15,5 +15,7 @@
         <h1>Hello Client</h1>
         
        ID du garçon : ${idGarcon}
+       
+       <a href="Controller">Mode Serveur</a>
     </body>
 </html>
