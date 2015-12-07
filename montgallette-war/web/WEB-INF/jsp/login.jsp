@@ -17,7 +17,6 @@
         <div id="blockLogin">
             <a id="emp" href="Controller?section=login.acka&action=test">Créer jeu de test Employés</a>
 
-            <hr>
             <form action="Controller" method="post">
                 <p id="enterCode">Entrez votre code</p>
                 <input id="code" type="password" name="id" maxlength="4" size="4"/>
@@ -28,7 +27,7 @@
                 </br>
                 <a id="linkLogin" href="Controller?section=login.acka&action=login"><input id="login" type="submit" name="login" value="Connexion"/></a>
             </form>   
-            <hr>
+
             <c:if test="${deco}">
                 ${msgDeco}${user.prenom} ${user.nom} ?
                 <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
