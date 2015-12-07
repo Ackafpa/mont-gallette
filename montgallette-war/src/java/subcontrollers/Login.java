@@ -50,6 +50,7 @@ public class Login implements ControllerInterface, Serializable {
                     //Si le code vient du mode client : pas de déco possible, seulement rentrer le code exact du garçon
                     String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
                     if (code.equals(eCode)) {
+                        session.removeAttribute("prov");
                         url = "garcon.jsp";
                     }
                 }
@@ -69,9 +70,6 @@ public class Login implements ControllerInterface, Serializable {
                             } else if (code.startsWith("2")) {
                                 url = "cuisine.jsp";
                                 session.setAttribute("user", e);
-                            } else {
-                                request.setAttribute("msg", "Code non reconnu");
-                                url = "home.jsp";
                             }
 
                         } catch (CustomException ex) {
@@ -84,26 +82,6 @@ public class Login implements ControllerInterface, Serializable {
                             url = "home.jsp";
                         }
 
-                    } else {
-                        //Si le nouveau code entré ne vient pas du mode client
-                        if (session.getAttribute("prov") == null) {
-                            String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
-                            if (code.equals(eCode)) {
-                                session.removeAttribute("prov");
-                                url = "garcon.jsp";
-                            } else {
-                                //accès à la possibilité de deconnexion
-                                boolean deco = true;
-                                request.setAttribute("msgDeco", "Vous n'êtes pas ");
-                                request.setAttribute("deco", deco);
-                            }
-                        } else {
-                            //Si le code vient du mode client : pas de déco possible, seulement rentrer le code exact du garçon
-                            String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
-                            if (code.equals(eCode)) {
-                                url = "garcon.jsp";
-                            }
-                        }
                     }
                 } else {
                     request.setAttribute("msg", "Code invalide");

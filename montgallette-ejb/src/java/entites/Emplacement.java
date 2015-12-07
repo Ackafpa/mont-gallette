@@ -52,6 +52,7 @@ public class Emplacement implements Serializable {
         this.tablees = tablees;
     }
     
+
     @Override
     public int hashCode() {
         int hash = 0;

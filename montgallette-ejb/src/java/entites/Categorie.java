@@ -22,6 +22,9 @@ public class Categorie implements Serializable {
     @OneToMany(mappedBy = "categorie")
     private Collection<Produit> produits;
 
+    @OneToMany(mappedBy = "categorie")
+    private Collection<Produit> produits;
+
     public Categorie() {
         produits = new ArrayList();
     }

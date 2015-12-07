@@ -4,11 +4,6 @@ import entites.Emplacement;
 import entites.Tablee;
 import javax.ejb.Stateful;
 
-/**
- *
- * @author CDI417
- */
-
 @Stateful
 public class BeanEmplacement implements BeanEmplacementLocal {
 
@@ -37,6 +32,5 @@ public class BeanEmplacement implements BeanEmplacementLocal {
             System.out.println("ERREUR : L'emplacement " + e + " n'est pas lié à la tablée");
         }
     }
-
 
 }

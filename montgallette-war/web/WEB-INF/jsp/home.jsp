@@ -10,15 +10,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-      
-   
         <link href="css/cssHome.css" rel="stylesheet" type="text/css"/>
         <title>Home</title>
     </head>
     <body>
         <h1>MONT GALETTE</h1>
-
         <c:import url="/WEB-INF/jsp/login.jsp" />
     </body>
 </html>

@@ -1,15 +1,17 @@
 package entites;
 
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -27,14 +29,12 @@ public class Tablee implements Serializable {
     private Long id;
     private int couverts;
     
-
     @ManyToMany
     private Collection<Emplacement> emplacements;
     
     @OneToMany
     private Collection<Commande> commandes;
     
-
     @Temporal(value=TemporalType.TIMESTAMP)
     private Date dateFacture;
     
@@ -69,24 +69,6 @@ public class Tablee implements Serializable {
         this.couverts = couverts;
     }
 
-    public Date getDateFacture() {
-        return dateFacture;
-    }
-
-    public void setDateFacture(Date date) {
-        this.dateFacture = date;
-    }
-
-    public double getMontantTotal() {
-        return montantTotal;
-    }
-
-    public void setMontantTotal(double montantTotal) {
-        this.montantTotal = montantTotal;
-    }
-
-   
-
     public Collection<Emplacement> getEmplacements() {
         return emplacements;
     }
@@ -103,7 +85,17 @@ public class Tablee implements Serializable {
         this.commandes = commandes;
     }
 
- 
+    public Date getDateFacture() {
+        return dateFacture;
+    }
+
+    public void setDateFacture(Date dateFacture) {
+        this.dateFacture = dateFacture;
+    }
+
+    public double getMontantTotal() {
+        return montantTotal;
+    }
 
     public void setMontantTotal() {
         this.montantTotal = montantTotal;
