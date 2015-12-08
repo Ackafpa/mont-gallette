@@ -1,9 +1,10 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <c:url value="Controller?section=menu.acka&action=creerDonnees" var="urlcm01" />
-<a href="${urlcm01}" >Créer jeu de test</a> 
+<a href="${urlcm01}" >CrÃ©er jeu de test</a> 
 <br><br>
 <div>
     <table border="1">
@@ -11,7 +12,7 @@
             <tr>
                 <th></th>
                 <th>Nom</th>
-                <th>Disponibilié</th>
+                <th>DisponibiliÃ©</th>
                 <th>Preparation?</th>
                 <th>Prix</th>
                 <th>Description courte</th>
