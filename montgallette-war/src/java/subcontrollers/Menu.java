@@ -20,7 +20,7 @@ public class Menu implements ControllerInterface, Serializable {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
 
-        String url = "";
+        String url = "client.jsp";
 
         String action = request.getParameter("action");
 

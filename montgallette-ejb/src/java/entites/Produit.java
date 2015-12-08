@@ -1,8 +1,10 @@
 package entites;
 
+import com.sun.xml.ws.rx.testing.PacketFiltering;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class Produit implements Serializable {
     private boolean preparation;
     private Double prixHT;
     private String descriptionCourte;
+    @Column(length = 5000)
     private String descriptionComplete;
 
     @ManyToOne
