@@ -4,7 +4,6 @@ import entites.Commande;
 import entites.Garniture;
 import entites.LigneCommande;
 import entites.Produit;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateful;
@@ -17,33 +16,36 @@ public class BeanCommande implements BeanCommandeLocal {
     @PersistenceContext(unitName = "montgallette-ejbPU")
     private EntityManager em;
 
-    public Commande ajouterLigne(Produit produit, Integer etat, Commande commande,List <String> preferences, List<Garniture>garnitures) {
+    public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures) {
 
         LigneCommande ligne = new LigneCommande(produit, etat, commande);
-        ligne.add(preferences);
-        ligne.add()
+        ligne.setPreferences(preferences);
+        ligne.setGarnitures(garnitures);
         Collection<LigneCommande> liste = commande.getProduits();
         liste.add(ligne);
         commande.setProduits(ligne);
         return commande;
     }
+    
+//     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, String preferencesS, String garnituresS) {
+//
+//        LigneCommande ligne = new LigneCommande(produit, etat, commande);
+//        //String []preferences = preferencesS.split(" ");
+//        ligne.setPreferences(preferences);
+//        ligne.setGarnitures(garnitures);
+//        Collection<LigneCommande> liste = commande.getProduits();
+//        liste.add(ligne);
+//        commande.setProduits(ligne);
+//        return commande;
+//    }
 
-    public String supprimerLigne(Commande commande, LigneCommande ligne) {
+    public Commande supprimerLigne(Commande commande, LigneCommande ligne) {
         Collection<LigneCommande> liste = commande.getProduits();
         liste.remove(ligne);
-        return ligne.toString();// C'est pour le message de suppression éventuellement
+        commande.setProduits(liste);
+        return commande;
     }
 
-    public List afficherCommande(Commande commande) {
-        List<LigneCommande> liste = new ArrayList();
-        for (LigneCommande l : commande.getProduits()) {
-            liste.add(l);
-            return liste;
-
-        }
-        return liste;
-
-    }
 
     public void appliquerOffre() {
 // C'est quoi les offres ? 
@@ -51,10 +53,12 @@ public class BeanCommande implements BeanCommandeLocal {
 
     public double calculerMontant(Commande commande) {
         double somme = 0;
+        Double d = null;
+        for (LigneCommande lc : commande.getProduits()) {
+            d = lc.getProduit().getPrixHT();
+            somme += d;
+        }
 
-//   Ligne d'Anthony avec un get inexistant     for (LigneCommande lc : commande.getProduits().getPrix()){
-//            somme += commande.getProduits().getPrix();
         return somme;
     }
-
 }

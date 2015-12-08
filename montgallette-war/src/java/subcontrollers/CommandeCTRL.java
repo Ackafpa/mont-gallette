@@ -5,7 +5,12 @@
  */
 package subcontrollers;
 
+import entites.Commande;
 import entites.LigneCommande;
+import entites.Produit;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -14,7 +19,6 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import sessionBeans.BeanCommande;
 import sessionBeans.BeanCommandeLocal;
 
@@ -22,54 +26,58 @@ import sessionBeans.BeanCommandeLocal;
  *
  * @author cdi404
  */
-public class OngletCommande implements ControllerInterface{
+public class CommandeCTRL implements ControllerInterface {
+
     BeanCommande beanCommande1 = lookupBeanCommandeBean();
     BeanCommandeLocal beanCommande = lookupBeanCommandeLocal();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
         String url = "commande.jsp";
-        HttpSession session = request.getSession();
-       String msg = "Votre commande est vide";
-       String action = request.getParameter("action");
-      
+        String msg = "Votre commande est vide";
+        String action = request.getParameter("action");
         
-        
-        if ("ajouter".equalsIgnoreCase("action")){
-           String id = request.getParameter("id");
-            
-            
-           
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        if ("creerDonnees".equalsIgnoreCase(action)) {
+           // beanCommande1.creerJeu(); A CREER LE JEU DE TEST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            request.setAttribute("msg", "Les jeux sont faits");
+            url = "commande.jsp";
         }
-        if ("supprimer".equalsIgnoreCase("action")){
+        Date date = new Date ();
+        LigneCommande ligne= new LigneCommande(null, 0, null);
+        List <LigneCommande> liste = new ArrayList();
+        request.setAttribute("liste", liste);
+        Commande cde= new Commande(null, null, "12", date);
+       //////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        
+        
+        
+        if ("ajouter".equalsIgnoreCase("action")) {
+            
+            Commande commande = (Commande) request.getAttribute("Commande");
+            Produit produit = (Produit) request.getAttribute("Produit");
+            List <String> preferences = (List)request.getAttribute("preferences");            
+            List <Garnitures> garnitures =(List) request.getAttribute("garnitures");
+            Integer etat = 0;
+            //beanCommande1.ajouterLigne(null, 0, null, preferences, garnitures);
+//public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures) {
+     
+        }
+        if ("supprimer".equalsIgnoreCase("action")) {
             request.getParameter("id");
             request.getParameter("ligne");
-            
-           
-            
-            
-            beanCommande1.supprimerLigne(null,null);
-            
- 
-         
+
+            beanCommande1.supprimerLigne(null, null);
+
         }
-         if ("modifier".equalsIgnoreCase("action")){
-             LigneCommande ligne = new LigneCommande();
+        if ("modifier".equalsIgnoreCase("action")) {
+            
 //récupérer la ligne     
 
- 
-         
         }
-        
-        
-        
-        
+
         return url;
-       
-        
-        
-        
-        
+
     }
 
     private BeanCommandeLocal lookupBeanCommandeLocal() {
@@ -91,10 +99,5 @@ public class OngletCommande implements ControllerInterface{
             throw new RuntimeException(ne);
         }
     }
-    
-    
 
-
-    
-    
 }
