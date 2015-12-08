@@ -18,7 +18,6 @@ public class Categorie implements Serializable {
     private Long id;
 
     private String nom;
-    private boolean preparation;
 
     @OneToMany(mappedBy = "categorie")
     private Collection<Produit> produits;
@@ -27,10 +26,9 @@ public class Categorie implements Serializable {
         produits = new ArrayList();
     }
 
-    public Categorie(String nom, boolean preparation) {
+    public Categorie(String nom) {
         this();
         this.nom = nom;
-        this.preparation = preparation;
     }
 
     public Long getId() {
@@ -47,14 +45,6 @@ public class Categorie implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public boolean isPreparation() {
-        return preparation;
-    }
-
-    public void setPreparation(boolean preparation) {
-        this.preparation = preparation;
     }
 
     @Override

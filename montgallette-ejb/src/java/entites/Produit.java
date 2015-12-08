@@ -20,6 +20,7 @@ public class Produit implements Serializable {
 
     private String nom;
     private boolean dispo;
+    private boolean preparation;
     private Double prixHT;
     private String descriptionCourte;
     private String descriptionComplete;
@@ -40,17 +41,19 @@ public class Produit implements Serializable {
         
     }
 
-    public Produit(String nom, boolean dispo, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie) {
-        
+
+    public Produit(String nom, boolean dispo, boolean preparation, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie) {
+
         this();
         this.nom = nom;
         this.dispo = dispo;
+        this.preparation = preparation;
         this.prixHT = prixHT;
         this.descriptionCourte = descriptionCourte;
         this.descriptionComplete = descriptionComplete;
         this.categorie = categorie;
         
-        
+
     }
 
     
@@ -73,6 +76,14 @@ public class Produit implements Serializable {
 
     public void setDispo(boolean dispo) {
         this.dispo = dispo;
+    }
+
+    public boolean isPreparation() {
+        return preparation;
+    }
+
+    public void setPreparation(boolean preparation) {
+        this.preparation = preparation;
     }
 
     public Double getPrixHT() {

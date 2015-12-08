@@ -1,21 +1,25 @@
-<%-- 
-    Document   : newjspclient
-    Created on : 4 déc. 2015, 13:54:37
-    Author     : cdi406
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Interface Client</title>
+        <title>Mode: Client</title>
     </head>
     <body>
-        <h1>Hello Client</h1>
-        
-       ID du garçon : ${idGarcon}
-       
-       <a href="Controller?section=login.acka&prov=client">Mode Serveur</a>
+        <div id="menu">
+            <c:url value="/WEB-INF/jsp/menu.jsp" var="urlc01"/>
+            <c:import url="${urlc01}"/>
+        </div>
+        <div id="commande">
+            <c:url value="/WEB-INF/jsp/commande.jsp" var="urlc02"/>
+            <c:import url="${urlc02}"/>
+        </div>
+
+
+
+
     </body>
 </html>

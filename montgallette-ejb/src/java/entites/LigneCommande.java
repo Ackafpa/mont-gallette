@@ -39,7 +39,15 @@ public class LigneCommande implements Serializable {
     public LigneCommande() {
         garnitures = new ArrayList();
         preferences = new ArrayList();
+    }
+
+    public LigneCommande(Produit produit, Collection<String> preferences, Integer etat, Commande commande) {
         
+        this();
+        this.produit = produit;
+        this.preferences = preferences;
+        this.etat = etat;
+        this.commande = commande;
     }
 
     public LigneCommande(Produit produit, Integer etat, Commande commande) {

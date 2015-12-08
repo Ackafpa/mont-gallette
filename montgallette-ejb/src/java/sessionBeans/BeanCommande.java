@@ -40,9 +40,9 @@ public class BeanCommande implements BeanCommandeLocal {
     public double montantCommande(Commande c){
         double somme = 0;
         
-        for (LigneCommande lc : c.getProduits().getPrix()){
-            somme += c.getProduits().getPrix();
-        }
+//        for (LigneCommande lc : c.getProduits().getPrix()){
+//            somme += c.getProduits().getPrix();
+//        }
         return somme;
     }
 
