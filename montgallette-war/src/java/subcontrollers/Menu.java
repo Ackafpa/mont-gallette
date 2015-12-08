@@ -27,13 +27,13 @@ public class Menu implements ControllerInterface, Serializable {
         if ("creerDonnees".equalsIgnoreCase(action)) {
             beanMenu.creerJeuxDonnees();
             request.setAttribute("msg", "Data generated");
-            url = "/WEB-INF/jsp/client.jsp";
+            url = "client.jsp";
         }
 
         if ("afficher".equalsIgnoreCase(action)) {
             List<Produit> lp = beanMenu.selectAllProduit();
             request.setAttribute("produits", lp);
-            url = "/WEB-INF/jsp/sub/menuCarte.jsp";
+            url = "/sub/menuCarte.jsp";
         }
 
         return url;
