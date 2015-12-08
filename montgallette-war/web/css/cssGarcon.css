@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8 déc. 2015, 13:33:06
+    Author     : cdi406
+*/
+
+body {
+    background-color: #663300;
+    font-family: Calibri, sans serif;
+}
+
+#controls{
+    text-align: right;
+    font-family: Calibri, sans serif;
+    font-size: 1.5em;
+    
+    
+}
+
+#home{
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    background-color: #666666;
+    color: #663300;
+    text-align: center;
+    margin-bottom: 5px;
+    width: 130px;
+    border-radius: 8px;
+}
+
+#deco{
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    background-color: #666666;
+    color: #663300;
+    width: 130px;
+    border-radius: 8px;
+}
+
+#clientMode{
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: orange;
+    font-family: Calibri, sans serif;
+    font-size: 2.5em;
+    color: #663300;
+    border: none;
+    width: 250px;
+
+}
+
+#button{
+    margin: auto;
+    text-align: center;
+    
+}
+
+#menu{
+    text-decoration: none;
+    border: orange;
+    border-width: 2px;
+    border-style: solid;
+}
