@@ -57,7 +57,7 @@ public class CommandeCTRL implements ControllerInterface {
             Commande commande = (Commande) request.getAttribute("Commande");
             Produit produit = (Produit) request.getAttribute("Produit");
             List <String> preferences = (List)request.getAttribute("preferences");            
-            List <Garnitures> garnitures =(List) request.getAttribute("garnitures");
+            //List <Garnitures> garnitures =(List) request.getAttribute("garnitures");
             Integer etat = 0;
             //beanCommande1.ajouterLigne(null, 0, null, preferences, garnitures);
 //public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures) {
