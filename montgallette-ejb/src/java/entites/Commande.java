@@ -36,10 +36,8 @@ public class Commande implements Serializable {
     // @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Temporal(TemporalType.DATE)
     private Date date;
-    
+
     private double montant;
-    
-    
 
     public Commande() {
         this.produits = new ArrayList();
@@ -51,7 +49,6 @@ public class Commande implements Serializable {
         this.tablee = tablee;
         this.numero = numero;
         this.date = date;
-        
 
     }
 
@@ -86,8 +83,6 @@ public class Commande implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
-
-    
 
     public Long getId() {
         return id;
@@ -127,13 +122,11 @@ public class Commande implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Commande  id=" + id;
+        return "entites.Commande  id=" + id + "table n°" + tablee.getEmplacements();
     }
-
 
     public void setProduits(LigneCommande ligne) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 
 }
