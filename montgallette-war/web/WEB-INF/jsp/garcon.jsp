@@ -10,22 +10,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/cssGarcon.css" rel="stylesheet" type="text/css" />
         <title>Garçon</title>
     </head>
     <body>
-        <h1>Bienvenue ${user.prenom} ${user.nom}</h1>
-        <a href="Controller?section=login.acka">Home</a> | 
-        <a href="Controller?section=login.acka&action=client">Mode Client</a> | 
-        <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
-        <hr>
+       <p id="controls">
+        <a id="home" href="Controller?section=login.acka">Accueil</a> 
         </br>
+        
+        <a id="deco" href="Controller?section=login.acka&action=deco">Déconnexion</a>
+       </p>
+        </br>
+        <div id="commande">
         Commande:
         </br>
         <c:import url="/WEB-INF/jsp/commande.jsp"/>
         </br>
-        <hr>
-        Menu:
+        </div>
+        <div >
+        
         </br>
-        <c:import url="/WEB-INF/jsp/menu.jsp"/>
+        <c:url value="/WEB-INF/jsp/menu.jsp" var="urlmenu"/>
+        <a id="menu" href="${urlmenu}"><img src="images/menu.png"></a
+        </div>
+        
+        <p id="button">
+        <a id="clientMode" href="Controller?section=login.acka&action=client">Mode Client</a> 
+        </p>
     </body>
 </html>
