@@ -21,8 +21,6 @@ public class BeanTablee implements BeanTableeLocal {
         for (Commande c : t.getCommandes()) {
             //A FINALISER / VERIFIER AVEC CLASSE COMMANDE
             // somme += t.getCommandes().getMontantCommande();
-
-            
         }
         return somme;
     }
