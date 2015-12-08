@@ -28,12 +28,12 @@ public class Menu implements ControllerInterface, Serializable {
             beanMenu.creerJeuxDonnees();
             request.setAttribute("msg", "Data generated");
             url = "client.jsp";
-        }
-
+        } 
+        
         if ("afficher".equalsIgnoreCase(action)) {
             List<Produit> lp = beanMenu.selectAllProduit();
             request.setAttribute("produits", lp);
-            url = "/sub/menuCarte.jsp";
+            url = "client.jsp";
         }
 
         return url;
