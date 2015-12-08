@@ -17,11 +17,11 @@ public class BeanTablee implements BeanTableeLocal {
 
     public double addition(Tablee t) {
         double somme = 0;
-        
+
         for (Commande c : t.getCommandes()) {
             //A FINALISER / VERIFIER AVEC CLASSE COMMANDE
             somme += t.getCommandes().getMontantCommande();
-        
+        }
         return somme;
     }
 

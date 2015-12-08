@@ -36,7 +36,9 @@ public class Commande implements Serializable {
     // @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Temporal(TemporalType.DATE)
     private Date date;
-
+    
+    private double montantCommande;
+    
     private int nbPersonnes;
 
     public Commande() {
@@ -99,6 +101,14 @@ public class Commande implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public double getMontantCommande() {
+        return montantCommande;
+    }
+
+    public void setMontantCommande(double montantCommande) {
+        this.montantCommande = montantCommande;
     }
 
     @Override

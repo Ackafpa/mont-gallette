@@ -13,13 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.ws.rs.HEAD;
-
 @Entity
 public class Tablee implements Serializable {
 
