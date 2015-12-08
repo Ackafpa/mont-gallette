@@ -21,7 +21,6 @@ public class Menu implements ControllerInterface, Serializable {
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
 
         String url = "client.jsp";
-
         String action = request.getParameter("action");
 
         if ("creerDonnees".equalsIgnoreCase(action)) {
