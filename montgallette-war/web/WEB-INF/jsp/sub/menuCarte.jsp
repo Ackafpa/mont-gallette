@@ -1,27 +1,12 @@
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:url value="Controller?section=menu.acka&action=creerDonnees" var="urlcm01" />
-<a href="${urlcm01}" >Cr?er jeu de test</a> 
 <a href="${urlcm01}" >Créer jeu de test</a>
 
 <br><br>
 <div>
     <table>
-    <table border="1">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Nom</th>
-                <th>Disponibili?</th>
-                <th>Preparation?</th>
-                <th>Prix</th>
-                <th>Description courte</th>
-                <th>Description complete</th>
-                <th>Categorie</th> 
-            </tr>                    
-        </thead>
         <tbody>
             <c:forEach items="${produits}" var="p">
                 <tr>
