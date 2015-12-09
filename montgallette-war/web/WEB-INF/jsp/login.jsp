@@ -19,20 +19,57 @@
 
             <form action="Controller" method="post">
                 <p id="enterCode">Entrez votre code</p>
-                <input id="code" type="password" name="id" maxlength="4" size="4"/>
+                <%-- TEXTFIELD CODE --%>
+                <input id="code" <%--type="password"--%> name="id" maxlength="4" size="4"/>
                 <input type="hidden" name="section" value="login.acka"/>
                 <input type="hidden" name="action" value="login"/>
-
                 </br>
                 </br>
-                <a id="linkLogin" href="Controller?section=login.acka&action=login"><input id="login" type="submit" name="login" value="Connexion"/></a>
+            <%-- CLAVIER NUMERIQUE --%>
+                
+            <%-- BOUTON RESET --%>
+                <input id="btnReset" class="login" type="reset" value="Delete" onclick="reset()"/>
+            <%-- BOUTON CONNEXION --%>
+                <a id="linkLogin" href="Controller?section=login.acka&action=login">
+                    <input class="login" id="submit" type="submit" name="submit" value="Connexion"/>
+                </a>
+                <br>
+                <br>
+                <button type="button" class="btnClavier" onclick="ajouter(1)">1</button>
+                <button type="button" class="btnClavier" onclick="ajouter(2)">2</button>
+                <button type="button" class="btnClavier" onclick="ajouter(3)">3</button>
+                <br>
+                <button type="button" class="btnClavier" onclick="ajouter(4)">4</button>
+                <button type="button" class="btnClavier" onclick="ajouter(5)">5</button>
+                <button type="button" class="btnClavier" onclick="ajouter(6)">6</button>
+                <br>
+                <button type="button" class="btnClavier" onclick="ajouter(7)">7</button>
+                <button type="button" class="btnClavier" onclick="ajouter(8)">8</button>
+                <button type="button" class="btnClavier" onclick="ajouter(9)">9</button>
+                <br>
+                <button type="button" class="btnClavier" onclick="ajouter(0)">0</button>
+                <br>
+                <br>
+                <%-- /CLAVIER NUMERIQUE --%>
             </form>   
+
+            <script type="text/javascript">
+                function reset() {
+                    document.getElementById('code').value = '';
+                }
+
+                function ajouter(v2) {
+                document.getElementById('code').value = document.getElementById('code').value.concat(v2);
+                }
+            </script>
+
+
 
             <c:if test="${deco}">
                 ${msgDeco}${user.prenom} ${user.nom} ?
                 <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
             </c:if>
-                <p id="err">${msg}${errCode}</p>
+            <p id="err">${msg}${errCode}</p>
             </br>
         </div>
     </body>

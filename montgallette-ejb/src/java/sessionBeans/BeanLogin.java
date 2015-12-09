@@ -11,10 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import outils.CustomException;
 
-/**
- *
- * @author cdi406
- */
 @Stateless
 public class BeanLogin implements BeanLoginLocal {
 

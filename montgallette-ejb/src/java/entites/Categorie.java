@@ -47,6 +47,14 @@ public class Categorie implements Serializable {
         this.nom = nom;
     }
 
+    public Collection<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(Collection<Produit> produits) {
+        this.produits = produits;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

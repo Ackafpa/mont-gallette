@@ -1,0 +1,87 @@
+body {
+    background-image: url("../images/menuBG3.jpg");
+    font-family: Calibri;
+    color: white;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+#tdStyle0 {
+    background-color: #666666;
+    width: 600px;
+}
+
+#tdStyle1 {
+    background-color: #333333;
+    width: 600px;
+}
+
+#textCourt {
+    float: left;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#prix {
+    margin-left: 350px;
+    margin-top: 20px;
+}
+
+#photoProduit{
+    height: 100px;
+    float: left;
+    border-radius: 15px;
+    padding: 10px 10px 10px 10px;
+}
+
+#voirDetails {  
+    height: 50px;
+    float: right;
+    margin-right: 20px;
+}
+
+#ajouter {
+    height: 50px;
+    float: right;
+    margin-right: 20px;
+}
+
+#menuSession{
+    height: 30px;
+    background-color: darkgray;
+    width: 900px;
+    left: 50%;
+    position: fixed;
+    margin: 0px 0px 0px -450px;
+    z-index: 3;
+}
+
+#menuNavigation{
+    height: 60px;
+    background-color: orange;
+    width: 600px;
+    left: 50%;
+    position: fixed;
+    margin: 30px 0px 0px -450px;
+    z-index: 2;
+}
+
+#menuCarte{
+    background-color: black;
+    width: 600px;
+    left: 50%;  
+    position: absolute;
+    margin: 120px 0px 0px -450px;
+    z-index: 1;
+}
+
+#commande {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 290px;
+    height: 600px;
+    left: 50%;
+    position: fixed;
+    margin: 30px 0px 0px 150px;
+    z-index: 1;
+    padding: 5px 5px 5px 5px ;
+}

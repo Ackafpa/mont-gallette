@@ -36,22 +36,19 @@ public class Commande implements Serializable {
     // @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Temporal(TemporalType.DATE)
     private Date date;
-    
-    private double montantCommande;
-    
-    private int nbPersonnes;
+
+    private double montant;
 
     public Commande() {
         this.produits = new ArrayList();
 
     }
 
-    public Commande(Tablee tablee, List<LigneCommande> produits, String numero, Date date, int nbPersonnes) {
+    public Commande(Tablee tablee, List<LigneCommande> produits, String numero, Date date) {
         this();
         this.tablee = tablee;
         this.numero = numero;
         this.date = date;
-        this.nbPersonnes = nbPersonnes;
 
     }
 
@@ -87,14 +84,6 @@ public class Commande implements Serializable {
         this.date = date;
     }
 
-    public int getNbPersonnes() {
-        return nbPersonnes;
-    }
-
-    public void setNbPersonnes(int nbPersonnes) {
-        this.nbPersonnes = nbPersonnes;
-    }
-
     public Long getId() {
         return id;
     }
@@ -103,12 +92,12 @@ public class Commande implements Serializable {
         this.id = id;
     }
 
-    public double getMontantCommande() {
-        return montantCommande;
+    public double getMontant() {
+        return montant;
     }
 
-    public void setMontantCommande(double montantCommande) {
-        this.montantCommande = montantCommande;
+    public void setMontant(double montant) {
+        this.montant = montant;
     }
 
     @Override
@@ -133,13 +122,11 @@ public class Commande implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Commande  id=" + id;
+        return "entites.Commande  id=" + id + "table n°" + tablee.getEmplacements();
     }
-
 
     public void setProduits(LigneCommande ligne) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 
 }
