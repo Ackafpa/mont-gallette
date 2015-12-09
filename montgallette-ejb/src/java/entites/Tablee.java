@@ -21,11 +21,12 @@ public class Tablee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int couverts;
+    private Integer numero;
     
     @ManyToMany
     private Collection<Emplacement> emplacements;
     
-    @OneToMany
+    @OneToMany(mappedBy= "tablee")
     private Collection<Commande> commandes;
     
     @Temporal(value=TemporalType.TIMESTAMP)
@@ -39,8 +40,14 @@ public class Tablee implements Serializable {
         
     }
 
-    public Tablee(Long id, int couverts, Date date, double montantTotal) {
-        this.id = id;
+    public Tablee(int numero, int couverts) {
+        this.couverts = couverts;
+        this.numero = numero;
+    }
+    
+
+    public Tablee( int couverts, Date date, double montantTotal) {
+        
         this.couverts = couverts;
         this.dateFacture = date;
         this.montantTotal = montantTotal;

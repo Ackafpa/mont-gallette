@@ -5,6 +5,11 @@
  */
 package sessionBeans;
 
+import entites.LigneCommande;
+import entites.Produit;
+import entites.Tablee;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +18,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface BeanCommandeLocal {
+
+    public void jeuEssaiCommande(List<LigneCommande> liste, Tablee t);
+
+    public List<LigneCommande> listeLigne(List<Produit> produits);
 
 }
