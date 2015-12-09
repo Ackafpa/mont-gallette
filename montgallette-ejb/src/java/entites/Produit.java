@@ -27,6 +27,7 @@ public class Produit implements Serializable {
     private String descriptionCourte;
     @Column(length = 5000)
     private String descriptionComplete;
+    private String photoURL;
 
     @ManyToOne
     private Categorie categorie;
@@ -45,7 +46,7 @@ public class Produit implements Serializable {
     }
 
 
-    public Produit(String nom, boolean dispo, boolean preparation, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie) {
+    public Produit(String nom, boolean dispo, boolean preparation, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie, String photoURL) {
 
         this();
         this.nom = nom;
@@ -55,11 +56,10 @@ public class Produit implements Serializable {
         this.descriptionCourte = descriptionCourte;
         this.descriptionComplete = descriptionComplete;
         this.categorie = categorie;
+        this.photoURL = photoURL;
         
 
     }
-
-    
 
     public Long getId() {
         return id;
@@ -136,7 +136,14 @@ public class Produit implements Serializable {
     public void setGarnitures(Collection<Garniture> garnitures) {
         this.garnitures = garnitures;
     }
-    
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
 
     @Override
     public int hashCode() {
