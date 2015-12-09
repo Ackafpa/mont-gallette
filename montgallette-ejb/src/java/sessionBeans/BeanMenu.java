@@ -19,7 +19,7 @@ public class BeanMenu implements BeanMenuLocal {
     public void creerJeuxDonnees(){
         
         String descrCourte = "Description courte";
-        String descrComplete = "Description complete :Suspendisse potenti. In hac habitasse platea dictumst. Donec finibus laoreet finibus. Phasellus ut ante tincidunt, venenatis ante eget, volutpat risus. Sed viverra at justo vitae pulvinar. Curabitur facilisis lectus ac justo mollis luctus. Sed suscipit sapien et massa semper, nec interdum libero condimentum. Curabitur mi mauris, convallis feugiat enim posuere, accumsan rutrum quam. Aenean gravida libero lorem, nec sagittis justo molestie ut.";
+        String descrComplete = "Description complete :Suspendisse potenti. In hac habitasse platea dictumst. Donec finibus laoreet finibus. Phasellus ut ante tincidunt, venenatis ante eget, volutpat risus."; // Sed viverra at justo vitae pulvinar. Curabitur facilisis lectus ac justo mollis luctus. Sed suscipit sapien et massa semper, nec interdum libero condimentum. Curabitur mi mauris, convallis feugiat enim posuere, accumsan rutrum quam. Aenean gravida libero lorem, nec sagittis justo molestie ut.";
         String photoURL = "images/cat.jpg";
         
         List<Produit> lp = new ArrayList();
@@ -32,7 +32,7 @@ public class BeanMenu implements BeanMenuLocal {
         
         lc.stream().forEach((c) -> {em.persist(c);});
 
-        lp.add(new Produit("Soupe au poitiron au compté", true, true, 5.9, descrCourte, "", lc.get(0),photoURL));
+        lp.add(new Produit("Soupe au poitiron au compté", true, true, 5.9, descrCourte, descrComplete, lc.get(0),photoURL));
         lp.add(new Produit("Grande assiette à partager", true, true, 12.9, descrCourte, descrComplete, lc.get(0),photoURL));
         lp.add(new Produit("Terrine de champagne", true, true, 4.6, descrCourte, descrComplete, lc.get(0),photoURL));
         lp.add(new Produit("Faisselle de fromage blanc", true, true, 5.8, descrCourte, descrComplete, lc.get(0),photoURL));

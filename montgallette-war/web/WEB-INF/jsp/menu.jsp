@@ -1,14 +1,6 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu</title>
-    </head>
-    <body>
         <div id="menuSession">
             <c:url value="WEB-INF/jsp/sub/menuSession.jsp" var="urlm01"/>
             <c:import url="${urlm01}"/>
@@ -21,5 +13,3 @@
             <c:url value="Controller?section=menu.acka&action=afficher" var="urlm03"/>
             <c:import url="${urlm03}"/>
         </div>
-    </body>
-</html>
