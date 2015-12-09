@@ -1,5 +1,5 @@
 body {
-    background-image: url("../images/menuBG3.jpg");
+    background-image: url("../images/menuBG.png");
     font-family: Calibri;
     color: white;
     padding: 0px 0px 0px 0px;
@@ -7,12 +7,12 @@ body {
 }
 
 #tdStyle0 {
-    background-color: #666666;
+    background-color: rgba(50, 50, 50, 0.5);
     width: 600px;
 }
 
 #tdStyle1 {
-    background-color: #333333;
+    background-color: rgba(80, 80, 80, 0.5);
     width: 600px;
 }
 
@@ -35,15 +35,17 @@ body {
 }
 
 #voirDetails {  
-    height: 50px;
+    height: 32px;
     float: right;
-    margin-right: 20px;
+    margin-right: 30px;
+    margin-top: -10px;
 }
 
 #ajouter {
-    height: 50px;
+    height: 32px;
     float: right;
-    margin-right: 20px;
+    margin-right: 30px;
+    margin-top: -10px;
 }
 
 #menuSession{
@@ -75,7 +77,7 @@ body {
 }
 
 #menuCarte{
-    border-width: 1px;
+    border-width: 2px;
     border-color: black;
     border-style: solid;
     background-color: black;
