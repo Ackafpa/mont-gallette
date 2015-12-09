@@ -2,9 +2,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:url value="Controller?section=menu.acka&action=creerDonnees" var="urlcm01" />
-<a href="${urlcm01}" >Créer jeu de test</a>
 
-<br><br>
 <div>
     <table>
         <tbody>

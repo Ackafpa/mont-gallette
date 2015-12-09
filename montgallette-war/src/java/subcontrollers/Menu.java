@@ -2,6 +2,7 @@ package subcontrollers;
 
 import entites.Produit;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,14 +24,20 @@ public class Menu implements ControllerInterface, Serializable {
         String url = "client.jsp";
         String action = request.getParameter("action");
 
+        /*
         if ("creerDonnees".equalsIgnoreCase(action)) {
             beanMenu.creerJeuxDonnees();
             request.setAttribute("msg", "Data generated");
             url = "client.jsp";
         }
+         */
 
         if ("afficher".equalsIgnoreCase(action)) {
-            List<Produit> lp = beanMenu.selectAllProduit();
+            
+            if(!beanMenu.isJeuxCree())
+                beanMenu.creerJeuxDonnees();
+            
+            List<Produit> lp = beanMenu.selectAllProduit();           
             request.setAttribute("produits", lp);
             url = "/sub/menuCarte.jsp";
         }

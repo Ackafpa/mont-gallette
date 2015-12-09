@@ -14,6 +14,7 @@ public class BeanMenu implements BeanMenuLocal {
 
     @PersistenceContext(unitName = "montgallette-ejbPU")
     private EntityManager em;
+    private boolean jeuxCree;
     
     @Override
     public void creerJeuxDonnees(){
@@ -53,6 +54,8 @@ public class BeanMenu implements BeanMenuLocal {
         lp.add(new Produit("Perrier", true, false, 2.0, descrCourte, descrComplete, lc.get(3),photoURL));
         
         lp.stream().forEach((p) -> {em.persist(p);});
+        
+        setJeuxCree(true);
     }
     
     @Override
@@ -61,5 +64,15 @@ public class BeanMenu implements BeanMenuLocal {
         Query qr = em.createQuery(req);
         return qr.getResultList();
     }
+
+    public boolean isJeuxCree() {
+        return jeuxCree;
+    }
+
+    public void setJeuxCree(boolean jeuxCree) {
+        this.jeuxCree = jeuxCree;
+    }
+    
+    
 
 }

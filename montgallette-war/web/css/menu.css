@@ -28,7 +28,7 @@ body {
 }
 
 #photoProduit{
-    height: 100px;
+    height: 64px;
     float: left;
     border-radius: 15px;
     padding: 10px 10px 10px 10px;
@@ -47,17 +47,25 @@ body {
 }
 
 #menuSession{
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-color: black;
+    border-style: solid;
     height: 30px;
     background-color: darkgray;
     width: 900px;
     left: 50%;
     position: fixed;
-    margin: 0px 0px 0px -450px;
+    margin: -2px 0px 0px -450px;
     z-index: 3;
 }
 
 #menuNavigation{
-    height: 60px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    height: 88px;
     background-color: orange;
     width: 600px;
     left: 50%;
@@ -67,6 +75,9 @@ body {
 }
 
 #menuCarte{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
     background-color: black;
     width: 600px;
     left: 50%;  
@@ -78,10 +89,10 @@ body {
 #commande {
     background-color: rgba(0, 0, 0, 0.5);
     width: 290px;
-    height: 600px;
+    height: 100%;
     left: 50%;
     position: fixed;
-    margin: 30px 0px 0px 150px;
+    margin: 30px 0px 0px 152px;
     z-index: 1;
     padding: 5px 5px 5px 5px ;
 }
