@@ -38,27 +38,45 @@ public class CommandeCTRL implements ControllerInterface {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
         String url = "home.jsp";
-        String msg = "Votre commande est vide";
         String action = request.getParameter("action");
+         if ("aj".equalsIgnoreCase("action")) {
+            // Attendre le bouton ajouter de Kenny
+//            Commande commande = (Commande) request.getAttribute("Commande");
+//            Produit produit = (Produit) request.getAttribute("Produit");
+//            List <String> preferences = (List)request.getAttribute("preferences");            
+
+           
+
+           // Integer etat = 0;       
+     
+        }
+     
+           if ("su".equalsIgnoreCase(action)) {
+               System.out.println("supOK");
         
+            url="client.jsp";         
+        }
+           
+        if ("mo".equalsIgnoreCase(action)) {
+            System.out.println("moooo ok");
+//           String id = request.getParameter("id");
+//            String ligne = request.getParameter("ligne");
+//            System.out.println(id+"   "+ligne+"------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+      
+       url="client.jsp";
+        }
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         if ("creerDonnees".equalsIgnoreCase(action)) {
-            System.err.println("Juste comme ça");
-           // beanCommande1.creerJeu(); A CREER LE JEU DE TEST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            
-            
-            
-            
+
             List<LigneCommande> liste = beanCommande.listeLigne(beanMenu.selectAllProduit());
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    Liste créee");
             request.setAttribute("liste", liste);
             beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2));
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Commande crée");
-            request.setAttribute("msg", "Les jeux sont faits");
-            url = "commande.jsp";
+            
+            url = "client.jsp";
         }
         
-       //////////////////////////////////////////////////////////////////////////////////////////////////////// 
         if("jeuTables".equalsIgnoreCase(action)){
             beanTablee.jeuTables();
             url="home.jsp";
@@ -68,34 +86,21 @@ public class CommandeCTRL implements ControllerInterface {
             beanMenu.creerJeuxDonnees();
             url="home.jsp";
         }
+        ////////////////////////////////////////////////////////////////////////////////////////////////
         
-        
-        if ("ajouter".equalsIgnoreCase("action")) {
-            
-            Commande commande = (Commande) request.getAttribute("Commande");
-            Produit produit = (Produit) request.getAttribute("Produit");
-            List <String> preferences = (List)request.getAttribute("preferences");            
+        if ("aj".equalsIgnoreCase("action")) {
+            // Attendre le bouton ajouter de Kenny
+//            Commande commande = (Commande) request.getAttribute("Commande");
+//            Produit produit = (Produit) request.getAttribute("Produit");
+//            List <String> preferences = (List)request.getAttribute("preferences");            
 
-            //List <Garnitures> garnitures =(List) request.getAttribute("garnitures");
+           
 
-            Integer etat = 0;
-            //beanCommande1.ajouterLigne(null, 0, null, preferences, garnitures);
-//public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures) {
+           // Integer etat = 0;       
      
         }
-        if ("supprimer".equalsIgnoreCase("action")) {
-            request.getParameter("id");
-            request.getParameter("ligne");
-
-          //  beanCommande.supprimerLigne(null, null);
-
-        }
-        if ("modifier".equalsIgnoreCase("action")) {
-            
-//récupérer la ligne     
-
-        }
-
+     
+        System.out.println(url);
         return url;
 
     }
