@@ -12,4 +12,10 @@ body{
     background-image: url("../images/menuBG.png");
     background-color: #333333;
     font-family: Calibri, sans serif;
+    
+}
+
+a{
+    text-decoration: none;
+    color: white;
 }
