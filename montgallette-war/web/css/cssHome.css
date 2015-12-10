@@ -7,14 +7,11 @@ and open the template in the editor.
     Created on : 7 déc. 2015, 14:20:01
     Author     : cdi406
 */
-body {
-    background-color: #663300;
-}
 
 h1 {
     color: orange; 
     text-align: center;
-    font-family: Calibri, sans-serif;
+    
     font-size: 3.5em;
 }
 
