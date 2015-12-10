@@ -38,10 +38,11 @@ public class BeanTablee implements BeanTableeLocal {
     
     @Override
     public Tablee selectTable(int i){
-        String req = "select t from Tablee t where numero= :num";
+        String req = "select t from Tablee t where t.numero = :num";
         Query qr = em.createQuery(req);
         qr.setParameter("num", i);
-        return (Tablee) qr.getSingleResult();
+        Tablee t = (Tablee) qr.getSingleResult();
+        return t;
     }
 
     public double addition(Tablee t) {

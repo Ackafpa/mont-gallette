@@ -2,6 +2,7 @@ package entites;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ public class Emplacement implements Serializable {
     private Long id;                //--> idem numero de table ??
     private boolean dispo;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Collection<Tablee> tablees;
     
 

@@ -4,14 +4,12 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 7 déc. 2015, 14:20:01
+    Created on : 10 déc. 2015, 11:46:43
     Author     : cdi406
 */
 
-h1 {
-    color: orange; 
-    text-align: center;
-    
-    font-size: 3.5em;
+body{
+    background-image: url("../images/menuBG.png");
+    background-color: #333333;
+    font-family: Calibri, sans serif;
 }
-
