@@ -52,11 +52,12 @@ public class LigneCommande implements Serializable {
         this.commande = commande;
     }
 
-    
-//    public String toString(Integer etat){
+//    
+//    public String S(){
 //        
 //        String s=null;
-//       
+//       if (etat ==null)
+//           s="validé";
 //        if (etat == 0){
 //            s= "validé";
 //        }
@@ -64,11 +65,15 @@ public class LigneCommande implements Serializable {
 //            s= "en préparation";
 //        }
 //        if (etat == 2){
-//             s= "est prêt"; 
+//             s= " prêt"; 
 //        }
+//        else
+//            s="erreur fonction S";
+//            
 //        return s;
 //    }
-    String s=null;
+//    
+    String s = "test";
     @Override
     public String toString() {
         

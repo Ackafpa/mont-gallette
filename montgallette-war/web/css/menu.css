@@ -34,18 +34,133 @@ body {
     padding: 10px 10px 10px 10px;
 }
 
-#voirDetails {  
-    height: 32px;
+.optionNav {
+    background-color: coral;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+
+.optionNav:hover {
+    background-color: black;
+}
+
+#optionNavBoisson {
+    background-image: url("../images/boisson.png");
+    background-repeat: no-repeat;
+    background-color: gold;
+    background-position-x: 25px;
+    background-position-y: 10px;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+
+#optionNavBoisson:hover {
+    background-image: url("../images/boissonACTIF.png");
+    background-color: black;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+
+#optionNavEntree {
+    background-image: url("../images/entree.png");
+    background-repeat: no-repeat;
+    background-color: gold;
+    background-position-x: 25px;
+    background-position-y: 10px;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+
+#optionNavEntree:hover {
+    background-image: url("../images/entreeACTIF.png");
+    background-color: black;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+    
+#optionNavPlat {
+    background-image: url("../images/plat.png");
+    background-repeat: no-repeat;
+    background-color: gold;
+    background-position-x: 25px;
+    background-position-y: 10px;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+
+#optionNavPlat:hover {
+    background-image: url("../images/platACTIF.png");
+    background-color: black;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+    
+#optionNavDessert {
+    background-image: url("../images/dessert.png");
+    background-repeat: no-repeat;
+    background-color: gold;
+    background-position-x: 25px;
+    background-position-y: 10px;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+
+#optionNavDessert:hover {
+    background-image: url("../images/dessertACTIF.png");
+    background-color: black;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+    
+#optionNavFormule {
+    background-image: url("../images/formule.png");
+    background-repeat: no-repeat;
+    background-color: gold;
+    background-position-x: 25px;
+    background-position-y: 10px;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+
+#optionNavFormule:hover {
+    background-image: url("../images/formuleACTIF.png");
+    background-color: black;
+    height: 78px;
+    width: 120px;
+    float: left;
+    padding-top: 10px;
+}
+
+#details {  
     float: right;
     margin-right: 30px;
-    margin-top: -10px;
+    margin-top: -10px; 
 }
 
 #ajouter {
-    height: 32px;
     float: right;
     margin-right: 30px;
-    margin-top: -10px;
+    margin-top: -10px; 
 }
 
 #menuSession{

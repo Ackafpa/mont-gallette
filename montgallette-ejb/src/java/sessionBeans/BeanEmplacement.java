@@ -2,10 +2,16 @@ package sessionBeans;
 
 import entites.Emplacement;
 import entites.Tablee;
-import javax.ejb.Stateful;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-@Stateful
+@Stateless
 public class BeanEmplacement implements BeanEmplacementLocal {
+    @PersistenceContext(unitName = "montgallette-ejbPU")
+    private EntityManager em;
 
     public void modifierDispo(Emplacement e) {        
 // true=dispo      false=occupee
@@ -31,6 +37,24 @@ public class BeanEmplacement implements BeanEmplacementLocal {
         } else {
             System.out.println("ERREUR : L'emplacement " + e + " n'est pas lié à la tablée");
         }
+    }
+    
+    @Override
+    public void creerJeu(){
+        List<Emplacement> lemp = new ArrayList();
+        
+        for(int i =0; i<20; i++){
+            lemp.add(new Emplacement(true));
+        }
+        
+        for(Emplacement e: lemp){
+            em.persist(e);
+        }
+        
+    }
+
+    public void persist(Object object) {
+        em.persist(object);
     }
 
 }
