@@ -62,7 +62,9 @@ public class CommandeCTRL implements ControllerInterface {
         
         
         if("produits".equalsIgnoreCase(action)){
+            if(!beanMenu.isJeuxCree()){
             beanMenu.creerJeuxDonnees();
+            }
             url="home.jsp";
         }
         
