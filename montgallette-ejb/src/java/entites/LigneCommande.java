@@ -37,8 +37,8 @@ public class LigneCommande implements Serializable {
     private Commande commande;
 
     public LigneCommande() {
-        garnitures = new ArrayList();
-        preferences = new ArrayList();
+      //  garnitures = new ArrayList();
+     //preferences = new ArrayList();
     }
 
     
