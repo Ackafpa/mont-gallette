@@ -25,10 +25,10 @@
 </div>
 
 <script>
-    function preparationPlat(){
-        if(document.getElementById('etat').value='Preparer Plat'){
-        document.getElementById('etat').value='En préparation';
+    function preparationPlat() {
+        if (document.getElementById('etat').value = 'Preparer Plat') {
+            document.getElementById('etat').value = 'En préparation';
+        }
     }
-    }
-    </script>
-    
+</script>
+

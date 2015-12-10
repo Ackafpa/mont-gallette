@@ -8,9 +8,6 @@ package subcontrollers;
 import entites.Commande;
 import entites.LigneCommande;
 import entites.Produit;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,21 +66,22 @@ public class CommandeCTRL implements ControllerInterface {
         if ("creerDonnees".equalsIgnoreCase(action)) {
 
             List<LigneCommande> liste = beanCommande.listeLigne(beanMenu.selectAllProduit());
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    Liste créee");
+            //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>
             request.setAttribute("liste", liste);
-            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2));
+            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2L));
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Commande crée");
             
             url = "client.jsp";
         }
         
-        if("jeuTables".equalsIgnoreCase(action)){
-            beanTablee.jeuTables();
-            url="home.jsp";
-        }
+
+        
+
         
         if("produits".equalsIgnoreCase(action)){
+            if(!beanMenu.isJeuxCree()){
             beanMenu.creerJeuxDonnees();
+            }
             url="home.jsp";
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,7 +132,6 @@ public class CommandeCTRL implements ControllerInterface {
             throw new RuntimeException(ne);
         }
     }
+}
 
    
-
-}

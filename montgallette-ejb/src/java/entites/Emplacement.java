@@ -24,8 +24,8 @@ public class Emplacement implements Serializable {
     public Emplacement() {
     }
 
-    public Emplacement(Long id, boolean dispo) {
-        this.id = id;
+    public Emplacement(boolean dispo) {
+        
         this.dispo = dispo;
     }
 

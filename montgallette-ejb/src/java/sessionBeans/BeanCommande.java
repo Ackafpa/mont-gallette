@@ -34,6 +34,40 @@ public class BeanCommande implements BeanCommandeLocal {
         return liste;
     }
     
+//     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, String preferencesS, String garnituresS) {
+//
+//        LigneCommande ligne = new LigneCommande(produit, etat, commande);
+//        //String []preferences = preferencesS.split(" ");
+//        ligne.setPreferences(preferences);
+//        ligne.setGarnitures(garnitures);
+//        Collection<LigneCommande> liste = commande.getProduits();
+//        liste.add(ligne);
+//        commande.setProduits(ligne);
+//        return commande;
+//    }
+
+    public Commande supprimerLigne(Commande commande, LigneCommande ligne) {
+        Collection<LigneCommande> liste = commande.getProduits();
+        liste.remove(ligne);
+        commande.setProduits(liste);
+        return commande;
+    }
+
+
+    public void appliquerOffre() {
+// C'est quoi les offres ? 
+    }
+
+    public double calculerMontant(Commande commande) {
+        double somme = 0;
+        Double d = null;
+        for (LigneCommande lc : commande.getProduits()) {
+            d = lc.getProduit().getPrixHT();
+            somme += d;
+        }
+
+        return somme;
+    }
     
 
     
@@ -74,41 +108,4 @@ public class BeanCommande implements BeanCommandeLocal {
         return commande;
     }
     
-//     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, String preferencesS, String garnituresS) {
-//
-//        LigneCommande ligne = new LigneCommande(produit, etat, commande);
-//        //String []preferences = preferencesS.split(" ");
-//        ligne.setPreferences(preferences);
-//        ligne.setGarnitures(garnitures);
-//        Collection<LigneCommande> liste = commande.getProduits();
-//        liste.add(ligne);
-//        commande.setProduits(ligne);
-//        return commande;
-//    }
-
-    public Commande supprimerLigne(Commande commande, LigneCommande ligne) {
-        Collection<LigneCommande> liste = commande.getProduits();
-        liste.remove(ligne);
-        commande.setProduits(liste);
-        return commande;
-    }
-
-
-    public void appliquerOffre() {
-// C'est quoi les offres ? 
-    }
-
-    public double calculerMontant(Commande commande) {
-        double somme = 0;
-        Double d = null;
-        for (LigneCommande lc : commande.getProduits()) {
-            d = lc.getProduit().getPrixHT();
-            somme += d;
-        }
-
-        return somme;
-    }
-//      public void persist(Object object) {
-//        em.persist(object);
-//    }
 }
