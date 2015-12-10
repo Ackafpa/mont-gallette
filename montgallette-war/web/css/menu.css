@@ -11,9 +11,17 @@ body {
     width: 600px;
 }
 
+#tdStyle0:hover {
+    background-color: rgba(100, 100, 100, 0.5);
+}
+
 #tdStyle1 {
     background-color: rgba(80, 80, 80, 0.5);
     width: 600px;
+}
+
+#tdStyle1:hover {
+    background-color: rgba(100, 100, 100, 0.5);
 }
 
 #textCourt {
@@ -49,28 +57,30 @@ body {
 #optionNavBoisson {
     background-image: url("../images/boisson.png");
     background-repeat: no-repeat;
-    background-color: gold;
+    background-color: pink;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
     width: 120px;
     float: left;
     padding-top: 10px;
+    margin-left: 2px;
 }
 
 #optionNavBoisson:hover {
     background-image: url("../images/boissonACTIF.png");
-    background-color: black;
+    background-color: black;    
     height: 78px;
     width: 120px;
     float: left;
     padding-top: 10px;
+        margin-left: 2px;
 }
 
 #optionNavEntree {
     background-image: url("../images/entree.png");
     background-repeat: no-repeat;
-    background-color: gold;
+    background-color: peru;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
@@ -91,7 +101,7 @@ body {
 #optionNavPlat {
     background-image: url("../images/plat.png");
     background-repeat: no-repeat;
-    background-color: gold;
+    background-color: sandybrown;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
@@ -112,7 +122,7 @@ body {
 #optionNavDessert {
     background-image: url("../images/dessert.png");
     background-repeat: no-repeat;
-    background-color: gold;
+    background-color: silver;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
@@ -137,7 +147,7 @@ body {
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
-    width: 120px;
+    width: 116px;
     float: left;
     padding-top: 10px;
 }
@@ -146,7 +156,7 @@ body {
     background-image: url("../images/formuleACTIF.png");
     background-color: black;
     height: 78px;
-    width: 120px;
+    width: 116px;
     float: left;
     padding-top: 10px;
 }
@@ -164,13 +174,11 @@ body {
 }
 
 #menuSession{
-    border-bottom-width: 2px;
-    border-left-width: 2px;
-    border-right-width: 2px;
+    border-width: 2px;
     border-color: black;
     border-style: solid;
     height: 30px;
-    background-color: darkgray;
+    background-color: #333333;
     width: 900px;
     left: 50%;
     position: fixed;
@@ -183,7 +191,7 @@ body {
     border-color: black;
     border-style: solid;
     height: 88px;
-    background-color: orange;
+    background-color: black;
     width: 600px;
     left: 50%;
     position: fixed;
