@@ -46,13 +46,11 @@ public class CommandeCTRL implements ControllerInterface {
             System.err.println("Juste comme ça");
            // beanCommande1.creerJeu(); A CREER LE JEU DE TEST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             
-            
-            
-            
+        
             List<LigneCommande> liste = beanCommande.listeLigne(beanMenu.selectAllProduit());
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    Liste créee");
             request.setAttribute("liste", liste);
-            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2));
+            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2L));
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Commande crée");
             request.setAttribute("msg", "Les jeux sont faits");
             url = "commande.jsp";

@@ -37,10 +37,10 @@ public class BeanTablee implements BeanTableeLocal {
     }
     
     @Override
-    public Tablee selectTable(long l){
+    public Tablee selectTable(Long l){
         String req = "select t from Tablee t where t.id = :id";
         Query qr = em.createQuery(req);
-        qr.setParameter("num", l);
+        qr.setParameter("id", l);
         Tablee t = (Tablee) qr.getSingleResult();
         return t;
     }
