@@ -16,5 +16,7 @@
     <body>
         <h1>MONT GALETTE</h1>
         <c:import url="/WEB-INF/jsp/login.jsp" />
+        <br>
+        <a href="Controller?section=commande.acka&action=creerDonnees">Créer test commande</a>
     </body>
 </html>

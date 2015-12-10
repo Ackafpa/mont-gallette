@@ -1,6 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="core" uri="http://java.sun.com/jstl/core"%>
+<%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
     <body>
         <h1>Votre Commande</h1>
        Message :  ${msg}
-       <core:forEach items = "" var="ligne">
+       <core:forEach items="${liste}" var="ligne">
 
             <table>
                 <tr>

@@ -23,17 +23,18 @@ public class Menu implements ControllerInterface, Serializable {
         String url = "client.jsp";
         String action = request.getParameter("action");
 
-        if ("creerDonnees".equalsIgnoreCase(action)) {
-            beanMenu.creerJeuxDonnees();
-            request.setAttribute("msg", "Data generated");
-            url = "client.jsp";
-        }
-
         if ("afficher".equalsIgnoreCase(action)) {
+
+            if (!beanMenu.isJeuxCree())
+                beanMenu.creerJeuxDonnees();
+
             List<Produit> lp = beanMenu.selectAllProduit();
             request.setAttribute("produits", lp);
             url = "/sub/menuCarte.jsp";
         }
+
+        if ("home".equalsIgnoreCase(action))
+            url = "garcon.jsp";
 
         return url;
     }
