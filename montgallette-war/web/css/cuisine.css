@@ -1,0 +1,54 @@
+
+.btnCuisinePreparation {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #f76a1e;
+    font-size: 20px;
+    background: #f7d46b;
+    padding: 10px 20px 10px 20px;
+    border: solid #f76a1e 2px;
+    text-decoration: none;
+
+}
+
+.btnCuisineInactif{
+    background: #cccccc;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #737373;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    border: solid #737373 2px;
+    text-decoration: none;
+}
+
+.btnCuisineDisabled{
+    background: #cccccc;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #737373;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    border: solid #737373 2px;
+    text-decoration: none;
+    
+}
+
+.btnCuisinePret{
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #20a112;
+    font-size: 20px;
+    background: #a7f2ac;
+    padding: 10px 20px 10px 20px;
+    border: solid #20a112 2px;
+    text-decoration: none;
+}
