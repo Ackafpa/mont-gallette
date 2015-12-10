@@ -8,9 +8,6 @@ package subcontrollers;
 import entites.Commande;
 import entites.LigneCommande;
 import entites.Produit;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,7 +47,7 @@ public class CommandeCTRL implements ControllerInterface {
             
             
             List<LigneCommande> liste = beanCommande.listeLigne(beanMenu.selectAllProduit());
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>
+            //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>
             request.setAttribute("liste", liste);
             beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2));
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Commande crée");
@@ -129,5 +126,6 @@ public class CommandeCTRL implements ControllerInterface {
             throw new RuntimeException(ne);
         }
     }
+}
 
    
