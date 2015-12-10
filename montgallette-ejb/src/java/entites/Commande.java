@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Commande implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "commande")
+    @OneToMany(mappedBy = "commande" , cascade=CascadeType.PERSIST)
     private Collection<LigneCommande> produits;
 
     @ManyToOne
@@ -122,7 +123,7 @@ public class Commande implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Commande  id=" + id + "table n°" + tablee.getEmplacements();
+        return "entites.Commande  id=" + id ;
     }
 
     public void setProduits(LigneCommande ligne) {

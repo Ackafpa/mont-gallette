@@ -37,7 +37,7 @@ public class CommandeCTRL implements ControllerInterface {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
-        String url = "commande.jsp";
+        String url = "home.jsp";
         String msg = "Votre commande est vide";
         String action = request.getParameter("action");
         
@@ -45,21 +45,29 @@ public class CommandeCTRL implements ControllerInterface {
         if ("creerDonnees".equalsIgnoreCase(action)) {
             System.err.println("Juste comme ça");
            // beanCommande1.creerJeu(); A CREER LE JEU DE TEST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            beanTablee.jeuTables();
-            beanMenu.creerJeuxDonnees();
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    Menu Créé");
+            
+            
+            
             
             List<LigneCommande> liste = beanCommande.listeLigne(beanMenu.selectAllProduit());
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    Liste créee");
             request.setAttribute("liste", liste);
-            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(1));
+            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2));
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Commande crée");
             request.setAttribute("msg", "Les jeux sont faits");
             url = "commande.jsp";
         }
         
        //////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        if("jeuTables".equalsIgnoreCase(action)){
+            beanTablee.jeuTables();
+            url="home.jsp";
+        }
         
+        if("produits".equalsIgnoreCase(action)){
+            beanMenu.creerJeuxDonnees();
+            url="home.jsp";
+        }
         
         
         if ("ajouter".equalsIgnoreCase("action")) {

@@ -3,6 +3,7 @@ package entites;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,7 +34,7 @@ public class LigneCommande implements Serializable {
     @ManyToMany
     private Collection<Garniture> garnitures;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Commande commande;
 
     public LigneCommande() {
