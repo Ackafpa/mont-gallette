@@ -20,7 +20,7 @@ public interface BeanTableeLocal {
 
     public void jeuTables();
 
-    public Tablee selectTable(int i);
+    public Tablee selectTable(long l);
     
 
 }

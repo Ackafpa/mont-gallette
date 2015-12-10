@@ -26,21 +26,21 @@ public class BeanTablee implements BeanTableeLocal {
     @Override
     public void jeuTables(){
         Collection<Tablee> tables = new ArrayList();
-        tables.add(new Tablee(1,4));
-        tables.add(new Tablee(2,2));
-        tables.add(new Tablee(3,6));
-        tables.add(new Tablee(4,8));
-        tables.add(new Tablee(5,98));
+        tables.add(new Tablee(4));
+        tables.add(new Tablee(2));
+        tables.add(new Tablee(6));
+        tables.add(new Tablee(8));
+        tables.add(new Tablee(98));
         for(Tablee t : tables){
         em.persist(t);
         }
     }
     
     @Override
-    public Tablee selectTable(int i){
-        String req = "select t from Tablee t where t.numero = :num";
+    public Tablee selectTable(long l){
+        String req = "select t from Tablee t where t.id = :id";
         Query qr = em.createQuery(req);
-        qr.setParameter("num", i);
+        qr.setParameter("num", l);
         Tablee t = (Tablee) qr.getSingleResult();
         return t;
     }

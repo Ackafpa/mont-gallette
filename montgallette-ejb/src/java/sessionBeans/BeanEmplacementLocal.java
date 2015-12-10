@@ -13,5 +13,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface BeanEmplacementLocal {
+
+    public void creerJeu();
     
 }
