@@ -17,6 +17,10 @@ public interface BeanTableeLocal {
 
     public void modifCouverts(Tablee t, int n);
     public double addition(Tablee t);
+
+    public void jeuTables();
+
+    public Tablee selectTable(int i);
     
 
 }

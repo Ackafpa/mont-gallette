@@ -11,6 +11,10 @@
             <param-name>menu.acka</param-name>
             <param-value>subcontrollers.Menu</param-value>
         </init-param>
+        <init-param>
+            <param-name>commande.acka</param-name>
+            <param-value>subcontrollers.CommandeCTRL</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
@@ -32,5 +36,23 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <local>sessionBeans.BeanMenuLocal</local>
         <ejb-link>montgallette-ejb.jar#BeanMenu</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>BeanCommande</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanCommandeLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanCommande</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>BeanMenu1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanMenuLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanMenu</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>BeanTablee</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanTableeLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanTablee</ejb-link>
     </ejb-local-ref>
 </web-app>

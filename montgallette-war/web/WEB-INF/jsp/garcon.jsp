@@ -21,10 +21,11 @@
         <a id="deco" href="Controller?section=login.acka&action=deco">Déconnexion</a>
        </p>
         </br>
-        <div id="commande">
+        <div >
         Commande:
         </br>
-        <c:import url="/WEB-INF/jsp/commande.jsp"/>
+        <c:url value="/WEB-INF/jsp/commande.jsp" var="urlComm" />
+        <a id="commande" href="${urlComm}"><img src=""></a>
         </br>
         </div>
         <div >

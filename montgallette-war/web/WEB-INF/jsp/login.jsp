@@ -20,7 +20,7 @@
             <form action="Controller" method="post">
                 <p id="enterCode">Entrez votre code</p>
                 <%-- TEXTFIELD CODE --%>
-                <input id="code" <%--type="password"--%> name="id" maxlength="4" size="4"/>
+                <input id="code" type="password" name="id" maxlength="4" size="4"/>
                 <input type="hidden" name="section" value="login.acka"/>
                 <input type="hidden" name="action" value="login"/>
                 </br>

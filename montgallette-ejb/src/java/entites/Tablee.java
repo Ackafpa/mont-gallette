@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,18 +21,19 @@ public class Tablee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int couverts;
+    private Integer couverts;
+    private Integer numero;
     
-    @ManyToMany
+    @ManyToMany(mappedBy = "tablees")
     private Collection<Emplacement> emplacements;
     
-    @OneToMany
+    @OneToMany(mappedBy= "tablee")
     private Collection<Commande> commandes;
     
-    @Temporal(value=TemporalType.TIMESTAMP)
-    private Date dateFacture;
+//    @Temporal(value=TemporalType.TIMESTAMP)
+//    private Date dateFacture;
     
-    private double montantTotal;
+//    private double montantTotal;
 
     public Tablee() {
         emplacements = new ArrayList();
@@ -39,13 +41,28 @@ public class Tablee implements Serializable {
         
     }
 
-    public Tablee(Long id, int couverts, Date date, double montantTotal) {
-        this.id = id;
+    public Tablee(int numero, int couverts) {
         this.couverts = couverts;
-        this.dateFacture = date;
-        this.montantTotal = montantTotal;
+        this.numero = numero;
+    }
+    
+
+//    public Tablee( int couverts, Date date, double montantTotal) {
+//        
+//        this.couverts = couverts;
+//        this.dateFacture = date;
+//        this.montantTotal = montantTotal;
+//    }
+
+    public Integer getNumero() {
+        return numero;
     }
 
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    
     public Long getId() {
         return id;
     }
@@ -78,21 +95,21 @@ public class Tablee implements Serializable {
         this.commandes = commandes;
     }
 
-    public Date getDateFacture() {
-        return dateFacture;
-    }
+//    public Date getDateFacture() {
+//        return dateFacture;
+//    }
 
-    public void setDateFacture(Date dateFacture) {
-        this.dateFacture = dateFacture;
-    }
+//    public void setDateFacture(Date dateFacture) {
+//        this.dateFacture = dateFacture;
+//    }
 
-    public double getMontantTotal() {
-        return montantTotal;
-    }
+//    public double getMontantTotal() {
+//        return montantTotal;
+//    }
 
-    public void setMontantTotal() {
-        this.montantTotal = montantTotal;
-    }
+//    public void setMontantTotal() {
+//        this.montantTotal = montantTotal;
+//    }
 
     
 
@@ -118,7 +135,7 @@ public class Tablee implements Serializable {
 
     @Override
     public String toString() {
-        return "Tablee id = " + id + ", couverts=" + couverts + ", date=" + dateFacture + ", montantTotal=" + montantTotal + "€.";
+        return "Tablee num = " + numero + ", couverts=" + couverts/* + ", date=" + dateFacture + ", montantTotal=" + montantTotal + "€."*/;
     }
 
 }
