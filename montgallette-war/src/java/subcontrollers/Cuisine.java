@@ -26,36 +26,28 @@ import sessionBeans.BeanLigneLocal;
  *
  * @author cdi406
  */
-public class Cuisine implements ControllerInterface, Serializable{
+public class Cuisine implements ControllerInterface, Serializable {
+
     BeanLigneLocal beanLigne = lookupBeanLigneLocal();
     BeanCommandeLocal beanCommande = lookupBeanCommandeLocal();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
         String url = "cuisine.jsp";
-        
+
         String action = request.getParameter("action");
-        
+
         HttpSession session = request.getSession();
-        
+
         ServletContext application = servlet.getServletContext();
-        
-        if(application.getAttribute("listeCuisine") == null){
-        application.setAttribute("listeCuisine", new ArrayList());
+
+        if (application.getAttribute("listeCuisine") == null) {
+            application.setAttribute("listeCuisine", new ArrayList());
         }
-        
-            application.setAttribute("listeCuisine", beanLigne.triCuisine((List<LigneCommande>)session.getAttribute("liste"), 
-                    (List<LigneCommande>)application.getAttribute("listeCuisine")));
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        
+
+        application.setAttribute("listeCuisine", beanLigne.triCuisine((List<LigneCommande>) session.getAttribute("liste"),
+                (List<LigneCommande>) application.getAttribute("listeCuisine")));
+
         return url;
     }
 
@@ -78,5 +70,5 @@ public class Cuisine implements ControllerInterface, Serializable{
             throw new RuntimeException(ne);
         }
     }
-    
+
 }

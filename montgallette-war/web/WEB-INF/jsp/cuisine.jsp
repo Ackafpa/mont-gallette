@@ -11,6 +11,8 @@
         <c:url value="WEB-INF/jsp/sub/menuSession.jsp" var="urlm01"/>
         <c:import url="${urlm01}"/>
     </div>
+        <c:url value="Controller?section=cuisine.acka" var="urlc"/>
+        <c:redirect url="${urlc}"/>
     <title>Interface cuisine</title>
 </head>
 <body>
