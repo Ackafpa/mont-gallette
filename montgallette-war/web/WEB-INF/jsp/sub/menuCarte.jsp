@@ -4,7 +4,6 @@
 
 <c:url value="Controller?section=menu.acka&action=creerDonnees" var="urlcm01" />
 
-
     <table>
         <tbody>
             <c:forEach items="${produits}" var="p">

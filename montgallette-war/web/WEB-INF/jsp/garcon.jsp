@@ -15,29 +15,29 @@
         <title>Garçon</title>
     </head>
     <body>
-       <p id="controls">
-        <a id="home" href="Controller?section=login.acka">Accueil</a> 
-        </br>
-        
-        <a id="deco" href="Controller?section=login.acka&action=deco">Déconnexion</a>
-       </p>
+        <p id="controls">
+            <a id="home" href="Controller?section=login.acka">Accueil</a> 
+            </br>
+
+            <a id="deco" href="Controller?section=login.acka&action=deco">Déconnexion</a>
+        </p>
         </br>
         <div >
-        Commande:
-        </br>
-        <c:url value="/WEB-INF/jsp/commande.jsp" var="urlComm" />
-        <a id="commande" href="${urlComm}"><img src=""></a>
-        </br>
+            Commande:
+            </br>
+            <c:url value="/WEB-INF/jsp/commande.jsp" var="urlComm" />
+            <a id="commande" href="${urlComm}"><img src=""></a>
+            </br>
         </div>
         <div >
-        
-        </br>
-        <c:url value="/WEB-INF/jsp/menu.jsp" var="urlmenu"/>
-        <a id="menu" href="${urlmenu}"><img src="images/menu.png"></a
+
+            </br>
+            <c:url value="/WEB-INF/jsp/menu.jsp" var="urlmenu"/>
+            <a id="menu" href="${urlmenu}"><img src="images/menu.png"></a
         </div>
-        
+
         <p id="button">
-        <a id="clientMode" href="Controller?section=login.acka&action=client">Mode Client</a> 
+            <a id="clientMode" href="Controller?section=login.acka&action=client">Mode Client</a> 
         </p>
     </body>
 </html>
