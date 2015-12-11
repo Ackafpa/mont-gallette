@@ -15,12 +15,12 @@
 <body>
     <h1>Hello Cuisine!</h1>
     
-    <%--    EN COURS
+    
     <div id="menuCuisine">
-        <c:url value="Controller?section=menuCuisine.acka&action=afficher" var="urlm03"/>
-        <c:import url="${}"/>
+        <c:url value="Controller?section=menuCuisine.acka&action=afficher" var="urlc"/>
+        <c:import url="${urlc}"/>
     </div>
-    --%>
+    
 
     <a href="Controller?section=login.acka">Home</a> | 
     <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
