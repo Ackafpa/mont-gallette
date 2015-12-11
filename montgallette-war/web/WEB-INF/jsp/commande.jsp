@@ -6,6 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/global.css" rel="stylesheet" type="text/css"/>
         <link href="css/menu.css" rel="stylesheet" type="text/css"/>
         <title></title>
     </head>
@@ -23,6 +24,7 @@
                     <td>${ligne.etat}</td>
                   
                     <td><a href="Controller?section=commande.acka&action=su"> Supprimer</a></td>
+                    
                 </tr>
 
             </table>
@@ -30,6 +32,6 @@
         </core:forEach>
 
 
-
+<script src="../../js/alerte.js" type="text/javascript"></script>
     </body>
 </html>

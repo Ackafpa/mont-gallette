@@ -5,6 +5,8 @@
  */
 package sessionBeans;
 
+import entites.LigneCommande;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,6 +15,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface BeanLigneLocal {
+
+    public List<LigneCommande> triCuisine(List<LigneCommande> liste, List<LigneCommande> superListe);
 
     
 }

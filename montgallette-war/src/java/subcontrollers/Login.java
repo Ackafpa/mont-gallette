@@ -104,6 +104,7 @@ public class Login implements ControllerInterface, Serializable {
             url = "home.jsp";
         }
 
+        //Déconnexion
         if ("deco".equalsIgnoreCase(action)) {
             session.removeAttribute("user");
             url = "home.jsp";

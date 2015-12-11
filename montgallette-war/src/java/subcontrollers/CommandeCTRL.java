@@ -17,6 +17,7 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import sessionBeans.BeanCommandeLocal;
 import sessionBeans.BeanMenuLocal;
 import sessionBeans.BeanTableeLocal;
@@ -26,78 +27,67 @@ import sessionBeans.BeanTableeLocal;
  * @author cdi404
  */
 public class CommandeCTRL implements ControllerInterface {
+
     BeanTableeLocal beanTablee = lookupBeanTableeLocal();
     BeanMenuLocal beanMenu = lookupBeanMenuLocal();
     BeanCommandeLocal beanCommande = lookupBeanCommandeLocal();
-
-    
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
         String url = "home.jsp";
         String action = request.getParameter("action");
-         if ("aj".equalsIgnoreCase("action")) {
-            // Attendre le bouton ajouter de Kenny
-//            Commande commande = (Commande) request.getAttribute("Commande");
-//            Produit produit = (Produit) request.getAttribute("Produit");
-//            List <String> preferences = (List)request.getAttribute("preferences");            
-
-           
-
-           // Integer etat = 0;       
-     
-        }
-     
-           if ("su".equalsIgnoreCase(action)) {
-               System.out.println("supOK");
-        
-            url="client.jsp";         
-        }
-           
-        if ("mo".equalsIgnoreCase(action)) {
-            System.out.println("moooo ok");
-//           String id = request.getParameter("id");
-//            String ligne = request.getParameter("ligne");
-//            System.out.println(id+"   "+ligne+"------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-      
-       url="client.jsp";
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        if ("creerDonnees".equalsIgnoreCase(action)) {
-
-            List<LigneCommande> liste = beanCommande.listeLigne(beanMenu.selectAllProduit());
-            //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>
-            request.setAttribute("liste", liste);
-            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2L));
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   Commande crée");
-            
-            url = "client.jsp";
-        }
-        
-
-        
-
-        
-        if("produits".equalsIgnoreCase(action)){
-            if(!beanMenu.isJeuxCree()){
-            beanMenu.creerJeuxDonnees();
-            }
-            url="home.jsp";
-        }
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        
+        HttpSession session = request.getSession();
         if ("aj".equalsIgnoreCase("action")) {
             // Attendre le bouton ajouter de Kenny
 //            Commande commande = (Commande) request.getAttribute("Commande");
 //            Produit produit = (Produit) request.getAttribute("Produit");
 //            List <String> preferences = (List)request.getAttribute("preferences");            
 
-           
+           // Integer etat = 0;       
+        }
+
+        if ("su".equalsIgnoreCase(action)) {
+            System.out.println("supOK");
+
+            url = "client.jsp";
+        }
+
+        if ("mo".equalsIgnoreCase(action)) {
+            System.out.println("moooo ok");
+//           String id = request.getParameter("id");
+//            String ligne = request.getParameter("ligne");
+//            System.out.println(id+"   "+ligne+"------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+
+            url = "client.jsp";
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        if ("creerDonnees".equalsIgnoreCase(action)) {
+
+            List<LigneCommande> liste = beanCommande.listeLigne(beanMenu.selectAllProduit());
+
+            session.setAttribute("liste", liste);
+            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2L));
+
+            url = "home.jsp";
+        }
+
+        if ("produits".equalsIgnoreCase(action)) {
+            if (!beanMenu.isJeuxCree()) {
+                beanMenu.creerJeuxDonnees();
+            }
+            url = "home.jsp";
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if ("aj".equalsIgnoreCase("action")) {
+            // Attendre le bouton ajouter de Kenny
+//            Commande commande = (Commande) request.getAttribute("Commande");
+//            Produit produit = (Produit) request.getAttribute("Produit");
+//            List <String> preferences = (List)request.getAttribute("preferences");            
 
            // Integer etat = 0;       
-     
         }
-     
+
         System.out.println(url);
         return url;
 
@@ -133,5 +123,3 @@ public class CommandeCTRL implements ControllerInterface {
         }
     }
 }
-
-   

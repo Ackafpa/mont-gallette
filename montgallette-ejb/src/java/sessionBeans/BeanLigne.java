@@ -5,6 +5,9 @@
  */
 package sessionBeans;
 
+import entites.LigneCommande;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +21,23 @@ public class BeanLigne implements BeanLigneLocal {
 
     @PersistenceContext(unitName = "montgallette-ejbPU")
     private EntityManager em;
+    
+    
+    //Ajout ALC : Tri des produits pour la cuisine
+    @Override
+    public List<LigneCommande> triCuisine(List<LigneCommande> liste, List<LigneCommande>superListe){
+        List<LigneCommande> listeCuisine = new ArrayList();
+        
+        for(LigneCommande l : liste){
+            if(l.getProduit().isPreparation()){
+                listeCuisine.add(l);
+            }
+        }
+        
+        superListe.addAll(listeCuisine);
+        
+        return superListe;
+    }
 
  
 }

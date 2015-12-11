@@ -15,7 +15,7 @@ public class alerte {
     
     static{
         alert_pret = " est prêt";
-        alert_appel = " a besoin d'aide";
+        alert_appel = " a demandé de l'aide";
     }
     
     public alerte(){
