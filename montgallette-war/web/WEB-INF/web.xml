@@ -20,7 +20,8 @@
             <param-value>subcontrollers.Salle</param-value>
         </init-param>
         <init-param>
-            <param-name>cuisine.acka</param-name>
+            <param-name>menuCuisine.acka</param-name>
+            
             <param-value>subcontrollers.Cuisine</param-value>
         </init-param>
     </servlet>

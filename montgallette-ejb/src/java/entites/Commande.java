@@ -15,10 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author cdi404
- */
 @Entity
 public class Commande implements Serializable {
 

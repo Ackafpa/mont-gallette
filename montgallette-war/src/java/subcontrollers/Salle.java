@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package subcontrollers;
 
 import java.io.Serializable;
@@ -15,13 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import sessionBeans.BeanEmplacementLocal;
-
 import sessionBeans.BeanTableeLocal;
 
-/**
- *
- * @author cdi406
- */
 public class Salle implements ControllerInterface, Serializable{
     BeanEmplacementLocal beanEmplacement = lookupBeanEmplacementLocal();
 
@@ -40,11 +30,7 @@ public class Salle implements ControllerInterface, Serializable{
         if("jeuEmplacements".equalsIgnoreCase(action)){
             beanEmplacement.creerJeu();
             url="home.jsp";
-        }
-        
-        
-        
-        
+        }  
         return url;
     }
 

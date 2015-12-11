@@ -7,20 +7,26 @@
 <div>
     <table>
         <tbody>
-            <c:forEach items="${produits}" var="p">
-                <tr>
-                    <td id="tdStyle${p.id%2}">
-                        <div id="textCourt"><b>${p.nom}</b><br>${p.descriptionCourte}</div>
-                        <div>
-                            <button id="btnPreparation" onclick="preparation()" class="btnCuisineInactif">Préparer</button> <%-- GREY & CLICABLE --%>
-                        </div> <%--Bouton preparation (commandé, en préparation...) --%>
-                        <div>
-                            <button id="btnPret" onclick="pret()" disabled>Prêt</button>
-                        </div> <%--Bouton pour commandé>en préparation & en préparation > prêt --%>
-                        <div></div> <%--Bouton pour menu avec Rendre indisponible --%>
-                        <div><img id="rendreIndispo" src="images/?.png" alt="RendreIndispo"/></div> 
-                    </td>
-                </tr>
+            <c:forEach items="${commandes}" var="p">
+                <c:forEach items="${listeCuisine}" var="lc">
+                    <tr>
+                        <td id="tdStyle${lc.id%2}">
+                            <div id="textCourt">
+                                <b>${lc.nom}</b>
+                                <br>${lc.descriptionCourte}</div>
+                            <div>
+                                <button id="btnPreparation" onclick="preparation()" class="btnCuisineInactif">Préparer</button> <%-- GREY & CLICABLE --%>
+                            </div> <%--Bouton preparation ("préparer" > "en préparation") --%>
+                            <div>
+                                <button id="btnPret" onclick="pret()" disabled>Prêt</button>
+                            </div> <%--Bouton "prêt" --%>
+                            <div>
+                                <button></button>
+                            </div> <%--Bouton pour menu avec Rendre indisponible --%>
+                            <div><img id="rendreIndispo" src="images/?.png" alt="RendreIndispo"/></div> 
+                        </td>
+                    </tr>
+                </c:forEach>
             </c:forEach>
         </tbody>
     </table>
@@ -32,8 +38,8 @@
         if (document.getElementById('btnPreparation').value === 'Preparer Plat') {
             document.getElementById('btnPreparation').value = 'En préparation';
             document.getElementById('btnPreparation').class = 'btnCuisinePreparation';
-            document.getElementById('btnPret').disabled = true;//changer état btnPret
-            //changer état attribut produit
+            document.getElementById('btnPret').disabled = false;//changer état btnPret
+            document.getElementById('').value = ;//changer état attribut produit
         } else {
             document.getElementById('btnPreparation').value = 'Préparer';
             document.getElementById('btnPreparation').class = 'btnCuisineInactif';
@@ -41,11 +47,6 @@
             //changer état btnPret
             //changer état attribut produit
         }
-    }
-
-    //Revient en arrière function preparation()
-    function annulerPreparation() {
-
     }
 
     //
