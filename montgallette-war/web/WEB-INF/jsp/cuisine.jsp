@@ -26,6 +26,11 @@
     </div>
     --%>
     
+    
+    <c:forEach items="${listeCuisine}" var="l">
+        ${l.produit}</br>
+        
+    </c:forEach>
 
     <a href="Controller?section=login.acka">Home</a> | 
     <a href="Controller?section=login.acka&action=deco">Déconnexion</a>

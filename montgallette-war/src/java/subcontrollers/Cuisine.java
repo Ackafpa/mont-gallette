@@ -43,10 +43,10 @@ public class Cuisine implements ControllerInterface, Serializable{
         if(application.getAttribute("listeCuisine") == null){
         application.setAttribute("listeCuisine", new ArrayList());
         }
-        else{
+        
             application.setAttribute("listeCuisine", beanLigne.triCuisine((List<LigneCommande>)session.getAttribute("liste"), 
                     (List<LigneCommande>)application.getAttribute("listeCuisine")));
-        }
+        
         
         
         
