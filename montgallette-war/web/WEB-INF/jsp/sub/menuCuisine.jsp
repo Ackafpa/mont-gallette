@@ -32,7 +32,7 @@
         if (document.getElementById('btnPreparation').value === 'Preparer Plat') {
             document.getElementById('btnPreparation').value = 'En préparation';
             document.getElementById('btnPreparation').class = 'btnCuisinePreparation';
-            document.getElementById('btnPret').disabled = true;//changer état btnPret
+            document.getElementById('btnPret').disabled = false;//changer état btnPret
             //changer état attribut produit
         } else {
             document.getElementById('btnPreparation').value = 'Préparer';
@@ -41,11 +41,6 @@
             //changer état btnPret
             //changer état attribut produit
         }
-    }
-
-    //Revient en arrière function preparation()
-    function annulerPreparation() {
-
     }
 
     //
