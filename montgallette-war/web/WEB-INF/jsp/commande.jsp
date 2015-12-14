@@ -30,7 +30,8 @@
             </table>
 
         </core:forEach>
-
+            
+<a href="Controller?section=commandeCTRTL.acka&action=val">Valider</a>
 
 <script src="../../js/alerte.js" type="text/javascript"></script>
     </body>

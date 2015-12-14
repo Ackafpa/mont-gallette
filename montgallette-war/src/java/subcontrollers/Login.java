@@ -1,5 +1,6 @@
 package subcontrollers;
 
+import entites.Employe;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -34,13 +35,18 @@ public class Login implements ControllerInterface, Serializable {
             String code = request.getParameter("id");
 
             if (session.getAttribute("user") != null) {
+
                 //Si le nouveau code entré ne vient pas du mode client
                 if (session.getAttribute("prov") == null) {
                     String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
-                    if (code.equals(eCode)) {
-
+                    
+                    if (code.equals(eCode) && code.startsWith("1")) {
                         url = "garcon.jsp";
-                    } else {
+                        
+                    }else if (code.equals(eCode) && code.startsWith("2")){
+                        url="cuisine.jsp";
+                        
+                    }else {
                         //accès à la possibilité de deconnexion
                         boolean deco = true;
                         request.setAttribute("msgDeco", "Vous n'êtes pas ");
@@ -62,7 +68,7 @@ public class Login implements ControllerInterface, Serializable {
                     //Reconnaissance de la catégorie d'employé et envoi vers la bonne interface
                     if (session.getAttribute("user") == null) {
                         try {
-                            entites.Employe e = beanLogin.identifierEmploye(code);
+                            Employe e = beanLogin.identifierEmploye(code);
 
                             if (code.startsWith("1")) {
                                 url = "garcon.jsp";

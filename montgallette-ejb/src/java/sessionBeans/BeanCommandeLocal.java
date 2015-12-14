@@ -23,4 +23,6 @@ public interface BeanCommandeLocal {
 
     public List<LigneCommande> listeLigne(List<Produit> produits);
 
+    public void triCuisine(List<LigneCommande> liste, List<LigneCommande> superListe);
+
 }

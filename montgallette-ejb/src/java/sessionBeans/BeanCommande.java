@@ -34,6 +34,16 @@ public class BeanCommande implements BeanCommandeLocal {
         return liste;
     }
     
+    @Override
+    public void triCuisine(List<LigneCommande> liste, List<LigneCommande>superListe){
+        
+        for(LigneCommande l : liste){
+            if(l.getProduit().isPreparation()){
+               superListe.add(l);
+            }
+        }
+    }
+    
 //     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, String preferencesS, String garnituresS) {
 //
 //        LigneCommande ligne = new LigneCommande(produit, etat, commande);
