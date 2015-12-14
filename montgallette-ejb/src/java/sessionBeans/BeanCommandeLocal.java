@@ -5,10 +5,11 @@
  */
 package sessionBeans;
 
+import entites.Commande;
 import entites.LigneCommande;
 import entites.Produit;
 import entites.Tablee;
-import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -22,5 +23,7 @@ public interface BeanCommandeLocal {
     public void jeuEssaiCommande(List<LigneCommande> liste, Tablee t);
 
     public List<LigneCommande> listeLigne(List<Produit> produits);
+
+    public Commande validerCommande(Tablee t, List<LigneCommande> produits, String numero, Date date);
 
 }

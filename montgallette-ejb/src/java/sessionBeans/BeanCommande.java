@@ -7,6 +7,7 @@ import entites.Produit;
 import entites.Tablee;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.ejb.EJB;
@@ -16,24 +17,31 @@ import javax.persistence.PersistenceContext;
 
 @Stateful
 public class BeanCommande implements BeanCommandeLocal {
+
     @EJB
     private BeanMenuLocal beanMenu;
 
     @PersistenceContext(unitName = "montgallette-ejbPU")
     private EntityManager em;
 
-    
-    
     @Override
-    public List<LigneCommande> listeLigne(List<Produit> produits){
-       Commande c = new Commande();
-        List <LigneCommande> liste = new ArrayList();
-        for(Produit p : produits){
-        liste.add (new LigneCommande(p, 0, c));
+    public Commande validerCommande(Tablee t, List<LigneCommande> produits, String numero, Date date) {// BOUTON VALIDER COMMANDE
+        Commande c = new Commande(t, produits, numero, date);
+        em.persist(c);
+        return c;
+    }
+
+    // public Commande(Tablee tablee, List<LigneCommande> produits, String numero, Date date)
+    @Override
+    public List<LigneCommande> listeLigne(List<Produit> produits) {
+        Commande c = new Commande();
+        List<LigneCommande> liste = new ArrayList();
+        for (Produit p : produits) {
+            liste.add(new LigneCommande(p, 0, c));
         }
         return liste;
     }
-    
+
 //     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, String preferencesS, String garnituresS) {
 //
 //        LigneCommande ligne = new LigneCommande(produit, etat, commande);
@@ -45,14 +53,12 @@ public class BeanCommande implements BeanCommandeLocal {
 //        commande.setProduits(ligne);
 //        return commande;
 //    }
-
     public Commande supprimerLigne(Commande commande, LigneCommande ligne) {
         Collection<LigneCommande> liste = commande.getProduits();
         liste.remove(ligne);
         commande.setProduits(liste);
         return commande;
     }
-
 
     public void appliquerOffre() {
 // C'est quoi les offres ? 
@@ -68,35 +74,21 @@ public class BeanCommande implements BeanCommandeLocal {
 
         return somme;
     }
-    
 
-    
     @Override
-    public void jeuEssaiCommande(List<LigneCommande> liste, Tablee t){
+    public void jeuEssaiCommande(List<LigneCommande> liste, Tablee t) {
         Commande c = new Commande();
         GregorianCalendar d = new GregorianCalendar();
-        
-        
-       
+
         c.setProduits(liste);
         c.setDate(d.getTime());
         c.setNumero("123456");
         c.setTablee(t);
-        
-        
+
         em.persist(c);
-       
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures) {
 
         LigneCommande ligne = new LigneCommande(produit, etat, commande);
@@ -107,5 +99,5 @@ public class BeanCommande implements BeanCommandeLocal {
         commande.setProduits(ligne);
         return commande;
     }
-    
+
 }

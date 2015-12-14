@@ -18,5 +18,10 @@ public interface BeanLigneLocal {
 
     public List<LigneCommande> triCuisine(List<LigneCommande> liste, List<LigneCommande> superListe);
 
+   // public int sortirLigne(List<LigneCommande> liste, String li);
+
+    public LigneCommande sortirLigne (LigneCommande lc, String li);
+
+
     
 }
