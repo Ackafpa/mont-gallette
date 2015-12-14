@@ -6,11 +6,16 @@
 package sessionBeans;
 
 import entites.LigneCommande;
+
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -23,7 +28,24 @@ public class BeanLigne implements BeanLigneLocal {
     private EntityManager em;
     
     
+
+    public LigneCommande chercherLigne (Integer id){
+        System.out.println("CHERCHER LIGNE OOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+        String req = "select l from LigneCommande l where id = :id";    
+        Query qr = em.createQuery(req);
+        qr.setParameter("id", id);
+     
+        try {
+          LigneCommande  l = (LigneCommande) qr.getSingleResult();
+          return l;
+        } catch (NoResultException ex) {
+            System.out.println("erroorrrrrrrrrrrrrrrrr==================================='((((((((((((((((((((((((((((((((((((((((((((((((((((((");
+        }
+        return null;
+        
+    }
     //Ajout ALC : Tri des produits pour la cuisine
+    
     @Override
     public List<LigneCommande> triCuisine(List<LigneCommande> liste, List<LigneCommande>superListe){
         List<LigneCommande> listeCuisine = new ArrayList();
@@ -37,6 +59,7 @@ public class BeanLigne implements BeanLigneLocal {
         superListe.addAll(listeCuisine);
         
         return superListe;
+
     }
 
  
