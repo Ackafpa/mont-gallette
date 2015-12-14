@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+import entites.Commande;
 import entites.LigneCommande;
 import entites.Produit;
 import entites.Tablee;
@@ -24,5 +25,7 @@ public interface BeanCommandeLocal {
     public List<LigneCommande> listeLigne(List<Produit> produits);
 
     public void triCuisine(List<LigneCommande> liste, List<LigneCommande> superListe);
+
+    public Commande creerCommande(Tablee t);
 
 }

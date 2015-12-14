@@ -1,6 +1,7 @@
 package subcontrollers;
 
 import entites.LigneCommande;
+import entites.Tablee;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +38,22 @@ public class CommandeCTRL implements ControllerInterface {
 
         if (liste == null) {
             application.setAttribute("listeCuisine", new ArrayList());
+        }
+        if("creerTable".equalsIgnoreCase(action)){
+            request.setAttribute("creer", true);
+            url = "garcon.jsp";
+        }
+        
+        
+        if("creerCo".equalsIgnoreCase(action)){
+            Integer i = Integer.decode(request.getParameter("couverts"));
+            Tablee t = new Tablee();
+            t.setCouverts(i);
+            beanTablee.persist(t);
+            
+            session.setAttribute("commande", beanCommande.creerCommande(t));
+            
+            url="client.jsp";
         }
 
         if ("val".equalsIgnoreCase(action)) {
