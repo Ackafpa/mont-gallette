@@ -21,6 +21,8 @@ public interface BeanTableeLocal {
     public void jeuTables();
 
     public Tablee selectTable(Long l);
+
+    public void persist(Tablee t);
     
 
 }

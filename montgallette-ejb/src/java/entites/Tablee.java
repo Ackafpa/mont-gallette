@@ -34,9 +34,9 @@ public class Tablee implements Serializable {
         
     }
 
-    public Tablee(int couverts) {
-        this.couverts = couverts;
-    }
+//    public Tablee(int couverts) {
+//        this.couverts = couverts;
+//    }
     
 
     public Long getId() {

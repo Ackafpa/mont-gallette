@@ -1,22 +1,32 @@
 package subcontrollers;
 
+import entites.Commande;
 import entites.LigneCommande;
+import entites.Tablee;
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import sessionBeans.BeanCommandeLocal;
+import sessionBeans.BeanLigneLocal;
 import sessionBeans.BeanMenuLocal;
 import sessionBeans.BeanTableeLocal;
 
 public class CommandeCTRL implements ControllerInterface {
 
+    BeanLigneLocal beanLigne = lookupBeanLigneLocal();
     BeanTableeLocal beanTablee = lookupBeanTableeLocal();
     BeanMenuLocal beanMenu = lookupBeanMenuLocal();
     BeanCommandeLocal beanCommande = lookupBeanCommandeLocal();
@@ -24,38 +34,96 @@ public class CommandeCTRL implements ControllerInterface {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
         String url = "home.jsp";
-        String action = request.getParameter("action");
-        HttpSession session = request.getSession();
-        if ("aj".equalsIgnoreCase("action")) {
-            // Attendre le bouton ajouter de Kenny
-//            Commande commande = (Commande) request.getAttribute("Commande");
-//            Produit produit = (Produit) request.getAttribute("Produit");
-//            List <String> preferences = (List)request.getAttribute("preferences");            
 
-           // Integer etat = 0;       
+        HttpSession session = request.getSession();
+
+        ServletContext application = servlet.getServletContext();
+        String action = request.getParameter("action");
+        String msgCommande = "Cliquez sur ajouter pour remplir votre commande";
+        request.setAttribute("msgCommande", msgCommande);
+
+        List<LigneCommande> liste = (List<LigneCommande>) application.getAttribute("listeCuisine");
+
+        if (liste == null) {
+            application.setAttribute("listeCuisine", new ArrayList());
+        }
+        if("creerTable".equalsIgnoreCase(action)){
+            request.setAttribute("creer", true);
+            url = "garcon.jsp";
+        }
+        
+        
+        if("creerCo".equalsIgnoreCase(action)){
+            Integer i = Integer.decode(request.getParameter("couverts"));
+            Tablee t = new Tablee();
+            t.setCouverts(i);
+            beanTablee.persist(t);
+            
+            session.setAttribute("commande", beanCommande.creerCommande(t));
+            
+            url="client.jsp";
         }
 
-        if ("su".equalsIgnoreCase(action)) {
-            System.out.println("supOK");
+        if ("val".equalsIgnoreCase(action)) {
 
+            List<LigneCommande> listeCom = (List<LigneCommande>) session.getAttribute("liste");
+            beanCommande.triCuisine(listeCom, liste);
+
+            application.setAttribute("listeCuisine", liste);
+        }
+//
+//        if ("su".equalsIgnoreCase(action)) {
+//
+//            Long id = Long.valueOf(request.getParameter("id"));
+//            List<LigneCommande> listeComm = (List<LigneCommande>) session.getAttribute("liste");
+//            for (LigneCommande l : listeComm) {
+//                if (Objects.equals(id, l.getId())) {
+//
+//                }
+//            }
+//            System.out.println("supOK");
+//
+//            url = "client.jsp";
+//            //  }
+//        }
+        if ("su".equalsIgnoreCase(action)) {
+            String li = request.getParameter("ligne");
+            List<LigneCommande> listee = (List<LigneCommande>) session.getAttribute("liste");
+            System.out.println("La liste:" + listee);
+            for (LigneCommande lc : listee) {
+                if (Objects.equals(lc.getId(), Long.valueOf(li))) {
+                    LigneCommande lcc = beanLigne.sortirLigne(lc, li);
+                    session.setAttribute("lcc", lcc);
+                }
+            }
+            LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
+            listee.remove(lcc);
             url = "client.jsp";
         }
 
+        if ("produits".equalsIgnoreCase(action)) {
+            if (!beanMenu.isJeuxCree()) {
+                beanMenu.creerJeuxDonnees();
+            }
+            url = "home.jsp";
+        }
         if ("mo".equalsIgnoreCase(action)) {
             System.out.println("moooo ok");
 //           String id = request.getParameter("id");
 //            String ligne = request.getParameter("ligne");
 //            System.out.println(id+"   "+ligne+"------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-
             url = "client.jsp";
         }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
         if ("creerDonnees".equalsIgnoreCase(action)) {
 
-            List<LigneCommande> liste = beanCommande.listeLigne(beanMenu.selectAllProduit());
+            List<LigneCommande> listeLigne = beanCommande.listeLigne(beanMenu.selectAllProduit());
 
-            session.setAttribute("liste", liste);
-            beanCommande.jeuEssaiCommande(liste, beanTablee.selectTable(2L));
+            session.setAttribute("liste", listeLigne);
+            beanCommande.jeuEssaiCommande(listeLigne, beanTablee.selectTable(2L));
+            
+            //A changer, doit s'executer a chaque commande passée
+            beanCommande.triCuisine(listeLigne, liste);
+            application.setAttribute("listeCuisine", liste);
 
             url = "home.jsp";
         }
@@ -66,20 +134,8 @@ public class CommandeCTRL implements ControllerInterface {
             }
             url = "home.jsp";
         }
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-
-        if ("aj".equalsIgnoreCase("action")) {
-            // Attendre le bouton ajouter de Kenny
-//            Commande commande = (Commande) request.getAttribute("Commande");
-//            Produit produit = (Produit) request.getAttribute("Produit");
-//            List <String> preferences = (List)request.getAttribute("preferences");            
-
-           // Integer etat = 0;       
-        }
-
         System.out.println(url);
         return url;
-
     }
 
     private BeanCommandeLocal lookupBeanCommandeLocal() {
@@ -111,4 +167,27 @@ public class CommandeCTRL implements ControllerInterface {
             throw new RuntimeException(ne);
         }
     }
+
+    private BeanLigneLocal lookupBeanLigneLocal() {
+        try {
+            Context c = new InitialContext();
+            return (BeanLigneLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanLigne!sessionBeans.BeanLigneLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
 }
+
+//        if ("aj".equalsIgnoreCase("action")) {
+//            // Attendre le bouton ajouter de Kenny
+////            Commande commande = (Commande) request.getAttribute("Commande");
+////            Produit produit = (Produit) request.getAttribute("Produit");
+////            List <String> preferences = (List)request.getAttribute("preferences");            
+//
+//           
+//
+//           // Integer etat = 0;       
+//     
+//        }
+
