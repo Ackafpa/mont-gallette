@@ -14,21 +14,30 @@
         <h1>Votre Commande</h1>
        Message :  ${msg}
        <core:forEach items="${liste}" var="ligne">
-<input type="hidden" value=" " />
-            <table>
+
+           <form method="GET" action="Controller">     
+    <input type="hidden" value="${ligne.id}" />
+    <input type="hidden" name="section" value="commande.acka"/>
+    <input type="hidden" name="action" value="su"/>
+    <input type="hidden" name="commande" value="${ligne.commande.id}"/>
+    <input type="hidden" name="ligne" value=" ${ligne.id}"/>
+    
+<table>
                 <tr>
-                    <td>${ligne.produit}${ligne.produit.getId()}</td> 
                 
+                    <td>${ligne.produit}</td>                 
                     <td>${ligne.preferences}</td>
                     <td>${ligne.garnitures}</td>
                     <td>${ligne.etat}</td>
-                  
-                    <td><a href="Controller?section=commande.acka&action=su"> Supprimer</a></td>
+                    <td>ID : ${ligne.id} Commande : ${ligne.commande.id}</td>
+                    
+               
+                    <td><input type="submit" name="DoSu" value="Suprimer"></td>
                     
                 </tr>
 
             </table>
-
+</form>   
         </core:forEach>
             
 <a href="Controller?section=commandeCTRTL.acka&action=val">Valider</a>

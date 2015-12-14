@@ -3,6 +3,7 @@ package subcontrollers;
 import entites.LigneCommande;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -26,10 +27,9 @@ public class CommandeCTRL implements ControllerInterface {
     BeanMenuLocal beanMenu = lookupBeanMenuLocal();
     BeanCommandeLocal beanCommande = lookupBeanCommandeLocal();
 
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
-        String url = "home.jsp";
-        String action = request.getParameter("action");
         HttpSession session = request.getSession();
 
         ServletContext application = servlet.getServletContext();
@@ -48,108 +48,45 @@ public class CommandeCTRL implements ControllerInterface {
 
             application.setAttribute("listeCuisine", liste);
         }
-
-        if ("aj".equalsIgnoreCase("action")) {
-            // Attendre le bouton ajouter de Kenny
-//            Commande commande = (Commande) request.getAttribute("Commande");
-//            Produit produit = (Produit) request.getAttribute("Produit");
-//            List <String> preferences = (List)request.getAttribute("preferences");            
-
-            // Integer etat = 0;       
-        }
-
-        if ("su".equalsIgnoreCase(action)) {
-            System.out.println("supOK");
-
+            
             url = "client.jsp";
         }
+        
 
-        if ("mo".equalsIgnoreCase(action)) {
-            System.out.println("moooo ok");
-//           String id = request.getParameter("id");
-//            String ligne = request.getParameter("ligne");
-//            System.out.println(id+"   "+ligne+"------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+         if ("su".equalsIgnoreCase(action)) {
+             
+           Long id = Long.valueOf(request.getParameter("id"));
+              List<LigneCommande> liste = (List<LigneCommande>) session.getAttribute("liste");
+              for (LigneCommande l : liste){
+                  if (Objects.equals(id, l.getId())) {
+                      
+                  }
+                  } 
+               System.out.println("supOK");
+               
+        
+            url="client.jsp";         
+      //  }
+         }
 
-            url = "client.jsp";
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        if ("creerDonnees".equalsIgnoreCase(action)) {
-
-            List<LigneCommande> listeLigne = beanCommande.listeLigne(beanMenu.selectAllProduit());
-
-            session.setAttribute("liste", listeLigne);
-            beanCommande.jeuEssaiCommande(listeLigne, beanTablee.selectTable(2L));
-            
-            
-            //A changer, doit s'executer a chaque commade validée!!!
-            List<LigneCommande> listeCom = (List<LigneCommande>) session.getAttribute("liste");
-            beanCommande.triCuisine(listeCom, liste);
-
-            application.setAttribute("listeCuisine", liste);
-            //
-
-            url = "home.jsp";
-        }
-
-        if ("produits".equalsIgnoreCase(action)) {
-            if (!beanMenu.isJeuxCree()) {
-                beanMenu.creerJeuxDonnees();
+        
+        if("produits".equalsIgnoreCase(action)){
+            if(!beanMenu.isJeuxCree()){
+            beanMenu.creerJeuxDonnees();
             }
-            url = "home.jsp";
+            url="home.jsp";
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////
-
-        if ("aj".equalsIgnoreCase("action")) {
-            // Attendre le bouton ajouter de Kenny
-//            Commande commande = (Commande) request.getAttribute("Commande");
-//            Produit produit = (Produit) request.getAttribute("Produit");
-//            List <String> preferences = (List)request.getAttribute("preferences");            
-
-            // Integer etat = 0;       
-        }
-
-        System.out.println(url);
-        return url;
-
-    }
-
-    private BeanCommandeLocal lookupBeanCommandeLocal() {
-        try {
-            Context c = new InitialContext();
-            return (BeanCommandeLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanCommande!sessionBeans.BeanCommandeLocal");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
-    }
-
-    private BeanMenuLocal lookupBeanMenuLocal() {
-        try {
-            Context c = new InitialContext();
-            return (BeanMenuLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanMenu!sessionBeans.BeanMenuLocal");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
-    }
-
-    private BeanTableeLocal lookupBeanTableeLocal() {
-        try {
-            Context c = new InitialContext();
-            return (BeanTableeLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanTablee!sessionBeans.BeanTableeLocal");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
-    }
-
-    private BeanLigneLocal lookupBeanLigneLocal() {
-        try {
-            Context c = new InitialContext();
-            return (BeanLigneLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanLigne!sessionBeans.BeanLigneLocal");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
-    }
-}
+        
+//        if ("aj".equalsIgnoreCase("action")) {
+//            // Attendre le bouton ajouter de Kenny
+////            Commande commande = (Commande) request.getAttribute("Commande");
+////            Produit produit = (Produit) request.getAttribute("Produit");
+////            List <String> preferences = (List)request.getAttribute("preferences");            
+//
+//           
+//
+//           // Integer etat = 0;       
+//     
+//        }
+     
