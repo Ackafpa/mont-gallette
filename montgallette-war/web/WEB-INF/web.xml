@@ -19,10 +19,6 @@
             <param-name>salle.acka</param-name>
             <param-value>subcontrollers.Salle</param-value>
         </init-param>
-        <init-param>
-            <param-name>menuCuisine.acka</param-name>
-            <param-value>subcontrollers.Cuisine</param-value>
-        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
@@ -98,5 +94,23 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <local>sessionBeans.BeanLigneLocal</local>
         <ejb-link>montgallette-ejb.jar#BeanLigne</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>BeanCommande2</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanCommandeLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanCommande</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>BeanMenu2</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanMenuLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanMenu</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>BeanTablee2</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanTableeLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanTablee</ejb-link>
     </ejb-local-ref>
 </web-app>

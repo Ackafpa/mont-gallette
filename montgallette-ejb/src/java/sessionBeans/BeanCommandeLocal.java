@@ -24,6 +24,9 @@ public interface BeanCommandeLocal {
 
     public List<LigneCommande> listeLigne(List<Produit> produits);
 
+    public void triCuisine(List<LigneCommande> liste, List<LigneCommande> superListe);
+
+    public Commande creerCommande(Tablee t);
     public Commande validerCommande(Tablee t, List<LigneCommande> produits, String numero, Date date);
 
 }

@@ -26,11 +26,11 @@ public class BeanTablee implements BeanTableeLocal {
     @Override
     public void jeuTables(){
         Collection<Tablee> tables = new ArrayList();
-        tables.add(new Tablee(4));
-        tables.add(new Tablee(2));
-        tables.add(new Tablee(6));
-        tables.add(new Tablee(8));
-        tables.add(new Tablee(98));
+        tables.add(new Tablee());
+        tables.add(new Tablee());
+        tables.add(new Tablee());
+        tables.add(new Tablee());
+        tables.add(new Tablee());
         for(Tablee t : tables){
         em.persist(t);
         }
@@ -55,8 +55,9 @@ public class BeanTablee implements BeanTableeLocal {
         return somme;
     }
 
-    public void persist(Object object) {
-        em.persist(object);
+    @Override
+    public void persist(Tablee t) {
+        em.persist(t);
     }
 
 }

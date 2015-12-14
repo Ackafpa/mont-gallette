@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -40,6 +41,16 @@ public class BeanCommande implements BeanCommandeLocal {
             liste.add(new LigneCommande(p, 0, c));
         }
         return liste;
+    }
+    
+    @Override
+    public void triCuisine(List<LigneCommande> liste, List<LigneCommande>superListe){
+        
+        for(LigneCommande l : liste){
+            if(l.getProduit().isPreparation()){
+               superListe.add(l);
+            }
+        }
     }
 
 //     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, String preferencesS, String garnituresS) {
@@ -74,6 +85,24 @@ public class BeanCommande implements BeanCommandeLocal {
 
         return somme;
     }
+    
+    //Creer Commande ajout ALC
+    @Override
+    public Commande creerCommande(Tablee t){
+        Commande c = new Commande();
+        GregorianCalendar d = new GregorianCalendar();
+        
+        Random i = new Random();
+        int j = i.nextInt(500);
+        
+        
+        
+        c.setDate(d.getTime());
+        c.setNumero(String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+j));
+        c.setTablee(t);
+        return c;
+    }
+    
 
     @Override
     public void jeuEssaiCommande(List<LigneCommande> liste, Tablee t) {
