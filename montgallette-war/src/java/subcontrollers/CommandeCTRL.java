@@ -6,6 +6,7 @@ import entites.Tablee;
 import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -70,21 +71,21 @@ public class CommandeCTRL implements ControllerInterface {
 
             application.setAttribute("listeCuisine", liste);
         }
-
-        if ("su".equalsIgnoreCase(action)) {
-
-            Long id = Long.valueOf(request.getParameter("id"));
-            List<LigneCommande> listeComm = (List<LigneCommande>) session.getAttribute("liste");
-            for (LigneCommande l : listeComm) {
-                if (Objects.equals(id, l.getId())) {
-
-                }
-            }
-            System.out.println("supOK");
-
-            url = "client.jsp";
-            //  }
-        }
+//
+//        if ("su".equalsIgnoreCase(action)) {
+//
+//            Long id = Long.valueOf(request.getParameter("id"));
+//            List<LigneCommande> listeComm = (List<LigneCommande>) session.getAttribute("liste");
+//            for (LigneCommande l : listeComm) {
+//                if (Objects.equals(id, l.getId())) {
+//
+//                }
+//            }
+//            System.out.println("supOK");
+//
+//            url = "client.jsp";
+//            //  }
+//        }
         if ("su".equalsIgnoreCase(action)) {
             String li = request.getParameter("ligne");
             List<LigneCommande> listee = (List<LigneCommande>) session.getAttribute("liste");
@@ -97,6 +98,7 @@ public class CommandeCTRL implements ControllerInterface {
             }
             LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
             listee.remove(lcc);
+            url = "client.jsp";
         }
 
         if ("produits".equalsIgnoreCase(action)) {
