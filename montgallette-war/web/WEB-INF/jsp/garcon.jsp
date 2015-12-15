@@ -28,7 +28,7 @@
         <div>
             <table>
                 <tr>
-                    <td><a onclick="creer()" href="Controller?section=commande.acka&action=creerTable&table=1"><img src="images/Table4persDispo.png" alt=""/></a></td>
+                    <td><a href="Controller?section=commande.acka&action=creerTable&table=1"><img src="images/Table4persDispo.png" alt=""/></a></td>
                     <td><a href="Controller?section=commande.acka&action=creerTable&table=2"><img src="images/table2persVertiDispo.png" alt=""/></a></td>
                     <td><a href="Controller?section=commande.acka&action=creerTable&table=3"><img src="images/table2persVertiDispo.png" alt=""/></a></td>
                     <td><a href="Controller?section=commande.acka&action=creerTable&table=4"><img src="images/table2persVertiDispo.png" alt=""/></a></td>
@@ -62,7 +62,7 @@
         </c:if>
 
         <script src="js/alerte.js" type="text/javascript"></script>
-        <script src="js/scriptCreation.js" type="text/javascript"></script>
+        
     </body>
 </html>
 
