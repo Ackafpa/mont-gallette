@@ -44,7 +44,8 @@ public class BeanEmplacement implements BeanEmplacementLocal {
         List<Emplacement> lemp = new ArrayList();
         
         for(int i =1; i<19; i++){
-            lemp.add(new Emplacement(true, i));
+            String numero = ""+i;
+            lemp.add(new Emplacement(true, numero));
         }
         
         for(Emplacement e: lemp){
@@ -53,10 +54,10 @@ public class BeanEmplacement implements BeanEmplacementLocal {
         
     }
     
-//    @Override
-//    public Emplacement recupEmplacement(int i){
-//        return (Emplacement)em.find(j);
-//    }
+    @Override
+    public Emplacement recupEmplacement(String numero){
+        return (Emplacement)em.find(Emplacement.class, numero);
+    }
 
     public void persist(Object object) {
         em.persist(object);

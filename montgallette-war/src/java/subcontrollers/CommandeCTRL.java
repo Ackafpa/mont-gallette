@@ -55,12 +55,12 @@ public class CommandeCTRL implements ControllerInterface {
         
         if("creerCo".equalsIgnoreCase(action)){
             Integer i = Integer.decode(request.getParameter("couverts"));
-            Integer j = Integer.decode(request.getParameter("table"));
+            
             Tablee t = new Tablee();
             t.setCouverts(i);
-//            Collection<Emplacement> coll = new ArrayList();
-//            coll.add(beanEmplacement.recupEmplacement(j));
-//            t.setEmplacements(coll);
+            Collection<Emplacement> coll = new ArrayList();
+            coll.add(beanEmplacement.recupEmplacement(request.getParameter("table")));
+            t.setEmplacements(coll);
             beanTablee.persist(t);
             
             session.setAttribute("commande", beanCommande.creerCommande(t));

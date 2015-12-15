@@ -17,6 +17,6 @@ public interface BeanEmplacementLocal {
 
     public void creerJeu();
 
-//    public Emplacement recupEmplacement(int i);
+    public Emplacement recupEmplacement(String numero);
     
 }
