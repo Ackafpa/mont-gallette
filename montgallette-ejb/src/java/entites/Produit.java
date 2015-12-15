@@ -160,6 +160,6 @@ public class Produit implements Serializable {
 
     @Override
     public String toString() {
-        return nom;
+        return nom ;
     }
 }

@@ -3,6 +3,7 @@
  */
 package sessionBeans;
 
+import entites.Produit;
 import javax.ejb.Local;
 
 /**
@@ -11,5 +12,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface BeanProduitLocal {
+
+    public Produit trouverProduit(String id);
 
 }
