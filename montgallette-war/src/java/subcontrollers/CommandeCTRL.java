@@ -58,7 +58,7 @@ public class CommandeCTRL implements ControllerInterface {
 
         if ("creerCo".equalsIgnoreCase(action)) {
             Integer i = Integer.decode(request.getParameter("couverts"));
-            Integer j = Integer.decode(request.getParameter("table"));
+            String j = request.getParameter("table");
             Tablee t = new Tablee();
             t.setCouverts(i);
 //            Collection<Emplacement> coll = new ArrayList();
@@ -81,14 +81,16 @@ public class CommandeCTRL implements ControllerInterface {
             
             //FONCTION AJOUTER PREFERENCES ET GARNITUES A FAIRE
             
-            
-            LigneCommande lc= beanLigne.creerLigne(p);
+            Commande c = (Commande) session.getAttribute("commande");
+            LigneCommande lc= beanLigne.creerLigne(p, c);
             System.out.println("LIGNE"+lc);
             liste.add(lc);
+            
             session.setAttribute("liste", liste);
             
-          
-            Commande c = (Commande) session.getAttribute("commande");// La commande n'est PAS LA
+            
+          url="client.jsp";
+            //Commande c = (Commande) session.getAttribute("commande");// La commande n'est PAS LA
            //méthode pour ajouter
             
             
@@ -120,6 +122,7 @@ public class CommandeCTRL implements ControllerInterface {
             LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
             listee.remove(lcc);
             session.setAttribute("liste", listee);
+            
             url = "client.jsp";
         }
 

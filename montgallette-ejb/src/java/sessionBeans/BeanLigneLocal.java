@@ -24,9 +24,10 @@ public interface BeanLigneLocal {
 
     public LigneCommande sortirLigne (LigneCommande lc, String li);
 
-    
 
-    public LigneCommande creerLigne(Produit p);
+    public LigneCommande creerLigne(Produit p, Commande c);
+
+    public LigneCommande chercherLigne(Integer id);
 
 
     

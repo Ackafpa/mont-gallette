@@ -29,16 +29,20 @@ public class BeanLigne implements BeanLigneLocal {
     private EntityManager em;
 
   
+  
+    
+    
     @Override
-    public LigneCommande creerLigne (Produit p){
+    public LigneCommande creerLigne (Produit p, Commande c){
         
         
-        LigneCommande lc = new LigneCommande(p, 0, null);
+        LigneCommande lc = new LigneCommande(p, 0, c);
 
         return lc;
     }
     
     
+    @Override
     public LigneCommande chercherLigne(Integer id) {
         System.out.println("CHERCHER LIGNE OOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
         String req = "select l from LigneCommande l where id = :id";
