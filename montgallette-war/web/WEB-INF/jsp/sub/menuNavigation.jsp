@@ -3,8 +3,10 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<div title="Boissons" id="optionNavBoisson"></div>
-<div title="Entrées" id="optionNavEntree"></div>
-<div title="Plats" id="optionNavPlat"></div>
-<div title="Desserts" id="optionNavDessert"></div>
-<div title="Formules" id="optionNavFormule"></div>
+<div onclick="refreshMenu('boisson')" title="Boissons" id="optionNavBoisson"></div>
+<div onclick="refreshMenu('entree')" title="Entrées" id="optionNavEntree"></div>
+<div onclick="refreshMenu('plat')" title="Plats" id="optionNavPlat"></div>
+<div onclick="refreshMenu('dessert')" title="Desserts" id="optionNavDessert"></div>
+<div onclick="refreshMenu('formule')" title="Formules" id="optionNavFormule"></div>
+
+<script src="js/menuAJAX.js" type="text/javascript"></script>

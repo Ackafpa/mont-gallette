@@ -59,9 +59,10 @@ public class BeanMenu implements BeanMenuLocal {
     }
     
     @Override
-    public List<Produit> selectAllProduit() {
-        String req = "select p from Produit p";
-        Query qr = em.createQuery(req);
+    public List<Produit> selectAllProduit(String categorie) {
+        String req = "select p from Produit p where p.categorie.nom =:categorieParam";
+        Query qr = em.createQuery(req); 
+        qr.setParameter("categorieParam", categorie);
         return qr.getResultList();
     }
 

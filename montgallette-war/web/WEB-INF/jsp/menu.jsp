@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="Controller?section=menu.acka&action=creerDonnees" var="urlcm01" />
 
         <div id="menuSession">
             <c:url value="WEB-INF/jsp/sub/menuSession.jsp" var="urlm01"/>

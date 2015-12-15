@@ -116,7 +116,8 @@ public class CommandeCTRL implements ControllerInterface {
         }
         if ("creerDonnees".equalsIgnoreCase(action)) {
 
-            List<LigneCommande> listeLigne = beanCommande.listeLigne(beanMenu.selectAllProduit());
+            //modifiee TEMP par Kenneth
+            List<LigneCommande> listeLigne = beanCommande.listeLigne(beanMenu.selectAllProduit("boisson"));
 
             session.setAttribute("liste", listeLigne);
             beanCommande.jeuEssaiCommande(listeLigne, beanTablee.selectTable(2L));

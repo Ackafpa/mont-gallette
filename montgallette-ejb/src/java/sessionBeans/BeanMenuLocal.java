@@ -10,6 +10,6 @@ import javax.ejb.Local;
 @Local
 public interface BeanMenuLocal {
     public void creerJeuxDonnees();
-    public List<Produit> selectAllProduit();
+    public List<Produit> selectAllProduit(String categorie);
     public boolean isJeuxCree();
 }

@@ -2,8 +2,6 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<c:url value="Controller?section=menu.acka&action=creerDonnees" var="urlcm01" />
-
     <table>
         <tbody>
             <c:forEach items="${produits}" var="p">
