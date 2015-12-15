@@ -27,6 +27,7 @@ import sessionBeans.BeanProduitLocal;
 import sessionBeans.BeanTableeLocal;
 
 public class CommandeCTRL implements ControllerInterface {
+    BeanEmplacementLocal beanEmplacement = lookupBeanEmplacementLocal1();
 
     BeanProduitLocal beanProduit = lookupBeanProduitLocal();
 
@@ -225,6 +226,16 @@ public class CommandeCTRL implements ControllerInterface {
 
 
     private BeanEmplacementLocal lookupBeanEmplacementLocal() {
+        try {
+            Context c = new InitialContext();
+            return (BeanEmplacementLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanEmplacement!sessionBeans.BeanEmplacementLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private BeanEmplacementLocal lookupBeanEmplacementLocal1() {
         try {
             Context c = new InitialContext();
             return (BeanEmplacementLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanEmplacement!sessionBeans.BeanEmplacementLocal");
