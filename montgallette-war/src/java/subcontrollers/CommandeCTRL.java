@@ -1,5 +1,6 @@
 package subcontrollers;
 
+import entites.Commande;
 import entites.Emplacement;
 import entites.LigneCommande;
 import entites.Produit;
@@ -209,7 +210,7 @@ public class CommandeCTRL implements ControllerInterface {
             throw new RuntimeException(ne);
         }
     }
-}
+
 
     private BeanEmplacementLocal lookupBeanEmplacementLocal() {
         try {
