@@ -27,10 +27,9 @@ import sessionBeans.BeanProduitLocal;
 import sessionBeans.BeanTableeLocal;
 
 public class CommandeCTRL implements ControllerInterface {
+    
     BeanEmplacementLocal beanEmplacement = lookupBeanEmplacementLocal1();
-
     BeanProduitLocal beanProduit = lookupBeanProduitLocal();
-
     BeanLigneLocal beanLigne = lookupBeanLigneLocal();
     BeanTableeLocal beanTablee = lookupBeanTableeLocal();
     BeanMenuLocal beanMenu = lookupBeanMenuLocal();
@@ -59,7 +58,7 @@ public class CommandeCTRL implements ControllerInterface {
                 request.setAttribute("creer", true);
                 request.setAttribute("table", table);
                 if("1".equals(table)){
-                    request.setAttribute("t4d", "images/Table4persIndispo.png");
+                    request.setAttribute("t4p", true);
                 }
                 url = "garcon.jsp";
             } else {
@@ -77,7 +76,7 @@ public class CommandeCTRL implements ControllerInterface {
 
                 session.setAttribute("commande", beanCommande.creerCommande(beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table))));
 
-                url = "client.jsp";
+                url = "garcon.jsp";
             } else {
                 session.setAttribute("commandes", beanCommande.recupCommande(beanTablee.recupTablee(beanEmplacement.recupEmplacement(table))));
                 url = "client.jsp";

@@ -7,16 +7,17 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-        <link href="css/global.css" rel="stylesheet" type="text/css" />
-        
-        <form action="Controller" method="post">
-            Nombre de couverts: <input type="text" name="couverts" size="3" maxlength="3"/>
-        <input type="hidden" name="section" value="commande.acka"/>
-        <input type="hidden" name="action" value="creerCo"/>
-        <input type="hidden" name="table" value="${table}"/>
+<link href="css/global.css" rel="stylesheet" type="text/css" />
 
-        <a href="Controller?section=commande.acka&action=creerCo"><input type="submit" name="doIt" value="Valider" ></a>
+<form action="Controller" method="post">
+    Nombre de couverts: <input type="text" name="couverts" size="3" maxlength="3"/>
+    <input type="hidden" name="section" value="commande.acka"/>
+    <input type="hidden" name="action" value="creerCo"/>
+    <input type="hidden" name="table" value="${table}"/>
+    <c:if test="${t4p}">
+        <a href="Controller?section=commande.acka&action=creerCo" ><input type="submit" name="doIt" value="Valider" onclick="changeDispo('${table}', 'images/Table4persIndispo.png')"></a>
+        </c:if>
 
-        </form>
-        
-        <script src="js/tables.js" type="text/javascript"></script>
+</form>
+
+<script src="js/tables.js" type="text/javascript"></script>
