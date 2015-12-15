@@ -113,4 +113,10 @@
         <local>sessionBeans.BeanTableeLocal</local>
         <ejb-link>montgallette-ejb.jar#BeanTablee</ejb-link>
     </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>BeanProduit</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanProduitLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanProduit</ejb-link>
+    </ejb-local-ref>
 </web-app>

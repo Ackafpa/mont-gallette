@@ -5,7 +5,9 @@
  */
 package sessionBeans;
 
+import entites.Commande;
 import entites.LigneCommande;
+import entites.Produit;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -21,6 +23,10 @@ public interface BeanLigneLocal {
    // public int sortirLigne(List<LigneCommande> liste, String li);
 
     public LigneCommande sortirLigne (LigneCommande lc, String li);
+
+    
+
+    public LigneCommande creerLigne(Produit p);
 
 
     

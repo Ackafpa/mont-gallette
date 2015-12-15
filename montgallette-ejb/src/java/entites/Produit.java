@@ -167,7 +167,7 @@ public class Produit implements Serializable {
 
     @Override
     public String toString() {
-        return "Produits : " + nom + " ]";
+        return nom ;
     }
 
 }
