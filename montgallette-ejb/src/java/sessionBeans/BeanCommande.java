@@ -32,6 +32,9 @@ public class BeanCommande implements BeanCommandeLocal {
         em.persist(c);
         return c;
     }
+    
+    
+    
 
     // public Commande(Tablee tablee, List<LigneCommande> produits, String numero, Date date)
     @Override
@@ -54,17 +57,7 @@ public class BeanCommande implements BeanCommandeLocal {
         }
     }
 
-//     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, String preferencesS, String garnituresS) {
-//
-//        LigneCommande ligne = new LigneCommande(produit, etat, commande);
-//        //String []preferences = preferencesS.split(" ");
-//        ligne.setPreferences(preferences);
-//        ligne.setGarnitures(garnitures);
-//        Collection<LigneCommande> liste = commande.getProduits();
-//        liste.add(ligne);
-//        commande.setProduits(ligne);
-//        return commande;
-//    }
+
     public Commande supprimerLigne(Commande commande, LigneCommande ligne) {
         Collection<LigneCommande> liste = commande.getProduits();
         liste.remove(ligne);
@@ -138,6 +131,10 @@ public class BeanCommande implements BeanCommandeLocal {
         liste.add(ligne);
         commande.setProduits(ligne);
         return commande;
+    }
+    @Override
+     public void persist(Commande c) {
+        em.persist(c);
     }
 
 }

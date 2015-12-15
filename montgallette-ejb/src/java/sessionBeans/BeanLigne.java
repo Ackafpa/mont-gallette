@@ -5,7 +5,9 @@
  */
 package sessionBeans;
 
+import entites.Commande;
 import entites.LigneCommande;
+import entites.Produit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,17 @@ public class BeanLigne implements BeanLigneLocal {
     @PersistenceContext(unitName = "montgallette-ejbPU")
     private EntityManager em;
 
+  
+    @Override
+    public LigneCommande creerLigne (Produit p){
+        
+        
+        LigneCommande lc = new LigneCommande(p, 0, null);
+
+        return lc;
+    }
+    
+    
     public LigneCommande chercherLigne(Integer id) {
         System.out.println("CHERCHER LIGNE OOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
         String req = "select l from LigneCommande l where id = :id";

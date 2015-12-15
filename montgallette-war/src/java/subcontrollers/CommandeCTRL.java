@@ -1,7 +1,9 @@
 package subcontrollers;
 
+import entites.Commande;
 import entites.Emplacement;
 import entites.LigneCommande;
+import entites.Produit;
 import entites.Tablee;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,11 +23,12 @@ import sessionBeans.BeanCommandeLocal;
 import sessionBeans.BeanEmplacementLocal;
 import sessionBeans.BeanLigneLocal;
 import sessionBeans.BeanMenuLocal;
+import sessionBeans.BeanProduitLocal;
 import sessionBeans.BeanTableeLocal;
 
 public class CommandeCTRL implements ControllerInterface {
 
-    BeanEmplacementLocal beanEmplacement = lookupBeanEmplacementLocal();
+    BeanProduitLocal beanProduit = lookupBeanProduitLocal();
 
     BeanLigneLocal beanLigne = lookupBeanLigneLocal();
     BeanTableeLocal beanTablee = lookupBeanTableeLocal();
@@ -79,12 +82,40 @@ public class CommandeCTRL implements ControllerInterface {
                 url = "client.jsp";
             }
         }
+        //Nouvelle méthode CHRIS
+        if ("ajouterLigne".equalsIgnoreCase(action)) {
+            String id = request.getParameter("produit");
+            System.out.println("IDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"+id);
+            liste = (List) session.getAttribute("liste");
+            System.out.println("LISTE"+liste);
+            Produit p = beanProduit.trouverProduit(id);//ERREUR
+            System.out.println("PRODUIT"+p);
+            
+            //FONCTION AJOUTER PREFERENCES ET GARNITUES A FAIRE
+            
+            
+            LigneCommande lc= beanLigne.creerLigne(p);
+            System.out.println("LIGNE"+lc);
+            liste.add(lc);
+            session.setAttribute("liste", liste);
+            
+          
+            Commande c = (Commande) session.getAttribute("commande");// La commande n'est PAS LA
+           //méthode pour ajouter
+            
+            
+            
+           // liste.add(); une fois la ligne finie
+        }
+// Fin nouvelle fonction CHRIS
 
         if ("val".equalsIgnoreCase(action)) {
 
             List<LigneCommande> listeCom = (List<LigneCommande>) session.getAttribute("liste");
-            beanCommande.triCuisine(listeCom, liste);
 
+            beanCommande.triCuisine(listeCom, liste);
+            Commande c = (Commande) session.getAttribute("Commande");
+            beanCommande.persist(c);
             application.setAttribute("listeCuisine", liste);
         }
 
@@ -100,6 +131,7 @@ public class CommandeCTRL implements ControllerInterface {
             }
             LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
             listee.remove(lcc);
+            session.setAttribute("liste", listee);
             url = "client.jsp";
         }
 
@@ -180,6 +212,17 @@ public class CommandeCTRL implements ControllerInterface {
             throw new RuntimeException(ne);
         }
     }
+
+    private BeanProduitLocal lookupBeanProduitLocal() {
+        try {
+            Context c = new InitialContext();
+            return (BeanProduitLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanProduit!sessionBeans.BeanProduitLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
 
     private BeanEmplacementLocal lookupBeanEmplacementLocal() {
         try {

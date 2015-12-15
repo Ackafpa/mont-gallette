@@ -31,7 +31,7 @@
                         <td>${ligne.preferences}</td>
                         <td>${ligne.garnitures}</td>
                         <td>${ligne.etat}</td>
-                        <td>ID : ${ligne.id} Commande : ${ligne.commande.id}</td>
+                        
 
 
                         <td><input type="submit" name="DoSu" value="Suprimer"></td>
