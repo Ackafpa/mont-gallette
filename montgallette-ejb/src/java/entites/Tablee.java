@@ -34,9 +34,13 @@ public class Tablee implements Serializable {
         
     }
 
-//    public Tablee(int couverts) {
-//        this.couverts = couverts;
-//    }
+    public Tablee(Integer couverts, Collection<Emplacement> emplacements) {
+        this.couverts = couverts;
+        this.emplacements = emplacements;
+    }
+
+    
+
     
 
     public Long getId() {

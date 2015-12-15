@@ -5,7 +5,9 @@
  */
 package sessionBeans;
 
+import entites.Emplacement;
 import entites.Tablee;
+import java.util.Collection;
 import javax.ejb.Local;
 
 /**
@@ -23,6 +25,10 @@ public interface BeanTableeLocal {
     public Tablee selectTable(Long l);
 
     public void persist(Tablee t);
+
+    public Tablee recupTablee(Emplacement e);
+
+    public Tablee creerTablee(Integer couverts, Emplacement e);
     
 
 }

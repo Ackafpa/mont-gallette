@@ -24,6 +24,7 @@ import sessionBeans.BeanMenuLocal;
 import sessionBeans.BeanTableeLocal;
 
 public class CommandeCTRL implements ControllerInterface {
+
     BeanEmplacementLocal beanEmplacement = lookupBeanEmplacementLocal();
 
     BeanLigneLocal beanLigne = lookupBeanLigneLocal();
@@ -39,6 +40,7 @@ public class CommandeCTRL implements ControllerInterface {
 
         ServletContext application = servlet.getServletContext();
         String action = request.getParameter("action");
+        String table = request.getParameter("table");
         String msgCommande = "Cliquez sur ajouter pour remplir votre commande";
         request.setAttribute("msgCommande", msgCommande);
 
@@ -47,25 +49,35 @@ public class CommandeCTRL implements ControllerInterface {
         if (liste == null) {
             application.setAttribute("listeCuisine", new ArrayList());
         }
-        if("creerTable".equalsIgnoreCase(action)){
-            request.setAttribute("creer", true);
-            url = "garcon.jsp";
+        
+        if ("creerTable".equalsIgnoreCase(action)) {
+            if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
+                request.setAttribute("creer", true);
+                request.setAttribute("table", table);
+                if("1".equals(table)){
+                    request.setAttribute("t4d", "images/Table4persIndispo.png");
+                }
+                url = "garcon.jsp";
+            } else {
+                request.setAttribute("table", table);
+                request.setAttribute("section", "commande.acka");
+                request.setAttribute("action", "creerCo");
+                url = "garcon.jsp";
+            }
         }
-        
-        
-        if("creerCo".equalsIgnoreCase(action)){
-            Integer i = Integer.decode(request.getParameter("couverts"));
-            
-            Tablee t = new Tablee();
-            t.setCouverts(i);
-            Collection<Emplacement> coll = new ArrayList();
-            coll.add(beanEmplacement.recupEmplacement(request.getParameter("table")));
-            t.setEmplacements(coll);
-            beanTablee.persist(t);
-            
-            session.setAttribute("commande", beanCommande.creerCommande(t));
-            
-            url="client.jsp";
+
+        if ("creerCo".equalsIgnoreCase(action)) {
+            if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
+
+                Integer i = Integer.decode(request.getParameter("couverts"));
+
+                session.setAttribute("commande", beanCommande.creerCommande(beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table))));
+
+                url = "client.jsp";
+            } else {
+                session.setAttribute("commandes", beanCommande.recupCommande(beanTablee.recupTablee(beanEmplacement.recupEmplacement(table))));
+                url = "client.jsp";
+            }
         }
 
         if ("val".equalsIgnoreCase(action)) {
@@ -111,7 +123,7 @@ public class CommandeCTRL implements ControllerInterface {
 
             session.setAttribute("liste", listeLigne);
             beanCommande.jeuEssaiCommande(listeLigne, beanTablee.selectTable(2L));
-            
+
             //A changer, doit s'executer a chaque commande passée
             beanCommande.triCuisine(listeLigne, liste);
             application.setAttribute("listeCuisine", liste);
@@ -179,4 +191,3 @@ public class CommandeCTRL implements ControllerInterface {
         }
     }
 }
-

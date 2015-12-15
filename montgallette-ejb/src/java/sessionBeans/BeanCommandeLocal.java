@@ -6,6 +6,7 @@
 package sessionBeans;
 
 import entites.Commande;
+import entites.Garniture;
 import entites.LigneCommande;
 import entites.Produit;
 import entites.Tablee;
@@ -28,5 +29,9 @@ public interface BeanCommandeLocal {
 
     public Commande creerCommande(Tablee t);
     public Commande validerCommande(Tablee t, List<LigneCommande> produits, String numero, Date date);
+
+    public List<Commande> recupCommande(Tablee t);
+
+    public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures);
 
 }

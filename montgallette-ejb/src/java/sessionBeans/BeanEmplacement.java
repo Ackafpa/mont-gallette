@@ -3,10 +3,12 @@ package sessionBeans;
 import entites.Emplacement;
 import entites.Tablee;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class BeanEmplacement implements BeanEmplacementLocal {
@@ -55,7 +57,15 @@ public class BeanEmplacement implements BeanEmplacementLocal {
     }
     
     @Override
-    public Emplacement recupEmplacement(String numero){
+    public Collection<Emplacement> collEmplacement(String numero){
+        Collection<Emplacement> coll = new ArrayList();
+        Emplacement e = recupEmplacement(numero);
+        coll.add(e);
+        return coll;
+    }
+    
+    @Override
+    public Emplacement recupEmplacement(String numero){ 
         return (Emplacement)em.find(Emplacement.class, numero);
     }
 

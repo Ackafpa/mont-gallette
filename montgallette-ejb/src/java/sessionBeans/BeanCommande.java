@@ -15,6 +15,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateful
 public class BeanCommande implements BeanCommandeLocal {
@@ -94,12 +95,21 @@ public class BeanCommande implements BeanCommandeLocal {
         
         Random i = new Random();
         int j = i.nextInt(500);
-
+        
         c.setDate(d.getTime());
         c.setNumero(String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+j));
         c.setTablee(t);
         em.persist(c);
         return c;
+    }
+    
+    //Ajout ALC
+    @Override
+    public List<Commande> recupCommande(Tablee t){
+        String req = "select c from Commande c where c.tablee = :t";
+        Query qr = em.createQuery(req);
+        qr.setParameter("t", t);
+        return qr.getResultList();
     }
     
 
@@ -117,6 +127,8 @@ public class BeanCommande implements BeanCommandeLocal {
 
     }
 
+
+    @Override
     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures) {
 
         LigneCommande ligne = new LigneCommande(produit, etat, commande);

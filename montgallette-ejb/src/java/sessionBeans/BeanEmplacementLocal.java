@@ -6,6 +6,7 @@
 package sessionBeans;
 
 import entites.Emplacement;
+import java.util.Collection;
 import javax.ejb.Local;
 
 /**
@@ -18,5 +19,7 @@ public interface BeanEmplacementLocal {
     public void creerJeu();
 
     public Emplacement recupEmplacement(String numero);
+
+    public Collection<Emplacement> collEmplacement(String numero);
     
 }

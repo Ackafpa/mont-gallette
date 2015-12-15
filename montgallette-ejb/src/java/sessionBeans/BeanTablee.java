@@ -1,11 +1,13 @@
 package sessionBeans;
 
 import entites.Commande;
+import entites.Emplacement;
 import entites.Tablee;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -53,6 +55,34 @@ public class BeanTablee implements BeanTableeLocal {
             // somme += t.getCommandes().getMontantCommande();
         }
         return somme;
+    }
+    
+    @Override
+    public Tablee recupTablee(Emplacement e){
+        String req = "select t from Tablee t where t.emplacements = :coll";
+        Query qr = em.createQuery(req);
+        qr.setParameter("coll", e);
+        try{
+        Tablee t = (Tablee)qr.getSingleResult();
+        return t;
+        }catch(NoResultException ex){
+            Tablee t = null;
+            return t;
+        }
+        
+    }
+    
+    @Override
+    public Tablee creerTablee(Integer couverts, Emplacement e){
+        Collection<Emplacement> coll = new ArrayList();
+        e.setDispo(false);
+
+        coll.add(e);
+        Tablee t = new Tablee(couverts, coll);
+        
+        em.persist(t);
+
+        return t;
     }
 
     @Override
