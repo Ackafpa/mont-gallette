@@ -94,12 +94,11 @@ public class BeanCommande implements BeanCommandeLocal {
         
         Random i = new Random();
         int j = i.nextInt(500);
-        
-        
-        
+
         c.setDate(d.getTime());
         c.setNumero(String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+j));
         c.setTablee(t);
+        em.persist(c);
         return c;
     }
     

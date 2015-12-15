@@ -9,7 +9,7 @@
         <link href="css/global.css" rel="stylesheet" type="text/css" />
         
         <form action="Controller" method="post">
-        Nombre de couverts: <input type="text" name="couverts"/>
+            Nombre de couverts: <input type="text" name="couverts" size="3" maxlength="3"/>
         <input type="hidden" name="section" value="commande.acka"/>
         <input type="hidden" name="action" value="creerCo"/>
         <a href="Controller?section=commande.acka&action=creerCo"><input type="submit" name="doIt" value="Valider"></a>

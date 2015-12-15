@@ -74,8 +74,17 @@ img{
     border-radius: 8px;
     height: 96px;
     width: 96px;
+    margin-right: 5px;
 }
 
 table{
     margin: auto;
+}
+.td{
+    margin-bottom: 5px;
+}
+
+#creation{
+   text-align: center;
+   margin-top: 50px;
 }

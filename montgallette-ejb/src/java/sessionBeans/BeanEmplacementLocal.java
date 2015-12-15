@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+import entites.Emplacement;
 import javax.ejb.Local;
 
 /**
@@ -15,5 +16,7 @@ import javax.ejb.Local;
 public interface BeanEmplacementLocal {
 
     public void creerJeu();
+
+//    public Emplacement recupEmplacement(int i);
     
 }
