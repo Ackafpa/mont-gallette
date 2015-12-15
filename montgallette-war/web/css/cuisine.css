@@ -1,5 +1,17 @@
+.CuisineInactif{
+    background: #cccccc;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #737373;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    border: solid #737373 2px;
+    text-decoration: none;
+}
 
-.btnCuisinePreparation {
+.CuisineEnCours {
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
     border-radius: 28px;
@@ -10,37 +22,9 @@
     padding: 10px 20px 10px 20px;
     border: solid #f76a1e 2px;
     text-decoration: none;
-
 }
 
-.btnCuisineInactif{
-    background: #cccccc;
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
-    border-radius: 28px;
-    font-family: Arial;
-    color: #737373;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    border: solid #737373 2px;
-    text-decoration: none;
-}
-
-.btnCuisineDisabled{
-    background: #cccccc;
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
-    border-radius: 28px;
-    font-family: Arial;
-    color: #737373;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    border: solid #737373 2px;
-    text-decoration: none;
-    
-}
-
-.btnCuisinePret{
+.CuisineFini{
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
     border-radius: 28px;
@@ -51,4 +35,16 @@
     padding: 10px 20px 10px 20px;
     border: solid #20a112 2px;
     text-decoration: none;
+}
+
+.CuisineIndispo {
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Arial;
+  color: #ff0000;
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+  border: solid #ff0000 1px;
+  text-decoration: none;
 }

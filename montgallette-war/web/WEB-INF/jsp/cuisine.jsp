@@ -6,23 +6,65 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/global.css" rel="stylesheet" type="text/css"/>
+        <link href="css/cuisine.css" rel="stylesheet" type="text/css"/>
         <link href="css/menu.css" rel="stylesheet" type="text/css"/>
-    
-    <title>Interface cuisine</title>
-</head>
-<body>
 
-    <h1>Hello Cuisine!</h1>
-   
-    <c:forEach items="${listeCuisine}" var="l">
-        ${l.produit.nom}</br>
-        
-    </c:forEach>
+        <title>Interface cuisine</title>
+    </head>
+    <body>
+        <form>
+            <input type="button" class="CuisineInactif" id="btnTest" onclick="test()" value="test"/>
+        </form>
 
-    <a href="Controller?section=login.acka">Home</a> | 
-    <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
-    </br>
+        <h1>Hello Cuisine!</h1>
+        <table>
+            <c:forEach items="${listeCuisine}" var="l">
+                <c:set var="idProduit" value="l.produit"/>
+                <c:set var="etat" value="l.etat"/>
+                <tr>
+                    <td>${l.produit}</td>
+                    <td>${l.preferences}</td>
+                    <td><input type="button" class="CuisineInactif" id="btnPreparation" onclick="preparation();changerEtat(${l.produit})" value="Préparer"/></td>
+                    <td><input type="button" class="CuisineInactif" id="btnPret" onclick="pret()" value="Prêt"/></td>
+                    <td><input type="button" class="CuisineIndispo" id="btnIndispo" onclick="indispo()" value="X"/></td>
+                    <td>${l.etat}</td>
+                </tr>
 
+            </c:forEach>
+            <%--
+            <c:forEach items="${listeCuisine}" var="l">
+                <tr>
+                    <td>${l.produit.nom}</td>
+                    <td><input type="button" class="CuisineInactif" id="btnPreparation" onclick="preparation()" value="Préparer"/></td>
+                    <td><input type="button" class="CuisineInactif" id="btnPret" onclick="pret()" value="Prêt"/></td>
+                    <td><input type="button" class="CuisineIndispo" id="btnIndispo" onclick="indispo()" value="X"/></td>
+                    <td>${l.etat}</td>
+                </tr>
+            </c:forEach>
+            --%>
+        </table>
+        </br>
+        <a href="Controller?section=login.acka">Home</a> | 
+        <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
+        </br>
+        <script src="js/cuisine.js" type="text/javascript"></script>
 
-</body>
+    </body>
+
+    <%-- CODE BRUT DE BASE (LISTE QUI FONCTIONNE)
+    <body>
+
+        <h1>Hello Cuisine!</h1>
+
+        <c:forEach items="${listeCuisine}" var="l">
+            ${l.produit.nom}</br>
+
+        </c:forEach>
+
+        </br>
+        <a href="Controller?section=login.acka">Home</a> | 
+        <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
+        </br>
+
+    </body> --%>
 </html>

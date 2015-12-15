@@ -1,6 +1,5 @@
 package entites;
 
-import com.sun.xml.ws.rx.testing.PacketFiltering;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,15 +38,11 @@ public class Produit implements Serializable {
     private Collection<Garniture> garnitures;
 
     public Produit() {
-        
         offres = new ArrayList();
-        garnitures = new ArrayList();
-        
+        garnitures = new ArrayList();   
     }
 
-
     public Produit(String nom, boolean dispo, boolean preparation, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie, String photoURL) {
-
         this();
         this.nom = nom;
         this.dispo = dispo;
@@ -57,8 +52,6 @@ public class Produit implements Serializable {
         this.descriptionComplete = descriptionComplete;
         this.categorie = categorie;
         this.photoURL = photoURL;
-        
-
     }
 
     public Long getId() {
@@ -167,7 +160,6 @@ public class Produit implements Serializable {
 
     @Override
     public String toString() {
-        return "Produits : " + nom + " ]";
+        return nom;
     }
-
 }

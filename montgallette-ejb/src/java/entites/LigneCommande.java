@@ -12,10 +12,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-/**
- *
- * @author cdi404
- */
 @Entity
 public class LigneCommande implements Serializable {
 
@@ -80,8 +76,6 @@ public class LigneCommande implements Serializable {
        // String s = this.toString(etat);
         return produit + " " + preferences + " " + garnitures + " est " + s;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -90,8 +84,6 @@ public class LigneCommande implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-   
 
     public Integer getEtat() {
         return etat;
@@ -132,7 +124,4 @@ public class LigneCommande implements Serializable {
     public void setGarnitures(Collection<Garniture> garnitures) {
         this.garnitures = garnitures;
     }
-    
-    
-
 }
