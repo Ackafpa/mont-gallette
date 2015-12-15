@@ -6,7 +6,6 @@ import entites.LigneCommande;
 import entites.Produit;
 import entites.Tablee;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -27,9 +26,9 @@ import sessionBeans.BeanProduitLocal;
 import sessionBeans.BeanTableeLocal;
 
 public class CommandeCTRL implements ControllerInterface {
-
+    
+    BeanEmplacementLocal beanEmplacement = lookupBeanEmplacementLocal1();
     BeanProduitLocal beanProduit = lookupBeanProduitLocal();
-
     BeanLigneLocal beanLigne = lookupBeanLigneLocal();
     BeanTableeLocal beanTablee = lookupBeanTableeLocal();
     BeanMenuLocal beanMenu = lookupBeanMenuLocal();
@@ -43,6 +42,7 @@ public class CommandeCTRL implements ControllerInterface {
 
         ServletContext application = servlet.getServletContext();
         String action = request.getParameter("action");
+        String table = request.getParameter("table");
         String msgCommande = "Cliquez sur ajouter pour remplir votre commande";
         request.setAttribute("msgCommande", msgCommande);
 
@@ -51,24 +51,35 @@ public class CommandeCTRL implements ControllerInterface {
         if (liste == null) {
             application.setAttribute("listeCuisine", new ArrayList());
         }
+        
         if ("creerTable".equalsIgnoreCase(action)) {
-            request.setAttribute("creer", true);
-            url = "garcon.jsp";
+            if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
+                request.setAttribute("creer", true);
+                request.setAttribute("table", table);
+                if("1".equals(table)){
+                    request.setAttribute("t4p", true);
+                }
+                url = "garcon.jsp";
+            } else {
+                request.setAttribute("table", table);
+                request.setAttribute("section", "commande.acka");
+                request.setAttribute("action", "creerCo");
+                url = "garcon.jsp";
+            }
         }
 
         if ("creerCo".equalsIgnoreCase(action)) {
-            Integer i = Integer.decode(request.getParameter("couverts"));
-            String j = request.getParameter("table");
-            Tablee t = new Tablee();
-            t.setCouverts(i);
-//            Collection<Emplacement> coll = new ArrayList();
-//            coll.add(beanEmplacement.recupEmplacement(j));
-//            t.setEmplacements(coll);
-            beanTablee.persist(t);
-            
-            session.setAttribute("commande", beanCommande.creerCommande(t));
+            if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
 
-            url = "client.jsp";
+                Integer i = Integer.decode(request.getParameter("couverts"));
+
+                session.setAttribute("commande", beanCommande.creerCommande(beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table))));
+
+                url = "garcon.jsp";
+            } else {
+                session.setAttribute("commandes", beanCommande.recupCommande(beanTablee.recupTablee(beanEmplacement.recupEmplacement(table))));
+                url = "client.jsp";
+            }
         }
         //Nouvelle méthode CHRIS
         if ("ajouterLigne".equalsIgnoreCase(action)) {
@@ -224,5 +235,14 @@ public class CommandeCTRL implements ControllerInterface {
             throw new RuntimeException(ne);
         }
     }
-}
 
+    private BeanEmplacementLocal lookupBeanEmplacementLocal1() {
+        try {
+            Context c = new InitialContext();
+            return (BeanEmplacementLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanEmplacement!sessionBeans.BeanEmplacementLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+}

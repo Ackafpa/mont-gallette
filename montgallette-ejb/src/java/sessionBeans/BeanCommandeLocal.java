@@ -31,6 +31,7 @@ public interface BeanCommandeLocal {
     public Commande validerCommande(Tablee t, List<LigneCommande> produits, String numero, Date date);
 
     public void persist(Commande c);
+    public List<Commande> recupCommande(Tablee t);
 
     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures);
 

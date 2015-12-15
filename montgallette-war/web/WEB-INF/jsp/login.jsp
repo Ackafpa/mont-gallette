@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : 1 déc. 2015, 13:54:03
-    Author     : cdi406
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -26,11 +20,11 @@
                 <input type="hidden" name="action" value="login"/>
                 </br>
                 </br>
-            <%-- CLAVIER NUMERIQUE --%>
-                
-            <%-- BOUTON RESET --%>
+                <%-- CLAVIER NUMERIQUE --%>
+
+                <%-- BOUTON RESET --%>
                 <input id="btnReset" class="login" type="reset" value="Delete" onclick="reset()"/>
-            <%-- BOUTON CONNEXION --%>
+                <%-- BOUTON CONNEXION --%>
                 <a id="linkLogin" href="Controller?section=login.acka&action=login">
                     <input class="login" id="submit" type="submit" name="submit" value="Connexion"/>
                 </a>
@@ -52,20 +46,8 @@
                 <br>
                 <br>
                 <%-- /CLAVIER NUMERIQUE --%>
-            </form>   
-
-            <script type="text/javascript">
-                function reset() {
-                    document.getElementById('code').value = '';
-                }
-
-                function ajouter(v2) {
-                document.getElementById('code').value = document.getElementById('code').value.concat(v2);
-                }
-            </script>
-
-
-
+            </form>
+            <script src="js/clavierLogin.js" type="text/javascript"></script>
             <c:if test="${deco}">
                 ${msgDeco}${user.prenom} ${user.nom} ?
                 <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
@@ -73,5 +55,6 @@
             <p id="err">${msg}${errCode}</p>
             </br>
         </div>
+
     </body>
 </html>
