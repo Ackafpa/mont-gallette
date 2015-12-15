@@ -16,6 +16,7 @@ public class Emplacement implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;                //--> idem numero de table ??
     private boolean dispo;
+    private Integer numero;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Collection<Tablee> tablees;
@@ -24,9 +25,10 @@ public class Emplacement implements Serializable {
     public Emplacement() {
     }
 
-    public Emplacement(boolean dispo) {
+    public Emplacement(boolean dispo, Integer numero) {
         
         this.dispo = dispo;
+        this.numero = numero;
     }
 
     public Long getId() {
@@ -52,6 +54,16 @@ public class Emplacement implements Serializable {
     public void setTablees(Collection<Tablee> tablees) {
         this.tablees = tablees;
     }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+    
+    
     
 
     @Override

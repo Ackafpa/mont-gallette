@@ -118,5 +118,9 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <local>sessionBeans.BeanProduitLocal</local>
         <ejb-link>montgallette-ejb.jar#BeanProduit</ejb-link>
+        <ejb-ref-name>BeanEmplacement2</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.BeanEmplacementLocal</local>
+        <ejb-link>montgallette-ejb.jar#BeanEmplacement</ejb-link>
     </ejb-local-ref>
 </web-app>

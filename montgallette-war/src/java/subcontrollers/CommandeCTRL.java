@@ -1,13 +1,11 @@
 package subcontrollers;
 
-import entites.Commande;
+import entites.Emplacement;
 import entites.LigneCommande;
 import entites.Produit;
 import entites.Tablee;
-import java.sql.Date;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -21,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import sessionBeans.BeanCommandeLocal;
+import sessionBeans.BeanEmplacementLocal;
 import sessionBeans.BeanLigneLocal;
 import sessionBeans.BeanMenuLocal;
 import sessionBeans.BeanProduitLocal;
@@ -58,8 +57,12 @@ public class CommandeCTRL implements ControllerInterface {
 
         if ("creerCo".equalsIgnoreCase(action)) {
             Integer i = Integer.decode(request.getParameter("couverts"));
+            Integer j = Integer.decode(request.getParameter("table"));
             Tablee t = new Tablee();
             t.setCouverts(i);
+//            Collection<Emplacement> coll = new ArrayList();
+//            coll.add(beanEmplacement.recupEmplacement(j));
+//            t.setEmplacements(coll);
             beanTablee.persist(t);
             
             session.setAttribute("commande", beanCommande.creerCommande(t));
@@ -208,15 +211,14 @@ public class CommandeCTRL implements ControllerInterface {
     }
 }
 
-//        if ("aj".equalsIgnoreCase("action")) {
-//            // Attendre le bouton ajouter de Kenny
-////            Commande commande = (Commande) request.getAttribute("Commande");
-////            Produit produit = (Produit) request.getAttribute("Produit");
-////            List <String> preferences = (List)request.getAttribute("preferences");            
-//
-//           
-//
-//           // Integer etat = 0;       
-//     
-//        }
+    private BeanEmplacementLocal lookupBeanEmplacementLocal() {
+        try {
+            Context c = new InitialContext();
+            return (BeanEmplacementLocal) c.lookup("java:global/montgallette/montgallette-ejb/BeanEmplacement!sessionBeans.BeanEmplacementLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+}
 
