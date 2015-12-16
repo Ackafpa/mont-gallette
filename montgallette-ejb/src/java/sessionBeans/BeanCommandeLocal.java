@@ -10,6 +10,7 @@ import entites.Garniture;
 import entites.LigneCommande;
 import entites.Produit;
 import entites.Tablee;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -27,12 +28,18 @@ public interface BeanCommandeLocal {
 
     public void triCuisine(List<LigneCommande> liste, List<LigneCommande> superListe);
 
-    public Commande creerCommande(Tablee t);
+    public String creerCommande(Tablee t);
     public Commande validerCommande(Tablee t, List<LigneCommande> produits, String numero, Date date);
 
     public void persist(Commande c);
     public List<Commande> recupCommande(Tablee t);
 
     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures);
+
+    public String recupNumero(Commande c);
+
+    public Commande recupCommande(String num);
+
+    public Collection<LigneCommande> recupListe(String num);
 
 }

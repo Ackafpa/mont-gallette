@@ -74,6 +74,7 @@ public class CommandeCTRL implements ControllerInterface {
                 Integer i = Integer.decode(request.getParameter("couverts"));
 
                 session.setAttribute("commande", beanCommande.creerCommande(beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table))));
+                
 
                 url = "garcon.jsp";
             } else {
@@ -85,8 +86,17 @@ public class CommandeCTRL implements ControllerInterface {
         if ("ajouterLigne".equalsIgnoreCase(action)) {
             String id = request.getParameter("produit");
             System.out.println("IDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"+id);
-            liste = (List) session.getAttribute("liste");
-            System.out.println("LISTE"+liste);
+            
+            // IL N'Y A PAS ENCORE DE LISTE DE CONSTRUITE DANS LA SESSION!!!
+            // ET LA, TU PRENDS LA LISTE DESTINEE A LA CUISINE
+            /*liste = (List) session.getAttribute("liste");
+            System.out.println("LISTE"+liste);*/
+            
+            /*REGARDE LE beanCommande, JE T'AI AJOUTE QUELQUES FONCTIONS PRATIQUES*/
+            
+           //A VOIR POUR UTILISER LA FONCTION ajouterLigne PRESENTE DANS beanCommande
+            
+            
             Produit p = beanProduit.trouverProduit(id);//ERREUR
             System.out.println("PRODUIT"+p);
             
@@ -95,9 +105,13 @@ public class CommandeCTRL implements ControllerInterface {
             Commande c = (Commande) session.getAttribute("commande");
             LigneCommande lc= beanLigne.creerLigne(p, c);
             System.out.println("LIGNE"+lc);
-            liste.add(lc);
+           // liste.add(lc);
             
-            session.setAttribute("liste", liste);
+            
+            
+           // session.setAttribute("liste", liste);
+            
+         
             
             
           url="client.jsp";

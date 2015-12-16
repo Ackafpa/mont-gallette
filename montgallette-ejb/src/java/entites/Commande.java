@@ -119,11 +119,11 @@ public class Commande implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Commande  id=" + id ;
+        return "Commande n° "+numero;
     }
 
     public void setProduits(LigneCommande ligne) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       //A FAIRE
     }
 
 }

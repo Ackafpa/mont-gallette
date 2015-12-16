@@ -82,19 +82,27 @@ public class BeanCommande implements BeanCommandeLocal {
     
     //Creer Commande ajout ALC
     @Override
-    public Commande creerCommande(Tablee t){
+    public String creerCommande(Tablee t){
         Commande c = new Commande();
         GregorianCalendar d = new GregorianCalendar();
         
         Random i = new Random();
         int j = i.nextInt(500);
-        
+        String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+j);
         c.setDate(d.getTime());
-        c.setNumero(String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+j));
+        c.setNumero(num);
         c.setTablee(t);
         em.persist(c);
-        return c;
+        return num;
     }
+    
+    //Ajout ALC
+    @Override
+    public String recupNumero(Commande c){
+        return c.getNumero();
+    }
+    
+    
     
     //Ajout ALC
     @Override
@@ -103,6 +111,24 @@ public class BeanCommande implements BeanCommandeLocal {
         Query qr = em.createQuery(req);
         qr.setParameter("t", t);
         return qr.getResultList();
+    }
+    
+    @Override
+     public Commande recupCommande(String num){
+        String req = "select c from Commande c where c.numero = :num";
+        Query qr = em.createQuery(req);
+        qr.setParameter("num", num);
+        return (Commande)qr.getSingleResult();
+    }
+     
+    @Override
+     public Collection<LigneCommande> recupListe(String num){
+        String req = "select c from Commande c where c.numero = :num";
+        Query qr = em.createQuery(req);
+        qr.setParameter("num", num);
+        Commande c = (Commande)qr.getSingleResult();
+
+        return c.getProduits();
     }
     
 
