@@ -179,7 +179,7 @@ body {
     border-style: solid;
     height: 30px;
     background-color: #333333;
-    width: 900px;
+    width: 909px;
     left: 50%;
     position: fixed;
     margin: -2px 0px 0px -450px;
@@ -205,6 +205,7 @@ body {
     border-style: solid;
     background-color: black;
     width: 600px;
+    height: 100%;
     left: 50%;  
     position: absolute;
     margin: 120px 0px 0px -450px;
@@ -213,7 +214,7 @@ body {
 
 #commande {
     background-color: rgba(0, 0, 0, 0.5);
-    width: 400px;
+    width: 300px;
     height: 100%;
     left: 50%;
     position: fixed;

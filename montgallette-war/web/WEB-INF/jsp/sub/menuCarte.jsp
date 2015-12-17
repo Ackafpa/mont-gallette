@@ -4,9 +4,9 @@
 
     <table>
         <tbody>
-            <c:forEach items="${produits}" var="p">
+            <c:forEach items="${produits}" var="p" varStatus="theCount">
                 <tr>
-                    <td id="tdStyle${p.id%2}"><img id="photoProduit" src=${p.photoURL}>
+                    <td id="tdStyle${theCount.index%2}"><img id="photoProduit" src=${p.photoURL}>
                         <div id="textCourt"><b>${p.nom}</b><br>${p.descriptionCourte}</div>
                         <div id="prix"> <fmt:formatNumber value="${p.prixHT}" minFractionDigits="2" currencySymbol="&euro;" type="currency"/></div>
                         <div onclick="refreshCommande(${p.id})" title="Ajouter" id="ajouter"><img src="images/ajouter.png" onmouseover="this.src = 'images/ajouterACTIF.png';" onmouseout="this.src = 'images/ajouter.png';"/></div>
