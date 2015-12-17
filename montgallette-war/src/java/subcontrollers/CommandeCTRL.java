@@ -1,10 +1,8 @@
 package subcontrollers;
 
 import entites.Commande;
-import entites.Emplacement;
 import entites.LigneCommande;
 import entites.Produit;
-import entites.Tablee;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -46,9 +44,9 @@ public class CommandeCTRL implements ControllerInterface {
         String msgCommande = "Cliquez sur ajouter pour remplir votre commande";
         request.setAttribute("msgCommande", msgCommande);
 
-        List<LigneCommande> liste = (List<LigneCommande>) application.getAttribute("listeCuisine");
+        List<LigneCommande> listeCuisine = (List<LigneCommande>) application.getAttribute("listeCuisine");
 
-        if (liste == null) {
+        if (listeCuisine == null) {
             application.setAttribute("listeCuisine", new ArrayList());
         }
         
@@ -128,10 +126,10 @@ public class CommandeCTRL implements ControllerInterface {
 
             List<LigneCommande> listeCom = (List<LigneCommande>) session.getAttribute("liste");
 
-            beanCommande.triCuisine(listeCom, liste);
+            beanCommande.triCuisine(listeCom, listeCuisine);
             Commande c = (Commande) session.getAttribute("Commande");
             beanCommande.persist(c);
-            application.setAttribute("listeCuisine", liste);
+            application.setAttribute("listeCuisine", listeCuisine);
         }
 
         if ("su".equalsIgnoreCase(action)) {
@@ -173,8 +171,8 @@ public class CommandeCTRL implements ControllerInterface {
             beanCommande.jeuEssaiCommande(listeLigne, beanTablee.selectTable(2L));
 
             //A changer, doit s'executer a chaque commande passée
-            beanCommande.triCuisine(listeLigne, liste);
-            application.setAttribute("listeCuisine", liste);
+            beanCommande.triCuisine(listeLigne, listeCuisine);
+            application.setAttribute("listeCuisine", listeCuisine);
 
             url = "home.jsp";
         }

@@ -1,6 +1,7 @@
 package sessionBeans;
 
 import entites.Commande;
+import entites.Emplacement;
 import entites.Garniture;
 import entites.LigneCommande;
 import entites.Produit;
@@ -85,10 +86,14 @@ public class BeanCommande implements BeanCommandeLocal {
     public String creerCommande(Tablee t){
         Commande c = new Commande();
         GregorianCalendar d = new GregorianCalendar();
+        String numTable = null;
+        Collection<Emplacement> collE = t.getEmplacements();
         
-        Random i = new Random();
-        int j = i.nextInt(500);
-        String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+j);
+        for(Emplacement e : collE){
+            numTable = e.getNumero();
+        }
+        
+        String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+d.HOUR+d.MINUTE+numTable);
         c.setDate(d.getTime());
         c.setNumero(num);
         c.setTablee(t);
