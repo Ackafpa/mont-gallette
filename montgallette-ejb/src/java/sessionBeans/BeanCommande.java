@@ -87,10 +87,11 @@ public class BeanCommande implements BeanCommandeLocal {
         Commande c = new Commande();
         GregorianCalendar d = new GregorianCalendar();
         String numTable = null;
+        
         Collection<Emplacement> collE = t.getEmplacements();
         
         for(Emplacement e : collE){
-            numTable = e.getNumero();
+            numTable = numTable+e.getNumero();
         }
         
         String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+d.HOUR+d.MINUTE+numTable);
