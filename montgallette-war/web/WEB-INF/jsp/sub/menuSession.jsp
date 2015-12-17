@@ -1,8 +1,15 @@
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<div id="menuSession">  
-    [Date/heure] - Vous etes servi par <c:out value="${user.prenom}"/>
-    <c:url value="Controller?section=menu.acka&action=home" var="urlms01" />
-     --- <a href="${urlms01}">Home</a>
-</div>
+<body onload="startTime()">
+    <div id="menuSession">  
+        <div id="horloge"></div>
+        <div id="bienvenue">Bienvenu/e, vous êtes servi par <span style="color:gold"><c:out value="${user.prenom}"/></span></div>
+        <div id="optionsSession" onclick="afficherOptionsSession()" title="Options"/>
+    </div>
+</body>
+
+<script src="js/session.js" type="text/javascript"></script>
+

@@ -69,7 +69,7 @@ public class CommandeCTRL implements ControllerInterface {
                 Tablee t = beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table));
                 session.setAttribute("OQP", beanEmplacement.recupEmplacement(table).isDispo());
                 session.setAttribute("commande", beanCommande.creerCommande(t));
-                url = "client.jsp";
+                url = "garcon.jsp";
             } else {
                 session.setAttribute("commandes", beanCommande.recupCommande(beanTablee.recupTablee(beanEmplacement.recupEmplacement(table))));
                 url = "client.jsp";

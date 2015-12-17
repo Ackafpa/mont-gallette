@@ -45,3 +45,7 @@ function refreshCommande(produitID) {
     xmlhttp.send(null);
 }
 
+function showHide(element) {
+    
+    alert(element);
+}
