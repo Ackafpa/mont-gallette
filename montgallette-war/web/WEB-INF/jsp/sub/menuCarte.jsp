@@ -17,3 +17,4 @@
         </tbody>
     </table>
 
+<script src="js/menu.js" type="text/javascript"></script>
