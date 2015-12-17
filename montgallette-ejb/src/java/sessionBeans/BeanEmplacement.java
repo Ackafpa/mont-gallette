@@ -72,5 +72,18 @@ public class BeanEmplacement implements BeanEmplacementLocal {
     public void persist(Object object) {
         em.persist(object);
     }
+    
+    @Override
+    public List<String> getListeEmplacement(){
+        String req = "select e from Emplacement e";
+        Query qr = em.createQuery(req);
+        List<Emplacement> collE = (List<Emplacement>)qr.getResultList();
+        List<String>numEmplacement = new ArrayList();
+        for(Emplacement e : collE){
+            numEmplacement.add(e.getNumero());
+        }
+        return numEmplacement;
+    }
+
 
 }

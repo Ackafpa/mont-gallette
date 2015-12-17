@@ -7,6 +7,7 @@ package sessionBeans;
 
 import entites.Emplacement;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -21,5 +22,7 @@ public interface BeanEmplacementLocal {
     public Emplacement recupEmplacement(String numero);
 
     public Collection<Emplacement> collEmplacement(String numero);
+
+    public List<String> getListeEmplacement();
     
 }
