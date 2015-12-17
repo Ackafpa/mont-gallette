@@ -94,7 +94,7 @@ public class BeanCommande implements BeanCommandeLocal {
             numTable = numTable+e.getNumero();
         }
         
-        String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+d.HOUR+d.MINUTE+numTable);
+        String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+d.HOUR_OF_DAY+d.MINUTE+numTable);
         c.setDate(d.getTime());
         c.setNumero(num);
         c.setTablee(t);
@@ -164,6 +164,7 @@ public class BeanCommande implements BeanCommandeLocal {
         commande.setProduits(ligne);
         return commande;
     }
+    
     @Override
      public void persist(Commande c) {
         em.persist(c);

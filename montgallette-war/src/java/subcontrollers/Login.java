@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,18 @@ public class Login implements ControllerInterface, Serializable {
         String url = "home.jsp";
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
+        ServletContext application = servlet.getServletContext();
+
+        /*
+         <c:url value="images/Table4persDispo.png" var="t4d"/>
+         <c:url value="images/table2persVertiDispo.png" var="t2vd"/>
+         <c:url value="images/table2persHorizDispo.png" var="t2hd"/>
+         <c:url value="images/Table4persIndispo.png" var="t4i"/>
+         <c:url value="images/table2persVertiIndispo.png" var="t2vi"/>
+         <c:url value="images/table2persHorizIndispo.png" var="t2hi"/>
+         */
+
+
 
         //Connexion à l'interface
         if ("login".equalsIgnoreCase(action)) {
@@ -39,14 +52,15 @@ public class Login implements ControllerInterface, Serializable {
                 //Si le nouveau code entré ne vient pas du mode client
                 if (session.getAttribute("prov") == null) {
                     String eCode = beanLogin.recupEmploye(session.getAttribute("user")).getCode();
-                    
+
                     if (code.equals(eCode) && code.startsWith("1")) {
+
                         url = "garcon.jsp";
-                        
-                    }else if (code.equals(eCode) && code.startsWith("2")){
-                        url="cuisine.jsp";
-                        
-                    }else {
+
+                    } else if (code.equals(eCode) && code.startsWith("2")) {
+                        url = "cuisine.jsp";
+
+                    } else {
                         //accès à la possibilité de deconnexion
                         boolean deco = true;
                         request.setAttribute("msgDeco", "Vous n'êtes pas ");

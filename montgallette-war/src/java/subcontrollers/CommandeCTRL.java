@@ -3,6 +3,7 @@ package subcontrollers;
 import entites.Commande;
 import entites.LigneCommande;
 import entites.Produit;
+import entites.Tablee;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -54,9 +55,9 @@ public class CommandeCTRL implements ControllerInterface {
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
                 request.setAttribute("creer", true);
                 request.setAttribute("table", table);
-                if("1".equals(table)){
-                    request.setAttribute("t4p", true);
-                }
+                
+
+               
                 url = "garcon.jsp";
             } else {
                 request.setAttribute("table", table);
@@ -70,8 +71,12 @@ public class CommandeCTRL implements ControllerInterface {
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
 
                 Integer i = Integer.decode(request.getParameter("couverts"));
+                
+                Tablee t = beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table));
+                
+                session.setAttribute("OQP", beanEmplacement.recupEmplacement(table).isDispo());
 
-                session.setAttribute("commande", beanCommande.creerCommande(beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table))));
+                session.setAttribute("commande", beanCommande.creerCommande(t));
                 
 
                 url = "garcon.jsp";
