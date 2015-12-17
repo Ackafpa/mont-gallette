@@ -29,3 +29,19 @@ function refreshMenu(categorie) {
     xmlhttp.open("GET", "Controller?section=menu.acka&action=afficher&categorie=" + categorie, true);
     xmlhttp.send(null);
 }
+
+function refreshCommande(id) {
+    var xmlhttp = getxmlhttp();
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById('commande').innerHTML = xmlhttp.responseText;
+        }
+        else {
+            document.getElementById('commande').innerHTML = "Loading produit: " + id;
+        }
+    };
+    xmlhttp.open("GET", "Controller?section=commande.acka&action=ajouterLigne&produit=" + id, true);
+    xmlhttp.send(null);
+}
+
