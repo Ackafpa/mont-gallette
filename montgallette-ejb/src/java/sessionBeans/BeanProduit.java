@@ -16,8 +16,9 @@ public class BeanProduit implements BeanProduitLocal {
 
         String req = "select ";
         ArrayList<Produit> produits = new ArrayList();
-
+        
         return produits;
+        
     }
 
     @Override
@@ -25,5 +26,6 @@ public class BeanProduit implements BeanProduitLocal {
 
         Long idProduit = Long.parseLong(id);
         return em.find(Produit.class,idProduit);
+        
     }
 }

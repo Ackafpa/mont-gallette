@@ -25,7 +25,7 @@ import sessionBeans.BeanProduitLocal;
 import sessionBeans.BeanTableeLocal;
 
 public class CommandeCTRL implements ControllerInterface {
-    
+
     BeanEmplacementLocal beanEmplacement = lookupBeanEmplacementLocal1();
     BeanProduitLocal beanProduit = lookupBeanProduitLocal();
     BeanLigneLocal beanLigne = lookupBeanLigneLocal();
@@ -35,10 +35,9 @@ public class CommandeCTRL implements ControllerInterface {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
+
         String url = "home.jsp";
-
         HttpSession session = request.getSession();
-
         ServletContext application = servlet.getServletContext();
         String action = request.getParameter("action");
         String table = request.getParameter("table");
@@ -50,14 +49,11 @@ public class CommandeCTRL implements ControllerInterface {
         if (listeCuisine == null) {
             application.setAttribute("listeCuisine", new ArrayList());
         }
-        
+
         if ("creerTable".equalsIgnoreCase(action)) {
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
                 request.setAttribute("creer", true);
                 request.setAttribute("table", table);
-                
-
-               
                 url = "garcon.jsp";
             } else {
                 request.setAttribute("table", table);
@@ -69,63 +65,44 @@ public class CommandeCTRL implements ControllerInterface {
 
         if ("creerCo".equalsIgnoreCase(action)) {
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
-
                 Integer i = Integer.decode(request.getParameter("couverts"));
-                
                 Tablee t = beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table));
-                
                 session.setAttribute("OQP", beanEmplacement.recupEmplacement(table).isDispo());
-
                 session.setAttribute("commande", beanCommande.creerCommande(t));
-                
-
-                url = "garcon.jsp";
+                url = "client.jsp";
             } else {
                 session.setAttribute("commandes", beanCommande.recupCommande(beanTablee.recupTablee(beanEmplacement.recupEmplacement(table))));
                 url = "client.jsp";
             }
         }
+        
         //Nouvelle méthode CHRIS
         if ("ajouterLigne".equalsIgnoreCase(action)) {
-            String id = request.getParameter("produit");
-            System.out.println("IDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"+id);
-            
+            String produitID = request.getParameter("produitID");
+            System.out.println("IDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD" + produitID);
+
             // IL N'Y A PAS ENCORE DE LISTE DE CONSTRUITE DANS LA SESSION!!!
             // ET LA, TU PRENDS LA LISTE DESTINEE A LA CUISINE
             /*liste = (List) session.getAttribute("liste");
-            System.out.println("LISTE"+liste);*/
-            
+             System.out.println("LISTE"+liste);*/
             /*REGARDE LE beanCommande, JE T'AI AJOUTE QUELQUES FONCTIONS PRATIQUES*/
-            
-           //A VOIR POUR UTILISER LA FONCTION ajouterLigne PRESENTE DANS beanCommande
-            
-            
-            Produit p = beanProduit.trouverProduit(id);//ERREUR
-            System.out.println("PRODUIT"+p);
-            
+            //A VOIR POUR UTILISER LA FONCTION ajouterLigne PRESENTE DANS beanCommande
+            Produit p = beanProduit.trouverProduit(produitID);//ERREUR
+            System.out.println("PRODUIT" + p);
+
             //FONCTION AJOUTER PREFERENCES ET GARNITUES A FAIRE
-            
             Commande c = (Commande) session.getAttribute("commande");
-            LigneCommande lc= beanLigne.creerLigne(p, c);
-            System.out.println("LIGNE"+lc);
-           // liste.add(lc);
-            
-            
-            
-           // session.setAttribute("liste", liste);
-            
-         
-            
-            
-          url="client.jsp";
+            LigneCommande lc = beanLigne.creerLigne(p, c);
+            System.out.println("LIGNE" + lc);
+
+            // liste.add(lc);
+            // session.setAttribute("liste", liste);
+            url = "commande.jsp";
             //Commande c = (Commande) session.getAttribute("commande");// La commande n'est PAS LA
-           //méthode pour ajouter
-            
-            
-            
-           // liste.add(); une fois la ligne finie
-        }
-// Fin nouvelle fonction CHRIS
+            //méthode pour ajouter
+
+            // liste.add(); une fois la ligne finie
+        }  // Fin nouvelle fonction CHRIS
 
         if ("val".equalsIgnoreCase(action)) {
 
@@ -150,23 +127,18 @@ public class CommandeCTRL implements ControllerInterface {
             LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
             listee.remove(lcc);
             session.setAttribute("liste", listee);
-            
+
             url = "client.jsp";
         }
 
-        if ("produits".equalsIgnoreCase(action)) {
-            if (!beanMenu.isJeuxCree()) {
-                beanMenu.creerJeuxDonnees();
-            }
-            url = "home.jsp";
-        }
         if ("mo".equalsIgnoreCase(action)) {
             System.out.println("moooo ok");
-//           String id = request.getParameter("id");
-//            String ligne = request.getParameter("ligne");
-//            System.out.println(id+"   "+ligne+"------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            //String id = request.getParameter("id");
+            //String ligne = request.getParameter("ligne");
+            //System.out.println(id+"   "+ligne+"------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             url = "client.jsp";
         }
+        
         if ("creerDonnees".equalsIgnoreCase(action)) {
 
             //modifiee TEMP par Kenneth
@@ -188,6 +160,7 @@ public class CommandeCTRL implements ControllerInterface {
             }
             url = "home.jsp";
         }
+
         System.out.println(url);
         return url;
     }
@@ -241,7 +214,6 @@ public class CommandeCTRL implements ControllerInterface {
             throw new RuntimeException(ne);
         }
     }
-
 
     private BeanEmplacementLocal lookupBeanEmplacementLocal() {
         try {
