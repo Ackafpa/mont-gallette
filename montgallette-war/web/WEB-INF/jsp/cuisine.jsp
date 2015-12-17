@@ -19,17 +19,21 @@
         <h1>Hello Cuisine!</h1>
         <table>
             <c:forEach items="${listeCuisine}" var="l">
-                <c:set var="idProduit" value="l.produit"/>
+                
+                    <c:set var="idProduit" value="l.produit.id"/>
+                
                 <c:set var="etat" value="l.etat"/>
-                <tr>
+                <tr id="${l.produit.id}">
                     <td>${l.produit}</td>
                     <td>${l.preferences}</td>
-                    <td><input type="button" class="CuisineInactif" id="btnPreparation" onclick="preparation();changerEtat(${l.produit})" value="Préparer"/></td>
+                    <%--
+                        <td><input type="hidden" name="idProduit" value="${l.produit.id}" /></td>
+                    --%>
+                    <td><input type="button" class="CuisineInactif" id="btnPreparation" onclick="preparation(${l.produit.id});changerEtat(${l.produit.id})" value="Préparer"/></td>
                     <td><input type="button" class="CuisineInactif" id="btnPret" onclick="pret()" value="Prêt"/></td>
                     <td><input type="button" class="CuisineIndispo" id="btnIndispo" onclick="indispo()" value="X"/></td>
                     <td>${l.etat}</td>
                 </tr>
-
             </c:forEach>
             <%--
             <c:forEach items="${listeCuisine}" var="l">
