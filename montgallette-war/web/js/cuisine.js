@@ -1,3 +1,22 @@
+function getXhr() {
+    var xhr = null;
+    if (window.XMLHttpRequest) { // Firefox et autres
+        xhr = new XMLHttpRequest();
+    }
+    else if (window.ActiveXObject) { // Internet Explorer
+        try {
+            xhr = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        catch (e) {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    } else {
+        alert("Votre navigateur ne prend pas en charge AJAX");
+        xhr = false;
+    }
+    return xhr;
+}
+
 function test() {
     var t = document.getElementById('btnTest');
     if (t.className === 'CuisineInactif') {
@@ -7,9 +26,9 @@ function test() {
     }
 }
 // --> RAJOUTER CHANGEMENT ETAT DES PRODUITS ET SURTOUT LIEN AVEC CHAQUE PRODUIT
-function preparation() {
+function preparation(idProduit) {
     var prepa = document.getElementById('btnPreparation');
-    var pret = document.getElementById('btnPret');
+    var pret = document.getSelection(idProduit).getElementById('btnPret');
 
     if (pret.className === 'CuisineInactif') {
         if (prepa.className === 'CuisineInactif') {
@@ -25,7 +44,7 @@ function preparation() {
     }
 }
 
-function changerEtat(idProduit){
+function changerEtat(idProduit) {
     document.getElementById('idProduit').etat = 1; //CHANGER ETAT 0-->1
 }
 
