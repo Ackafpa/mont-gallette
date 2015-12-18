@@ -29,3 +29,23 @@ function refreshMenu(categorie) {
     xmlhttp.open("GET", "Controller?section=menu.acka&action=afficher&categorie=" + categorie, true);
     xmlhttp.send(null);
 }
+
+function refreshCommande(produitID) {
+    var xmlhttp = getxmlhttp();
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById('commande').innerHTML = xmlhttp.responseText;
+        }
+        else {
+            document.getElementById('commande').innerHTML = "Controller?section=commande.acka&action=ajouterLigne&produit=" + produitID;
+        }
+    };
+    xmlhttp.open("GET", "Controller?section=commande.acka&action=ajouterLigne&produit=" + produitID, true);
+    xmlhttp.send(null);
+}
+
+function showHide(element) {
+    
+    alert(element);
+}

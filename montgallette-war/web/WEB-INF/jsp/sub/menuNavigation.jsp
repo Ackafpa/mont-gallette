@@ -9,4 +9,4 @@
 <div onclick="refreshMenu('dessert')" title="Desserts" id="optionNavDessert"></div>
 <div onclick="refreshMenu('formule')" title="Formules" id="optionNavFormule"></div>
 
-<script src="js/menuAJAX.js" type="text/javascript"></script>
+<script src="js/menu.js" type="text/javascript"></script>

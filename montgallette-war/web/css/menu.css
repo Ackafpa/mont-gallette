@@ -57,7 +57,7 @@ body {
 #optionNavBoisson {
     background-image: url("../images/boisson.png");
     background-repeat: no-repeat;
-    background-color: pink;
+    background-color: lightskyblue;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
@@ -74,13 +74,13 @@ body {
     width: 120px;
     float: left;
     padding-top: 10px;
-        margin-left: 2px;
+    margin-left: 2px;
 }
 
 #optionNavEntree {
     background-image: url("../images/entree.png");
     background-repeat: no-repeat;
-    background-color: peru;
+    background-color: greenyellow;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
@@ -101,7 +101,7 @@ body {
 #optionNavPlat {
     background-image: url("../images/plat.png");
     background-repeat: no-repeat;
-    background-color: sandybrown;
+        background-color: sandybrown;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
@@ -122,7 +122,7 @@ body {
 #optionNavDessert {
     background-image: url("../images/dessert.png");
     background-repeat: no-repeat;
-    background-color: silver;
+    background-color: orchid;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
@@ -174,50 +174,41 @@ body {
 }
 
 #menuSession{
-    border-width: 2px;
-    border-color: black;
-    border-style: solid;
-    height: 30px;
-    background-color: #333333;
-    width: 900px;
+    height: 32px;
+    width: 600px;
     left: 50%;
     position: fixed;
-    margin: -2px 0px 0px -450px;
+    margin: 0px 0px 0px -450px;
     z-index: 3;
 }
 
 #menuNavigation{
-    border-width: 2px;
-    border-color: black;
-    border-style: solid;
     height: 88px;
     background-color: black;
     width: 600px;
     left: 50%;
     position: fixed;
-    margin: 30px 0px 0px -450px;
+    margin: 32px 0px 0px -450px;
     z-index: 2;
 }
 
 #menuCarte{
-    border-width: 2px;
-    border-color: black;
-    border-style: solid;
     background-color: black;
     width: 600px;
+    height: 100%;
     left: 50%;  
-    position: absolute;
+    position: fixed;
     margin: 120px 0px 0px -450px;
     z-index: 1;
 }
 
 #commande {
     background-color: rgba(0, 0, 0, 0.5);
-    width: 400px;
+    width: 300px;
     height: 100%;
     left: 50%;
     position: fixed;
-    margin: 30px 0px 0px 152px;
+    margin: 0px 0px 0px 152px;
     z-index: 1;
     padding: 5px 5px 5px 5px ;
 }

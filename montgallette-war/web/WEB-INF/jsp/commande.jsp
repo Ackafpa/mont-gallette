@@ -18,7 +18,6 @@
         <core:forEach items="${liste}" var="ligne">
 
             <form method="GET" action="Controller">     
-                <input type="hidden" value="${ligne.id}" />
                 <input type="hidden" name="section" value="commande.acka"/>
                 <input type="hidden" name="action" value="su"/>
                 <input type="hidden" name="commande" value="${ligne.commande.id}"/>
@@ -26,14 +25,11 @@
 
                 <table>
                     <tr>
-
                         <td>${ligne.produit}</td>                 
                         <td>${ligne.preferences}</td>
                         <td>${ligne.garnitures}</td>
                         <td>${ligne.etat}</td>
                         
-
-
                         <td><input type="submit" name="DoSu" value="Suprimer"></td>
 
                     </tr>

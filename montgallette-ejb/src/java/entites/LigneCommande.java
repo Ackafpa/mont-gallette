@@ -1,7 +1,6 @@
 package entites;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -38,10 +37,7 @@ public class LigneCommande implements Serializable {
      //preferences = new ArrayList();
     }
 
-    
-
     public LigneCommande(Produit produit, Integer etat, Commande commande) {
-        
         this();
         this.produit = produit;
         this.etat = etat;
