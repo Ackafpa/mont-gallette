@@ -6,7 +6,9 @@
 package sessionBeans;
 
 import entites.Emplacement;
+import entites.Tablee;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -17,12 +19,20 @@ import javax.ejb.Local;
 @Local
 public interface BeanEmplacementLocal {
 
-    public void creerJeu();
+    public HashMap<String,Emplacement> creerJeu();
 
     public Emplacement recupEmplacement(String numero);
 
     public Collection<Emplacement> collEmplacement(String numero);
 
-    public List<String> getListeEmplacement();
+    public List<Emplacement> getListeEmplacement();
+
+    public void modifierDispo(HashMap<String, Emplacement> lemp, String numero);
+
+    public void ajouterEmplacement(Tablee t, HashMap<String, Emplacement> lemp, String numero);
+
+    public void supprimerEmplacement(Tablee t, HashMap<String, Emplacement> lemp, String numero);
+
+   
     
 }

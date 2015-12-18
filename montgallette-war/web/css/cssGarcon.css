@@ -78,13 +78,20 @@ img{
 }
 
 table{
+   
     margin: auto;
 }
 .td{
+   
     margin-bottom: 5px;
+    
 }
 
 #creation{
    text-align: center;
    margin-top: 50px;
+}
+
+.plan{
+    display: inline-block;
 }

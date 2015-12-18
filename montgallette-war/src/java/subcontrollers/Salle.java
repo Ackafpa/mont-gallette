@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ public class Salle implements ControllerInterface, Serializable{
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
         String url = "home.jsp";
         String action = request.getParameter("action");
+        ServletContext application = servlet.getServletContext();
         
         if("jeuTables".equalsIgnoreCase(action)){
             beanTablee.jeuTables();
@@ -28,7 +30,8 @@ public class Salle implements ControllerInterface, Serializable{
         }
         
         if("jeuEmplacements".equalsIgnoreCase(action)){
-            beanEmplacement.creerJeu();
+            application.setAttribute("Hlemp", beanEmplacement.creerJeu());
+            application.setAttribute("lemp", beanEmplacement.getListeEmplacement());
             url="home.jsp";
         }  
         return url;
