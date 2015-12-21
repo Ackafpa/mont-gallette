@@ -122,19 +122,30 @@ public class CommandeCTRL implements ControllerInterface {
         }
 
         if ("su".equalsIgnoreCase(action)) {
+            Commande c = (Commande) session.getAttribute("cde");
+            ////////////////////////////
+            Long i = c.getId();
+            System.out.println(i);
+            Produit p = beanProduit.trouverProduit("3");
+            LigneCommande llb=(LigneCommande) beanLigne.creerLigne(p, c);
+            int idid= llb.getIdLocal();
+            System.out.println("LLLELELELLELELE"+idid+"     et i est égale à :"+i);
+            ////////////////////////
             String li = request.getParameter("ligne");
             List<LigneCommande> listee = (List<LigneCommande>) session.getAttribute("liste");
-            System.out.println("La liste:" + listee);
+          
             for (LigneCommande lc : listee) {
-                if (Objects.equals(lc.getIdLocal(), Long.valueOf(li))) {
+                if (lc.getIdLocal() == Integer.valueOf(li) ) {
                     LigneCommande lcc = beanLigne.sortirLigne(lc, li);
+                   
                     session.setAttribute("lcc", lcc);
                 }
             }
             LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
             listee.remove(lcc);
             session.setAttribute("liste", listee);
-
+ c = (Commande)session.getAttribute("cde");
+ c.setProduits(listee);
             url = "client.jsp";
         }
 
