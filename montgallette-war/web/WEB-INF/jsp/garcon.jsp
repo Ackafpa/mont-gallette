@@ -28,31 +28,29 @@
         <div id="plan">
 
             <c:url value="images/Table4persDispo.png" var="t4d"/>
-            <c:url value="images/table2persVertiDispo.png" var="t2vd"/>
-            <c:url value="images/table2persHorizDispo.png" var="t2hd"/>
+            
             <c:url value="images/Table4persIndispo.png" var="t4i"/>
-            <c:url value="images/table2persVertiIndispo.png" var="t2vi"/>
-            <c:url value="images/table2persHorizIndispo.png" var="t2hi"/>
+            
             <table> 
                 <tr>
-                <c:forEach items="${lemp}" var="e">
-                    <c:if test="${e.dispo}">
-                        
-                       
-                            <div class="plan" id="${e.numero}">
-                                <td>  <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img  src="${t4d}" alt=""/></a></td>
-                            </div>
-                   
+                    <c:forEach items="${lemp}" var="e" begin="0">
+                        <c:if test="${e.dispo}">
+
+
+                        <div class="plan" id="${e.numero}">
+                            <td>  <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img  src="${t4d}" alt=""/></a></td>
+                        </div>
+
                     </c:if>
                     <c:if test="${!e.dispo}">
-                        
-                            <div class="plan" id="${e.numero}">
-                                <td>  <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img src="${t4i}" alt=""/></a></td>
-                            </div>
-                   
+
+                        <div class="plan" id="${e.numero}">
+                            <td>  <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img src="${t4i}" alt=""/></a></td>
+                        </div>
+
                     </c:if>
                 </c:forEach>
-          </tr>
+                </tr>
             </table>
         </div>
 
