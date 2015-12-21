@@ -86,11 +86,11 @@ public class BeanCommande implements BeanCommandeLocal {
     public String creerCommande(Tablee t){
         Commande c = new Commande();
         GregorianCalendar d = new GregorianCalendar();
-        String numTable = null;
+        String numTable = "";
         
-        Collection<Emplacement> collE = t.getEmplacements();
+        Collection<Emplacement> collEmp = t.getEmplacements();
         
-        for(Emplacement e : collE){
+        for(Emplacement e : collEmp){
             numTable = numTable+e.getNumero();
         }
         
@@ -98,7 +98,7 @@ public class BeanCommande implements BeanCommandeLocal {
         c.setDate(d.getTime());
         c.setNumero(num);
         c.setTablee(t);
-        em.persist(c);
+        
         return num;
     }
     

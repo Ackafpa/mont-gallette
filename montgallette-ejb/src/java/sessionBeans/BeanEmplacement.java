@@ -56,9 +56,13 @@ public class BeanEmplacement implements BeanEmplacementLocal {
     @Override
     public HashMap<String,Emplacement> creerJeu(){
         HashMap<String,Emplacement> lemp = new HashMap();
-        
+        String numero;
         for(int i =1; i<19; i++){
-            String numero = ""+i;
+            if(i<10){
+            numero = "0"+i;
+            }else{
+                numero = ""+i;
+            }
             Emplacement e = new Emplacement(true, numero);
             em.persist(e);
             lemp.put(numero,e);

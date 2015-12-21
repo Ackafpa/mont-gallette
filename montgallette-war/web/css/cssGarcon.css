@@ -92,6 +92,11 @@ table{
    margin-top: 50px;
 }
 
+#plan{
+    display: table-cell;
+}
+
 .plan{
-    display: inline-block;
+    display: table;
+    
 }
