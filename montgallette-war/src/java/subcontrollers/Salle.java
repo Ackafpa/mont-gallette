@@ -30,7 +30,8 @@ public class Salle implements ControllerInterface, Serializable{
         }
         
         if("jeuEmplacements".equalsIgnoreCase(action)){
-            application.setAttribute("Hlemp", beanEmplacement.creerJeu());
+            application.setAttribute("HMemp", beanEmplacement.creerJeu());
+            
             application.setAttribute("lemp", beanEmplacement.getListeEmplacement());
             url="home.jsp";
         }  

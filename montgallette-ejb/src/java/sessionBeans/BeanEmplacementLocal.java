@@ -33,6 +33,8 @@ public interface BeanEmplacementLocal {
 
     public void supprimerEmplacement(Tablee t, HashMap<String, Emplacement> lemp, String numero);
 
+    public List<Emplacement> sort(HashMap<String, Emplacement> liste);
+
    
     
 }

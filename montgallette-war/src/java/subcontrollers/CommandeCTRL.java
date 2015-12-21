@@ -6,6 +6,8 @@ import entites.LigneCommande;
 import entites.Produit;
 import entites.Tablee;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -69,11 +71,12 @@ public class CommandeCTRL implements ControllerInterface {
         if ("creerCo".equalsIgnoreCase(action)) {
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
                 Integer i = Integer.decode(request.getParameter("couverts"));
-                HashMap<String, Emplacement> Hlemp = (HashMap<String, Emplacement>) application.getAttribute("Hlemp");
+                HashMap<String, Emplacement> HMemp = (HashMap<String, Emplacement>) application.getAttribute("HMemp");
                 
-                beanEmplacement.modifierDispo(Hlemp, table);
-                application.setAttribute("Hlemp", Hlemp);
-                application.setAttribute("lemp", Hlemp.values());
+                beanEmplacement.modifierDispo(HMemp, table);
+                application.setAttribute("HMemp", HMemp);
+                
+                application.setAttribute("lemp", beanEmplacement.sort(HMemp));
                 
                 
                 Tablee t = beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table));

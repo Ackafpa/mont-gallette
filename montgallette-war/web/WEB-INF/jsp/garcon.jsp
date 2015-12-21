@@ -28,48 +28,82 @@
         <div id="plan">
 
             <c:url value="images/Table4persDispo.png" var="t4d"/>
-            
+
             <c:url value="images/Table4persIndispo.png" var="t4i"/>
+
+
+            <div class="rang">
+            <c:forEach items="${lemp}" var="e" end="5">
+
+                <c:if test="${e.dispo}">
+
+
+                    <div class="planCell" id="${e.numero}">
+                        <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img  src="${t4d}" alt=""/></a>
+                    </div>
+
+
+                </c:if>
+                <c:if test="${!e.dispo}">
+
+                    <div class="planCell" id="${e.numero}">
+                        <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img src="${t4i}" alt=""/></a>
+                    </div>
+
+                </c:if>
+            </c:forEach>
+                </div>
             
-            <table> 
-                <tr>
-                    <c:forEach items="${lemp}" var="e" begin="0">
-                        <c:if test="${e.dispo}">
+            <div class="rang">
+            <c:forEach items="${lemp}" var="e" begin="6" end="11">
+
+                <c:if test="${e.dispo}">
 
 
-                        <div class="plan" id="${e.numero}">
-                            <td>  <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img  src="${t4d}" alt=""/></a></td>
-                        </div>
+                    <div class="planCell" id="${e.numero}">
+                        <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img  src="${t4d}" alt=""/></a>
+                    </div>
 
-                    </c:if>
-                    <c:if test="${!e.dispo}">
 
-                        <div class="plan" id="${e.numero}">
-                            <td>  <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img src="${t4i}" alt=""/></a></td>
-                        </div>
+                </c:if>
+                <c:if test="${!e.dispo}">
 
-                    </c:if>
-                </c:forEach>
-                </tr>
-            </table>
+                    <div class="planCell" id="${e.numero}">
+                        <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img src="${t4i}" alt=""/></a>
+                    </div>
+
+                </c:if>
+            </c:forEach>
+                </div>
+            
+            <div class="rang">
+            <c:forEach items="${lemp}" var="e" begin="12" end="17">
+
+                <c:if test="${e.dispo}">
+
+
+                    <div class="planCell" id="${e.numero}">
+                        <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img  src="${t4d}" alt=""/></a>
+                    </div>
+
+
+                </c:if>
+                <c:if test="${!e.dispo}">
+
+                    <div class="planCell" id="${e.numero}">
+                        <a href="Controller?section=commande.acka&action=creerTable&table=${e.numero}"><img src="${t4i}" alt=""/></a>
+                    </div>
+
+                </c:if>
+            </c:forEach>
+            </div>
+
+
+
         </div>
 
         <c:if test="${creer}">
-            <div id="creation">
-
-                <form action="Controller" method="post">
-                    Nombre de couverts: <input type="text" name="couverts" size="3" maxlength="3"/>
-                    <input type="hidden" name="section" value="commande.acka"/>
-                    <input type="hidden" name="action" value="creerCo"/>
-                    <input type="hidden" name="table" value="${table}"/>
-
-
-                    <a href="Controller?section=commande.acka&action=creerCo" ><input type="submit" name="doIt" value="Valider"  onclick="changeDispo('${table}', '${t4i}')"/></a>
-
-
-                </form>
-
-            </div>
+            <c:import url="WEB-INF/jsp/sub/creationTable.jsp"/>
         </c:if>
 
         <script src="js/alerte.js" type="text/javascript"></script>

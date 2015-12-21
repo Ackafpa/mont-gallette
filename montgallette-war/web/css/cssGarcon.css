@@ -11,6 +11,8 @@ and open the template in the editor.
 body {
     background-color: #663300;
     font-family: Calibri, sans serif;
+    text-align: center;
+    margin: auto;
 }
 
 #controls{
@@ -77,26 +79,24 @@ img{
     margin-right: 5px;
 }
 
-table{
-   
-    margin: auto;
-}
-.td{
-   
-    margin-bottom: 5px;
-    
-}
-
 #creation{
    text-align: center;
    margin-top: 50px;
 }
 
+/*.rang{
+    display:inline-block;
+    
+}*/
+
 #plan{
-    display: table-cell;
+    display: inline-block;
+    margin: auto;
+    text-align: center;
 }
 
-.plan{
-    display: table;
-    
+.planCell{
+    display: inline-block;
+    margin: auto;
+    text-align: center;
 }

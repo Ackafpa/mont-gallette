@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Emplacement implements Serializable {
+public class Emplacement implements Serializable, Comparable<Emplacement> {
     private static final long serialVersionUID = 1L;
     
     private boolean dispo;
@@ -80,5 +80,14 @@ public class Emplacement implements Serializable {
     public String toString() {
         return "entites.Emplacement[ id=" + numero + " ]";
     }
-    
+
+    @Override
+    public int compareTo(Emplacement o) {
+           if (Integer.parseInt(this.getNumero())<Integer.parseInt(o.getNumero())){
+            return -1;
+        }else{
+            return 1;
+        }
+    }
+
 }
