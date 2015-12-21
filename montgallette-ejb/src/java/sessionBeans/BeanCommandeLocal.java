@@ -42,4 +42,8 @@ public interface BeanCommandeLocal {
 
     public Collection<LigneCommande> recupListe(String num);
 
+    public Commande creerCommandeC(Tablee t);
+
+  
+
 }
