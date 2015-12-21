@@ -41,7 +41,8 @@ public class Menu implements ControllerInterface, Serializable {
 /*
         if ("home".equalsIgnoreCase(action)) {
             url = "garcon.jsp";
-        }*/
+        }
+*/
 
         return url;
     }

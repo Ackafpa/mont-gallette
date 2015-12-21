@@ -85,6 +85,20 @@ public class CommandeCTRL implements ControllerInterface {
                 url = "client.jsp";
             }
         }
+
+//ANTHO
+        if("modifierEtat".equalsIgnoreCase(action)){
+            
+            
+            
+//            LigneCommande lc = request.getParameter("ligne");
+//            changerEtatValider(lc);
+            
+        }
+//ANTHO FIN 
+        
+        
+        
         //Nouvelle méthode CHRIS
         if ("ajouterLigne".equalsIgnoreCase(action)) {
             String id = request.getParameter("produit");

@@ -3,20 +3,14 @@ package sessionBeans;
 import entites.Commande;
 import entites.LigneCommande;
 import entites.Produit;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-/**
- *
- * @author cdi404
- */
 @Stateful
 public class BeanLigne implements BeanLigneLocal {
 
@@ -72,7 +66,9 @@ public class BeanLigne implements BeanLigneLocal {
         return lc;
     }
 
-    public void changerEtatValider(LigneCommande lc) {
+//AJOUT ANTHO POUR CHANGEMENT ETAT LC
+    public void changerEtatValider(Long id) {
+        LigneCommande lc = em.find(LigneCommande.class, id);
         
         switch (lc.getEtat()) {
             case (0): lc.setEtat(1);
@@ -101,4 +97,5 @@ public class BeanLigne implements BeanLigneLocal {
                 break;
         }
     }
+//FIN AJOUT ANTHO
 }
