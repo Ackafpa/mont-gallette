@@ -19,9 +19,9 @@
 
             <form method="GET" action="Controller">     
                 <input type="hidden" name="section" value="commande.acka"/>
-                <input type="hidden" name="action" value="su"/>
-                <input type="hidden" name="commande" value="${ligne.commande.id}"/>
-                <input type="hidden" name="ligne" value="${ligne.id}"/>
+                <input type="hidden" name="action" value="su"/>             
+                <input type="hidden" name="ligne" value="${ligne.idLocal}"/>
+                
 
                 <table>
                     <tr>
