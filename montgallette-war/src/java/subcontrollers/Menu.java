@@ -24,16 +24,13 @@ public class Menu implements ControllerInterface, Serializable {
         String action = request.getParameter("action");
         String categorie = request.getParameter("categorie");
 
-        if (!beanMenu.isJeuxCree()) {
+        if (!beanMenu.isJeuxCree())
             beanMenu.creerJeuxDonnees();
-        }
 
-        if (categorie == null || "".equals(categorie)) {
+        if (categorie == null || "".equals(categorie))
             categorie = "boisson";
-        }
 
         if ("afficher".equalsIgnoreCase(action)) {
-
             List<Produit> lp = beanMenu.selectAllProduit(categorie);
             request.setAttribute("produits", lp);
             url = "/sub/menuCarte.jsp";

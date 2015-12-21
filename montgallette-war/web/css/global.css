@@ -19,3 +19,43 @@ a{
     text-decoration: none;
     color: white;
 }
+
+#horloge {
+    background-color: rgba(80, 80, 80, 0.5);
+    float: left;
+    height: 29px;
+    width: 80px;
+    font-size: 20px;
+    text-align: center;
+    color: gold;
+    padding-top: 3px;
+}
+
+#bienvenue {
+    height: 26px;
+    float: left;
+    margin-left: 10px;
+    padding-top: 5px;
+}
+
+#optionsSession {
+    background-image: url("../images/options.png");
+    background-repeat: no-repeat;
+    background-position-x: 4px;
+    background-position-y: 4px;
+    float: right;
+    height: 32px;
+    width: 32px;
+    z-index: 4;
+}
+
+#optionsSession:hover {
+    background-image: url("../images/optionsACTIF.png");
+    background-repeat: no-repeat;
+    background-position-x: 4px;
+    background-position-y: 4px;
+    float: right;
+    height: 32px;
+    width: 32px;
+    z-index: 4;
+}
