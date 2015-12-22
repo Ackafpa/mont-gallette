@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import subcontrollers.ControllerInterface;
 
-/**
- *
- * @author cdi406
- */
 public class Controller extends HttpServlet {
 
     private HashMap<String, ControllerInterface> subcont;
@@ -33,8 +29,6 @@ public class Controller extends HttpServlet {
             }
         }
     }
-    
-    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -32,13 +32,13 @@ public class BeanMenu implements BeanMenuLocal {
         
         lc.stream().forEach((c) -> {em.persist(c);});
 
-        lp.add(new Produit("Soupe au poitiron au compté", true, true, 5.9, descrCourte, descrComplete, lc.get(0),"images/menu/soupepoitiron.jpg"));
+        lp.add(new Produit("Soupe au potiron au comté", true, true, 5.9, descrCourte, descrComplete, lc.get(0),"images/menu/soupepoitiron.jpg"));
         lp.add(new Produit("Grande assiette à partager", true, true, 12.9, descrCourte, descrComplete, lc.get(0),"images/menu/assietteparteger.jpg"));
         lp.add(new Produit("Terrine de champagne", true, true, 4.6, descrCourte, descrComplete, lc.get(0),"images/menu/terrinecampagne.jpg"));
         lp.add(new Produit("Faisselle de fromage blanc", true, true, 5.8, descrCourte, descrComplete, lc.get(0),"images/menu/faissellefblanc.jpg"));
         
         lp.add(new Produit("Steak dans la hampe", true, true, 11.30, descrCourte, descrComplete, lc.get(1),"images/menu/steakhampe.jpg"));
-        lp.add(new Produit("Tartare de boef", true, true, 15.5, descrCourte, descrComplete, lc.get(1),"images/menu/tartareboeuf.jpg"));
+        lp.add(new Produit("Tartare de boeuf", true, true, 15.5, descrCourte, descrComplete, lc.get(1),"images/menu/tartareboeuf.jpg"));
         lp.add(new Produit("Pavé de rumsteak", true, true, 15.95, descrCourte, descrComplete, lc.get(1),"images/menu/paverumsteak.jpg"));
         lp.add(new Produit("Andouillette", true, true, 12.6, descrCourte, descrComplete, lc.get(1),"images/menu/andouillette.jpg"));
         
@@ -73,6 +73,4 @@ public class BeanMenu implements BeanMenuLocal {
         this.jeuxCree = jeuxCree;
     }
     
-    
-
 }
