@@ -2,15 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/global.css" rel="stylesheet" type="text/css"/>
-        <link href="css/menu.css" rel="stylesheet" type="text/css"/>
-        <title></title>
-    </head>
-    <body>
+
         <h1>Votre Commande</h1><br><br><br><br>
         ${msgCommande}
         <br><br><br><br>
@@ -45,5 +37,4 @@
             <input type="submit" name="val" value="Valider">
         </form>
         <script src="../../js/alerte.js" type="text/javascript"></script>
-    </body>
-</html>
+

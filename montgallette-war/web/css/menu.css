@@ -6,24 +6,6 @@ body {
     margin: 0px 0px 0px 0px;
 }
 
-#tdStyle0 {
-    background-color: rgba(50, 50, 50, 0.5);
-    width: 600px;
-}
-
-#tdStyle0:hover {
-    background-color: rgba(100, 100, 100, 0.5);
-}
-
-#tdStyle1 {
-    background-color: rgba(80, 80, 80, 0.5);
-    width: 600px;
-}
-
-#tdStyle1:hover {
-    background-color: rgba(100, 100, 100, 0.5);
-}
-
 #textCourt {
     float: left;
     padding-top: 10px;
@@ -42,18 +24,6 @@ body {
     padding: 10px 10px 10px 10px;
 }
 
-.optionNav {
-    background-color: coral;
-    height: 78px;
-    width: 120px;
-    float: left;
-    padding-top: 10px;
-}
-
-.optionNav:hover {
-    background-color: black;
-}
-
 #optionNavBoisson {
     background-image: url("../images/boisson.png");
     background-repeat: no-repeat;
@@ -64,7 +34,6 @@ body {
     width: 120px;
     float: left;
     padding-top: 10px;
-    margin-left: 2px;
 }
 
 #optionNavBoisson:hover {
@@ -74,7 +43,6 @@ body {
     width: 120px;
     float: left;
     padding-top: 10px;
-    margin-left: 2px;
 }
 
 #optionNavEntree {
@@ -97,11 +65,11 @@ body {
     float: left;
     padding-top: 10px;
 }
-    
+
 #optionNavPlat {
     background-image: url("../images/plat.png");
     background-repeat: no-repeat;
-        background-color: sandybrown;
+    background-color: sandybrown;
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
@@ -118,7 +86,7 @@ body {
     float: left;
     padding-top: 10px;
 }
-    
+
 #optionNavDessert {
     background-image: url("../images/dessert.png");
     background-repeat: no-repeat;
@@ -139,7 +107,7 @@ body {
     float: left;
     padding-top: 10px;
 }
-    
+
 #optionNavFormule {
     background-image: url("../images/formule.png");
     background-repeat: no-repeat;
@@ -147,7 +115,7 @@ body {
     background-position-x: 25px;
     background-position-y: 10px;
     height: 78px;
-    width: 116px;
+    width: 120px;
     float: left;
     padding-top: 10px;
 }
@@ -156,7 +124,7 @@ body {
     background-image: url("../images/formuleACTIF.png");
     background-color: black;
     height: 78px;
-    width: 116px;
+    width: 120px;
     float: left;
     padding-top: 10px;
 }
@@ -212,3 +180,37 @@ body {
     z-index: 1;
     padding: 5px 5px 5px 5px ;
 }
+
+.accordion { 
+    padding-top: 1px;
+    width: 600px; 
+    overflow: hidden; 
+    background: #000;
+}
+
+/** Selection inactive **/
+.accordion section{ float:left;	overflow:hidden; color:white; cursor:pointer; background: #333; margin-bottom: 1px;}
+.accordion section:hover {background:#444;}
+.accordion section p { display:none; }
+
+/** Selection active **/
+.accordion section:target { background: rgba(255,255,255, 0.1); padding:10px;}
+.accordion section:target:hover { background:rgba(255,255,255, 0.12); }
+.accordion section:target h2 {width:100%;}
+.accordion section:target h2 a{ color: gold; padding:0;}
+.accordion section:target p {display:block;}
+.accordion section h2 a{padding:8px 10px;display:block; font-size:16px; font-weight:normal;color:#eee; text-decoration:none; }
+
+/*Transition effects*/
+.vertical section{ width:100%; height:40px;
+                   -webkit-transition:height 0.2s ease-out;
+                   -moz-transition:height 0.2s ease-out;
+                   -o-transition:height 0.2s ease-out;
+                   -ms-transition:height 0.2s ease-out;
+                   transition:height 0.2s ease-out;
+}
+
+.vertical :target{ height:200px;  }
+.vertical section h2 { position:relative; left:0; top:-15px; }
+.vertical section:after{ top:-60px;left:810px;}
+.vertical section:target:after{ left:-9999px;}
