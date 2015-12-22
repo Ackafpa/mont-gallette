@@ -42,6 +42,7 @@ public class BeanCommande implements BeanCommandeLocal {
     public List<LigneCommande> listeLigne(List<Produit> produits) {
         Commande c = new Commande();
         List<LigneCommande> liste = new ArrayList();
+        
         for (Produit p : produits) {
             liste.add(new LigneCommande(p, 0, c));
         }
