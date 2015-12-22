@@ -16,10 +16,6 @@ import javax.servlet.http.HttpSession;
 import outils.CustomException;
 import sessionBeans.BeanLoginLocal;
 
-/**
- *
- * @author cdi406
- */
 public class Login implements ControllerInterface, Serializable {
 
     BeanLoginLocal beanLogin = lookupBeanLoginLocal();

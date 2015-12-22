@@ -1,10 +1,14 @@
 package subcontrollers;
 
 import entites.Commande;
+import entites.Emplacement;
 import entites.LigneCommande;
 import entites.Produit;
 import entites.Tablee;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -52,6 +56,7 @@ public class CommandeCTRL implements ControllerInterface {
 
         if ("creerTable".equalsIgnoreCase(action)) {
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
+                
                 request.setAttribute("creer", true);
                 request.setAttribute("table", table);
                 url = "garcon.jsp";
@@ -66,42 +71,59 @@ public class CommandeCTRL implements ControllerInterface {
         if ("creerCo".equalsIgnoreCase(action)) {
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
                 Integer i = Integer.decode(request.getParameter("couverts"));
+                HashMap<String, Emplacement> HMemp = (HashMap<String, Emplacement>) application.getAttribute("HMemp");
+                
+                beanEmplacement.modifierDispo(HMemp, table);
+                application.setAttribute("HMemp", HMemp);
+                
+                application.setAttribute("lemp", beanEmplacement.sort(HMemp));
+                
+                
                 Tablee t = beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table));
-                session.setAttribute("OQP", beanEmplacement.recupEmplacement(table).isDispo());
+                
+                
+
                 session.setAttribute("commande", beanCommande.creerCommande(t));
-                url = "garcon.jsp";
+                ///J'ai besoin d'un créer commande qui renvoie une commande pas un numéro de commande
+                session.setAttribute("cde", beanCommande.creerCommandeC(t));
+                url = "client.jsp";
             } else {
                 session.setAttribute("commandes", beanCommande.recupCommande(beanTablee.recupTablee(beanEmplacement.recupEmplacement(table))));
                 url = "client.jsp";
             }
         }
+
+//ANTHO
+        if("modifierEtat".equalsIgnoreCase(action)){
+            
+            
+            
+//            LigneCommande lc = request.getParameter("ligne");
+//            changerEtatValider(lc);
+            
+        }
+//ANTHO FIN 
+        
+        
         
         //Nouvelle méthode CHRIS
         if ("ajouterLigne".equalsIgnoreCase(action)) {
-            String produitID = request.getParameter("produitID");
-            System.out.println("IDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD" + produitID);
-
-            // IL N'Y A PAS ENCORE DE LISTE DE CONSTRUITE DANS LA SESSION!!!
-            // ET LA, TU PRENDS LA LISTE DESTINEE A LA CUISINE
-            /*liste = (List) session.getAttribute("liste");
-             System.out.println("LISTE"+liste);*/
-            /*REGARDE LE beanCommande, JE T'AI AJOUTE QUELQUES FONCTIONS PRATIQUES*/
-            //A VOIR POUR UTILISER LA FONCTION ajouterLigne PRESENTE DANS beanCommande
-            Produit p = beanProduit.trouverProduit(produitID);//ERREUR
-            System.out.println("PRODUIT" + p);
-
-            //FONCTION AJOUTER PREFERENCES ET GARNITUES A FAIRE
-            Commande c = (Commande) session.getAttribute("commande");
-            LigneCommande lc = beanLigne.creerLigne(p, c);
-            System.out.println("LIGNE" + lc);
-
-            // liste.add(lc);
-            // session.setAttribute("liste", liste);
-            url = "commande.jsp";
-            //Commande c = (Commande) session.getAttribute("commande");// La commande n'est PAS LA
-            //méthode pour ajouter
-
-            // liste.add(); une fois la ligne finie
+        Commande c = (Commande) session.getAttribute("cde");
+        Produit p = beanProduit.trouverProduit(request.getParameter("produit"));
+        Collection <LigneCommande> liste = c.getProduits();
+        
+        
+        liste.add(beanLigne.creerLigne(p, c));
+        c.setProduits(beanLigne.creerLigne(p, c));
+        Long id = c.getId();
+        session.setAttribute("idCommande", id);
+        
+        session.setAttribute("liste", liste);
+        c.setProduits(liste);
+        beanCommande.persist(c);
+        request.setAttribute("liste", liste);
+        url="client.jsp";
+     
         }  // Fin nouvelle fonction CHRIS
 
         if ("val".equalsIgnoreCase(action)) {
@@ -115,19 +137,30 @@ public class CommandeCTRL implements ControllerInterface {
         }
 
         if ("su".equalsIgnoreCase(action)) {
+            Commande c = (Commande) session.getAttribute("cde");
+            ////////////////////////////
+            Long i = c.getId();
+            System.out.println(i);
+            Produit p = beanProduit.trouverProduit("3");
+            LigneCommande llb=(LigneCommande) beanLigne.creerLigne(p, c);
+            int idid= llb.getIdLocal();
+            System.out.println("LLLELELELLELELE"+idid+"     et i est égale à :"+i);
+            ////////////////////////
             String li = request.getParameter("ligne");
             List<LigneCommande> listee = (List<LigneCommande>) session.getAttribute("liste");
-            System.out.println("La liste:" + listee);
+          
             for (LigneCommande lc : listee) {
-                if (Objects.equals(lc.getId(), Long.valueOf(li))) {
+                if (lc.getIdLocal() == Integer.valueOf(li) ) {
                     LigneCommande lcc = beanLigne.sortirLigne(lc, li);
+                   
                     session.setAttribute("lcc", lcc);
                 }
             }
             LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
             listee.remove(lcc);
             session.setAttribute("liste", listee);
-
+ c = (Commande)session.getAttribute("cde");
+ c.setProduits(listee);
             url = "client.jsp";
         }
 

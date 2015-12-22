@@ -35,6 +35,11 @@ public class Menu implements ControllerInterface, Serializable {
             request.setAttribute("produits", lp);
             url = "/sub/menuCarte.jsp";
         }
+/*
+        if ("home".equalsIgnoreCase(action)) {
+            url = "garcon.jsp";
+        }
+*/
 
         return url;
     }
