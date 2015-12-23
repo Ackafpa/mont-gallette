@@ -7,10 +7,8 @@ import entites.Produit;
 import entites.Tablee;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -55,8 +53,9 @@ public class CommandeCTRL implements ControllerInterface {
         }
 
         if ("creerTable".equalsIgnoreCase(action)) {
+
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
-                
+
                 request.setAttribute("creer", true);
                 request.setAttribute("table", table);
                 url = "garcon.jsp";
@@ -72,16 +71,13 @@ public class CommandeCTRL implements ControllerInterface {
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
                 Integer i = Integer.decode(request.getParameter("couverts"));
                 HashMap<String, Emplacement> HMemp = (HashMap<String, Emplacement>) application.getAttribute("HMemp");
-                
+
                 beanEmplacement.modifierDispo(HMemp, table);
                 application.setAttribute("HMemp", HMemp);
-                
+
                 application.setAttribute("lemp", beanEmplacement.sort(HMemp));
-                
-                
+
                 Tablee t = beanTablee.creerTablee(i, beanEmplacement.recupEmplacement(table));
-                
-                
 
                 session.setAttribute("commande", beanCommande.creerCommande(t));
                 ///J'ai besoin d'un créer commande qui renvoie une commande pas un numéro de commande
@@ -94,36 +90,30 @@ public class CommandeCTRL implements ControllerInterface {
         }
 
 //ANTHO
-        if("modifierEtat".equalsIgnoreCase(action)){
-            
-            
-            
+        if ("modifierEtat".equalsIgnoreCase(action)) {
+
 //            LigneCommande lc = request.getParameter("ligne");
 //            changerEtatValider(lc);
-            
         }
 //ANTHO FIN 
-        
-        
-        
+
         //Nouvelle méthode CHRIS
         if ("ajouterLigne".equalsIgnoreCase(action)) {
-        Commande c = (Commande) session.getAttribute("cde");
-        Produit p = beanProduit.trouverProduit(request.getParameter("produit"));
-        Collection <LigneCommande> liste = c.getProduits();
-        
-        
-        liste.add(beanLigne.creerLigne(p, c));
-        c.setProduits(beanLigne.creerLigne(p, c));
-        Long id = c.getId();
-        session.setAttribute("idCommande", id);
-        
-        session.setAttribute("liste", liste);
-        c.setProduits(liste);
-        beanCommande.persist(c);
-        request.setAttribute("liste", liste);
-        url="client.jsp";
-     
+            Commande c = (Commande) session.getAttribute("cde");
+            Produit p = beanProduit.trouverProduit(request.getParameter("produit"));
+            Collection<LigneCommande> liste = c.getProduits();
+
+            liste.add(beanLigne.creerLigne(p, c));
+            c.setProduits(beanLigne.creerLigne(p, c));
+            Long id = c.getId();
+            session.setAttribute("idCommande", id);
+
+            session.setAttribute("liste", liste);
+            c.setProduits(liste);
+            beanCommande.persist(c);
+            request.setAttribute("liste", liste);
+            url = "client.jsp";
+
         }  // Fin nouvelle fonction CHRIS
 
         if ("val".equalsIgnoreCase(action)) {
@@ -136,34 +126,33 @@ public class CommandeCTRL implements ControllerInterface {
             application.setAttribute("listeCuisine", listeCuisine);
         }
 
-        if ("su".equalsIgnoreCase(action)) {
-            Commande c = (Commande) session.getAttribute("cde");
-            ////////////////////////////
-            Long i = c.getId();
-            System.out.println(i);
-            Produit p = beanProduit.trouverProduit("3");
-            LigneCommande llb=(LigneCommande) beanLigne.creerLigne(p, c);
-            int idid= llb.getIdLocal();
-            System.out.println("LLLELELELLELELE"+idid+"     et i est égale à :"+i);
-            ////////////////////////
-            String li = request.getParameter("ligne");
-            List<LigneCommande> listee = (List<LigneCommande>) session.getAttribute("liste");
-          
-            for (LigneCommande lc : listee) {
-                if (lc.getIdLocal() == Integer.valueOf(li) ) {
-                    LigneCommande lcc = beanLigne.sortirLigne(lc, li);
-                   
-                    session.setAttribute("lcc", lcc);
-                }
-            }
-            LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
-            listee.remove(lcc);
-            session.setAttribute("liste", listee);
- c = (Commande)session.getAttribute("cde");
- c.setProduits(listee);
-            url = "client.jsp";
-        }
-
+//        if ("su".equalsIgnoreCase(action)) {
+//            Commande c = (Commande) session.getAttribute("cde");
+//            ////////////////////////////
+//            Long i = c.getId();
+//            System.out.println(i);
+//            Produit p = beanProduit.trouverProduit("3");
+//            LigneCommande llb=(LigneCommande) beanLigne.creerLigne(p, c);
+//            int idid= llb.getIdLocal();
+//            System.out.println("LLLELELELLELELE"+idid+"     et i est égale à :"+i);
+//            ////////////////////////
+//            String li = request.getParameter("ligne");
+//            List<LigneCommande> listee = (List<LigneCommande>) session.getAttribute("liste");
+//          
+//            for (LigneCommande lc : listee) {
+//                if (lc.getIdLocal() == Integer.valueOf(li) ) {
+//                    LigneCommande lcc = beanLigne.sortirLigne(lc, li);
+//                   
+//                    session.setAttribute("lcc", lcc);
+//                }
+//            }
+//            LigneCommande lcc = (LigneCommande) session.getAttribute("lcc");
+//            listee.remove(lcc);
+//            session.setAttribute("liste", listee);
+// c = (Commande)session.getAttribute("cde");
+// c.setProduits(listee);
+//            url = "client.jsp";
+//        }
         if ("mo".equalsIgnoreCase(action)) {
             System.out.println("moooo ok");
             //String id = request.getParameter("id");
@@ -171,11 +160,11 @@ public class CommandeCTRL implements ControllerInterface {
             //System.out.println(id+"   "+ligne+"------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             url = "client.jsp";
         }
-        
+
         if ("creerDonnees".equalsIgnoreCase(action)) {
 
             //modifiee TEMP par Kenneth
-            List<LigneCommande> listeLigne = beanCommande.listeLigne(beanMenu.selectAllProduit("boisson"));
+            List<LigneCommande> listeLigne = beanCommande.listeLigne(beanMenu.selectAllProduit("Plat"));
 
             session.setAttribute("liste", listeLigne);
             beanCommande.jeuEssaiCommande(listeLigne, beanTablee.selectTable(2L));
