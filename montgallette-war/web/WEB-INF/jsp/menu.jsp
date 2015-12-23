@@ -10,6 +10,6 @@
             <c:import url="${urlm02}"/>
         </div>
         <div id="menuCarte">
-            <c:url value="Controller?section=menu.acka&action=afficher" var="urlm03"/>
+            <c:url value="Controller?section=menu.acka&action=afficher&categorie=boisson" var="urlm03"/>
             <c:import url="${urlm03}"/>
         </div>

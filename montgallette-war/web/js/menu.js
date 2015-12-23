@@ -17,10 +17,11 @@ function getxmlhttp() {
 
 function refreshMenu(categorie) {
     var xmlhttp = getxmlhttp();
+    var cat = categorie;
 
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById('menuCarte').innerHTML = xmlhttp.responseText;
+            document.getElementById('menuCarte').innerHTML = xmlhttp.responseText;           
         }
         else {
             document.getElementById('menuCarte').innerHTML = "Loading: " + categorie;

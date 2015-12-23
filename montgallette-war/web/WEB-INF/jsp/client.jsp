@@ -7,6 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/menu.css" rel="stylesheet" type="text/css"/>
+        <link href="css/global.css" rel="stylesheet" type="text/css"/>
         <title>Mode: Client</title>
     </head>
     <body>
@@ -14,9 +15,11 @@
             <c:url value="WEB-INF/jsp/menu.jsp" var="urlc01"/>
             <c:import url="${urlc01}"/>
         </div>
+        
         <div id="commande">
             <c:url value="WEB-INF/jsp/commande.jsp" var="urlc02"/>
             <c:import url="${urlc02}"/>
         </div>
+        
     </body>
 </html>

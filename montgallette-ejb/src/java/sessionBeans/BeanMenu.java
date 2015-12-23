@@ -48,7 +48,7 @@ public class BeanMenu implements BeanMenuLocal {
         lp.add(new Produit("Gäteau basque", true, true, 6.3, descrCourte, descrComplete, lc.get(2),"images/menu/gateaubasque.jpg"));
         
         lp.add(new Produit("Mojito", true, true, 5.0, descrCourte, descrComplete, lc.get(3),"images/menu/mojito.jpg"));
-        lp.add(new Produit("Coke (cock pour les koreans)", true, false, 2.5, descrCourte, descrComplete, lc.get(3),"images/menu/cocacola.jpg"));
+        lp.add(new Produit("Cocacola", true, false, 2.5, descrCourte, descrComplete, lc.get(3),"images/menu/cocacola.jpg"));
         lp.add(new Produit("Piña colada", true, true, 5.0, descrCourte, descrComplete, lc.get(3),"images/menu/pinacolada.jpg"));
         lp.add(new Produit("Perrier", true, false, 2.0, descrCourte, descrComplete, lc.get(3),"images/menu/perrier.jpg"));
         
