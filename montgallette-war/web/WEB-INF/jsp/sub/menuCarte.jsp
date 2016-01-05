@@ -9,11 +9,15 @@
     <script>updateCSS(${sessionScope.user.code});</script>
     <c:forEach items="${produits}" var="p" varStatus="theCount">
         <section id="${p.id}">
+            
             <h2><a href="#${p.id}">${p.nom}</a></h2>
-            <c:if test="${sessionScope.prov eq 'client'}">
+            <img id="photoProduit" src="${p.photoURL}">
+                <c:if test="${sessionScope.prov eq 'client'}">
                 <p>${p.descriptionCourte}</p>
                 <p>${p.descriptionComplete}</p>
             </c:if>
+                <div id="ajouter"><a href="#" onclick="refreshCommande(${p.id})">Ajouter</a></div>
+                
         </section>
     </c:forEach>    
 </div>

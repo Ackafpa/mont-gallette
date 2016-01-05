@@ -52,7 +52,7 @@ public class BeanMenu implements BeanMenuLocal {
         lp.add(new Produit("Andouillette", true, true, 12.50, descrCourte, descrComplete, lc.get(1),"images/menu/andouillette.jpg"));
         lp.add(new Produit("Poulet a la normande", true, true, 12.50, descrCourte, descrComplete, lc.get(1),"images/menu/pouletnormande.jpg"));
         lp.add(new Produit("Bavette au poivre", true, true, 12.95, descrCourte, descrComplete, lc.get(1),"images/menu/bavettepoivre.jpg"));
-        lp.add(new Produit("Filet de cabillaud au four", true, true, 13.95, descrCourte, descrComplete, lc.get(1),"images/menu/dauradecitron.jpg"));
+        lp.add(new Produit("Daurade au citron", true, true, 13.95, descrCourte, descrComplete, lc.get(1),"images/menu/dauradecitron.jpg"));
         //Creer desserts
         lp.add(new Produit("Tiramisu", true, false, 4.95, descrCourte, descrComplete, lc.get(2),"images/menu/tiramisu.jpg"));
         lp.add(new Produit("Duo chocolat", true, true, 4.50, descrCourte, descrComplete, lc.get(2),"images/menu/duochocolat.jpg"));

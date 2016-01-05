@@ -112,7 +112,7 @@ public class CommandeCTRL implements ControllerInterface {
             c.setProduits(liste);
             beanCommande.persist(c);
             request.setAttribute("liste", liste);
-            url = "client.jsp";
+            url = "commande.jsp";
 
         }  // Fin nouvelle fonction CHRIS
 
