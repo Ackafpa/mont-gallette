@@ -47,6 +47,5 @@ function refreshCommande(produitID) {
 }
 
 function showHide(element) {
-    
     alert(element);
 }

@@ -42,7 +42,7 @@ public class Login implements ControllerInterface, Serializable {
         if ("login".equalsIgnoreCase(action)) {
 
             String code = request.getParameter("id");
-
+            
             if (session.getAttribute("user") != null) {
 
                 //Si le nouveau code entré ne vient pas du mode client
