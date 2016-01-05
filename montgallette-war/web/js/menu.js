@@ -49,3 +49,10 @@ function refreshCommande(produitID) {
 function showHide(element) {
     alert(element);
 }
+
+function updateCSS(code){
+    if(code ==0)
+        ;
+    else
+        ;
+}

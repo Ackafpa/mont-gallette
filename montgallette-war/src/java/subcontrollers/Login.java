@@ -83,10 +83,11 @@ public class Login implements ControllerInterface, Serializable {
                             if (code.startsWith("1")) {
                                 url = "garcon.jsp";
                                 session.setAttribute("user", e);
+                                session.setAttribute("prov", "serveur");
                             } else if (code.startsWith("2")) {
                                 url = "cuisine.jsp";
                                 session.setAttribute("user", e);
-                            }
+                            } 
 
                         } catch (CustomException ex) {
 

@@ -210,7 +210,7 @@ body {
                    transition:height 0.2s ease-out;
 }
 
-.vertical :target{ height:200px;  }
+.vertical :target{ height:200px;}
 .vertical section h2 { position:relative; left:0; top:-15px; }
 .vertical section:after{ top:-60px;left:810px;}
 .vertical section:target:after{ left:-9999px;}

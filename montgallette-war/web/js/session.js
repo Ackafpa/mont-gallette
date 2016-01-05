@@ -11,10 +11,3 @@ function checkTime(i) {
         i = "0" + i;
     return i;
 }
-
-function afficherOptionsSession() {
-   // <c:url value="Controller?section=menu.acka&action=home" var="urlms01" />
-   //  --- <a href="${urlms01}">Home</a>
-}
-
-    
