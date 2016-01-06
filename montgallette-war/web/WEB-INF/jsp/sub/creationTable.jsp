@@ -16,11 +16,7 @@
         <input type="hidden" name="section" value="commande.acka"/>
         <input type="hidden" name="action" value="creerCo"/>
         <input type="hidden" name="table" value="${table}"/>
-
-
         <a href="Controller?section=commande.acka&action=creerCo" ><input type="submit" name="doIt" value="Valider"/></a>
-
-
     </form>
 
 </div>

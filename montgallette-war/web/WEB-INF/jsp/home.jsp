@@ -20,8 +20,8 @@
         <h1>MONT GALETTE</h1>
         <c:import url="/WEB-INF/jsp/login.jsp" />
         <br>
-        <a href="Controller?section=salle.acka&action=jeuTables">Créer jeu tables</a><br>
+        <!--<a href="Controller?section=salle.acka&action=jeuTables">Créer jeu tables</a><br>
         <a href="Controller?section=salle.acka&action=jeuEmplacements">Créer jeu Emplacements</a><br>
-        <a href="Controller?section=commande.acka&action=creerDonnees">Créer test commande</a>
+        <a href="Controller?section=commande.acka&action=creerDonnees">Créer test commande</a>-->
     </body>
 </html>

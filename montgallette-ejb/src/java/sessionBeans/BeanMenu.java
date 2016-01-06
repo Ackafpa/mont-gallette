@@ -15,7 +15,6 @@ public class BeanMenu implements BeanMenuLocal {
 
     @PersistenceContext(unitName = "montgallette-ejbPU")
     private EntityManager em;
-    private boolean jeuxCree;
 
     @Override
     public void creerJeuxDonnees() {
@@ -130,33 +129,24 @@ public class BeanMenu implements BeanMenuLocal {
         lp.stream().forEach((p) -> {
             em.persist(p);
         });
-
-        setJeuxCree(true);
     }
 
     @Override
     public List<Produit> selectAllProduit(String categorie) {
         String req;
-        
+        List<Produit> temp = new ArrayList<>();
+        Query qr;
+
         if("formule".equals(categorie)){
-            req = "select po from produit_offre po";
-            //select * from PRODUIT p join PRODUIT_OFFRE po on p.id = po.produits_ID
+            req = "FUCKFUCKFUCK";
+            qr = em.createQuery(req);
         } else {
             req = "select p from Produit p where p.categorie.nom =:categorieParam";
+            qr = em.createQuery(req);
+            qr.setParameter("categorieParam", categorie);
         }
 
-        Query qr = em.createQuery(req);
-        qr.setParameter("categorieParam", categorie);
-        return qr.getResultList();
+        temp = qr.getResultList();
+        return temp;
     }
-
-    @Override
-    public boolean isJeuxCree() {
-        return jeuxCree;
-    }
-
-    public void setJeuxCree(boolean jeuxCree) {
-        this.jeuxCree = jeuxCree;
-    }
-
 }

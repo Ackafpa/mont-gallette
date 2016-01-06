@@ -176,12 +176,12 @@ public class CommandeCTRL implements ControllerInterface {
             url = "home.jsp";
         }
 
-        if ("produits".equalsIgnoreCase(action)) {
-            if (!beanMenu.isJeuxCree()) {
-                beanMenu.creerJeuxDonnees();
-            }
-            url = "home.jsp";
-        }
+//        if ("produits".equalsIgnoreCase(action)) {
+//            if (!beanMenu.isJeuxCree()) {
+//                beanMenu.creerJeuxDonnees();
+//            }
+//            url = "home.jsp";
+//        }
 
         System.out.println(url);
         return url;

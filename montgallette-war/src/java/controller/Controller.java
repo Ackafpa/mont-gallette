@@ -3,11 +3,21 @@ package controller;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import sessionBeans.BeanEmplacementLocal;
+import sessionBeans.BeanLoginLocal;
+import sessionBeans.BeanMenuLocal;
+import sessionBeans.BeanTableeLocal;
 import subcontrollers.ControllerInterface;
 
 /**
@@ -15,8 +25,19 @@ import subcontrollers.ControllerInterface;
  * @author cdi406
  */
 public class Controller extends HttpServlet {
+    
+    @EJB
+    private BeanEmplacementLocal beanEmplacement;
+    @EJB
+    private BeanTableeLocal beanTablee;
+    @EJB
+    private BeanLoginLocal beanLogin;
+    @EJB
+    private BeanMenuLocal beanMenu;
+
 
     private HashMap<String, ControllerInterface> subcont;
+    
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -32,6 +53,12 @@ public class Controller extends HttpServlet {
             catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             }
         }
+        
+        beanMenu.creerJeuxDonnees();
+        beanLogin.creerJeuTest();
+        beanTablee.jeuTables();
+        config.getServletContext().setAttribute("HMemp", beanEmplacement.creerJeu());
+        config.getServletContext().setAttribute("lemp", beanEmplacement.getListeEmplacement());
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -88,5 +115,7 @@ public class Controller extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+
 
 }

@@ -17,7 +17,6 @@ function getxmlhttp() {
 
 function refreshMenu(categorie) {
     var xmlhttp = getxmlhttp();
-    var cat = categorie;
 
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -39,7 +38,7 @@ function refreshCommande(produitID) {
             document.getElementById('commande').innerHTML = xmlhttp.responseText;
         }
         else {
-            document.getElementById('commande').innerHTML = "Controller?section=commande.acka&action=ajouterLigne&produit=" + produitID;
+            document.getElementById('commande').innerHTML = "Loading... " + produitID;
         }
     };
     xmlhttp.open("GET", "Controller?section=commande.acka&action=ajouterLigne&produit=" + produitID, true);

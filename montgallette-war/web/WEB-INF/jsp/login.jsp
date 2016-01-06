@@ -4,7 +4,7 @@
 <title>Login</title>
 
 <div id="blockLogin">
-    <a id="emp" href="Controller?section=login.acka&action=test">Créer jeu de test Employés</a>
+    <!--<a id="emp" href="Controller?section=login.acka&action=test">Créer jeu de test Employés</a>-->
     <form action="Controller" method="post">
         <p id="enterCode">Entrez votre code</p>
         <%-- TEXTFIELD CODE --%>
