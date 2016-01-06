@@ -16,10 +16,6 @@ import javax.servlet.http.HttpSession;
 import outils.CustomException;
 import sessionBeans.BeanLoginLocal;
 
-/**
- *
- * @author cdi406
- */
 public class Login implements ControllerInterface, Serializable {
 
     BeanLoginLocal beanLogin = lookupBeanLoginLocal();
@@ -46,7 +42,7 @@ public class Login implements ControllerInterface, Serializable {
         if ("login".equalsIgnoreCase(action)) {
 
             String code = request.getParameter("id");
-
+            
             if (session.getAttribute("user") != null) {
 
                 //Si le nouveau code entré ne vient pas du mode client
@@ -87,10 +83,11 @@ public class Login implements ControllerInterface, Serializable {
                             if (code.startsWith("1")) {
                                 url = "garcon.jsp";
                                 session.setAttribute("user", e);
+                                session.setAttribute("prov", "serveur");
                             } else if (code.startsWith("2")) {
                                 url = "cuisine.jsp";
                                 session.setAttribute("user", e);
-                            }
+                            } 
 
                         } catch (CustomException ex) {
 

@@ -13,8 +13,8 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Produit implements Serializable {
-
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,13 +27,13 @@ public class Produit implements Serializable {
     @Column(length = 5000)
     private String descriptionComplete;
     private String photoURL;
-
+    
     @ManyToOne
     private Categorie categorie;
-
+    
     @ManyToMany(mappedBy = "produits")
     private Collection<Offre> offres;
-
+    
     @ManyToMany(mappedBy = "produits")
     private Collection<Garniture> garnitures;
 

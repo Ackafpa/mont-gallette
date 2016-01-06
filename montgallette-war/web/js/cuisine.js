@@ -17,19 +17,11 @@ function getXhr() {
     return xhr;
 }
 
-function test() {
-    var t = document.getElementById('btnTest');
-    if (t.className === 'CuisineInactif') {
-        t.className = 'CuisineEnCours';
-    } else {
-        t.className = 'CuisineInactif';
-    }
-}
-// --> RAJOUTER CHANGEMENT ETAT DES PRODUITS ET SURTOUT LIEN AVEC CHAQUE PRODUIT
-function preparation(idProduit) {
-    var prepa = document.getElementById('btnPreparation');
-    var pret = document.getSelection(idProduit).getElementById('btnPret');
 
+// --> RAJOUTER CHANGEMENT ETAT DES PRODUITS ET SURTOUT LIEN AVEC CHAQUE PRODUIT
+function preparation(id) {
+    var prepa = document.getElementById('btnPreparation' + id);
+    var pret = document.getElementById('btnPret' + id);
     if (pret.className === 'CuisineInactif') {
         if (prepa.className === 'CuisineInactif') {
             prepa.className = 'CuisineEnCours';
@@ -37,38 +29,51 @@ function preparation(idProduit) {
         } else {
             prepa.className = 'CuisineInactif';
             prepa.value = 'Préparer';
-            //CHANGER ETAT 1-->0
         }
     } else {
-        //NE FAIT RIEN CAR NON CLIQUABLE
+        //NE FAIT RIEN CAR BOUTON NON CLIQUABLE
     }
 }
 
-function changerEtat(idProduit) {
-    document.getElementById('idProduit').etat = 1; //CHANGER ETAT 0-->1
+function changerEtat(idProduit, id) {
+    var prepa = document.getElementById('btnPreparation' + id);
+    var pret = document.getElementById('btnPret' + id);
+    
+    
+    var xhr = getXhr();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            if (prepa.className === 'CuisineInactif') {
+                changerEtatValider(idProduit);
+            }
+            if (pret.className === 'CuisineInactif') {
+                changerEtatAnnuler(lc);
+            }
+        } else if (xhr.readyState == 4 && xhr.status == 404) {
+            // to do ....
+            print(">>>>>> ERROR XHR");
+        }
+    }
+
 }
 
-//function preparation() {
-//    var prepa = document.getElementById('btnPreparation');
-//    var pret = document.getElementById('btnPret');
-//
-//    if (pret.className === 'CuisineInactif') {
-//        if (prepa.className === 'CuisineInactif') {
-//            prepa.className = 'CuisineEnCours';
-//            prepa.value = 'En prépa';
-//        } else {
-//            prepa.className = 'CuisineInactif';
-//            prepa.value = 'Préparer';
-//        }
-//    } else {
-//        //NE FAIT RIEN CAR NON CLIQUABLE
-//    }
-//}
+function validerEtat() {
+    var xhr = getXhr();
 
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            nomProduit.changerEtatValider();
+        } else if (xhr.readyState == 4 && xhr.status == 404) {
+            // to do ....
+        }
+    }
+    xhr.open("POST", "Controleur", true);
+    xhr.send("section=modifierEtat");
+}
 
-function pret() {
-    var prepa = document.getElementById('btnPreparation');
-    var pret = document.getElementById('btnPret');
+function pret(id) {
+    var prepa = document.getElementById('btnPreparation' + id);
+    var pret = document.getElementById('btnPret' + id);
     if (prepa.className === 'CuisineEnCours') {
         if (pret.className === 'CuisineInactif') {
             prepa.className = 'CuisineFini';
@@ -96,3 +101,19 @@ function indispo() {
 }
 
 
+
+//XHR : 
+//xhr.open("GET", "Controleur?action=modifierEtat", true);
+//xhr.send(null);
+
+
+
+//A SUPPRIMER A LA FIN
+function test() {
+    var t = document.getElementById('btnTest');
+    if (t.className === 'CuisineInactif') {
+        t.className = 'CuisineEnCours';
+    } else {
+        t.className = 'CuisineInactif';
+    }
+}

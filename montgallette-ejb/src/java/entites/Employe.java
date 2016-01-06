@@ -98,7 +98,7 @@ public class Employe implements Serializable {
 
     @Override
     public String toString() {
-        return nom+" "+prenom+" ("+id+")";
+        return nom+" "+prenom+" (ID:"+id+")";
     }
 
 }

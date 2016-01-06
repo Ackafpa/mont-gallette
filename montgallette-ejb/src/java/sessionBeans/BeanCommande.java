@@ -42,6 +42,7 @@ public class BeanCommande implements BeanCommandeLocal {
     public List<LigneCommande> listeLigne(List<Produit> produits) {
         Commande c = new Commande();
         List<LigneCommande> liste = new ArrayList();
+        
         for (Produit p : produits) {
             liste.add(new LigneCommande(p, 0, c));
         }
@@ -86,6 +87,28 @@ public class BeanCommande implements BeanCommandeLocal {
     public String creerCommande(Tablee t){
         Commande c = new Commande();
         GregorianCalendar d = new GregorianCalendar();
+        String numTable = "";
+        
+        Collection<Emplacement> collEmp = t.getEmplacements();
+        
+        for(Emplacement e : collEmp){
+            numTable = numTable+e.getNumero();
+        }
+        
+       
+        
+        String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+d.HOUR_OF_DAY+d.MINUTE+numTable);
+        c.setDate(d.getTime());
+        c.setNumero(num);
+        c.setTablee(t);
+        
+        return num;
+    }
+    
+    @Override
+      public Commande creerCommandeC(Tablee t){
+        Commande c = new Commande();
+        GregorianCalendar d = new GregorianCalendar();
         String numTable = null;
         
         Collection<Emplacement> collE = t.getEmplacements();
@@ -94,12 +117,14 @@ public class BeanCommande implements BeanCommandeLocal {
             numTable = numTable+e.getNumero();
         }
         
+       
+        
         String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+d.HOUR_OF_DAY+d.MINUTE+numTable);
         c.setDate(d.getTime());
         c.setNumero(num);
         c.setTablee(t);
         em.persist(c);
-        return num;
+        return c;
     }
     
     //Ajout ALC

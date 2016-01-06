@@ -1,20 +1,25 @@
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<table>
-    <tbody>
-        <c:forEach items="${produits}" var="p" varStatus="theCount">
-            <tr id="${p.id}">
-                <td id="tdStyle${theCount.index%2}"><img id="photoProduit" src=${p.photoURL}>
-                    <div id="textCourt"><b>${p.nom}</b><br>${p.descriptionCourte}</div>
-                    <div id="prix"> <fmt:formatNumber value="${p.prixHT}" minFractionDigits="2" currencySymbol="&euro;" type="currency"/></div>
-                    <div onclick="refreshCommande(${p.id})" title="Ajouter" id="ajouter"><img src="images/ajouter.png" onmouseover="this.src = 'images/ajouterACTIF.png';" onmouseout="this.src = 'images/ajouter.png';"/></div>
-                    <div title="Afficher les details" id="details"><img src="images/details.png" onmouseover="this.src = 'images/detailsACTIF.png';" onmouseout="this.src = 'images/details.png';"/></div>
-                </td>
-            </tr>
-    </c:forEach>
-</tbody>
-</table>
+<div id="headerIMG"><img src="images/menu/${param.categorie}.jpg"</div>
+
+<div class="accordion vertical">
+    <script>updateCSS(${sessionScope.user.code});</script>
+    <c:forEach items="${produits}" var="p" varStatus="theCount">
+        <section id="${p.id}">
+            
+            <h2><a href="#${p.id}">${p.nom}</a></h2>
+            <img id="photoProduit" src="${p.photoURL}">
+                <c:if test="${sessionScope.prov eq 'client'}">
+                <p>${p.descriptionCourte}</p>
+                <p>${p.descriptionComplete}</p>
+            </c:if>
+                <div id="ajouter"><a href="#" onclick="refreshCommande(${p.id})">Ajouter</a></div>
+                
+        </section>
+    </c:forEach>    
+</div>
 
 <script src="js/menu.js" type="text/javascript"></script>

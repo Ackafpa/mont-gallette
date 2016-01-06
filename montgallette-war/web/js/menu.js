@@ -17,10 +17,11 @@ function getxmlhttp() {
 
 function refreshMenu(categorie) {
     var xmlhttp = getxmlhttp();
+    var cat = categorie;
 
     xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById('menuCarte').innerHTML = xmlhttp.responseText;
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            document.getElementById('menuCarte').innerHTML = xmlhttp.responseText;           
         }
         else {
             document.getElementById('menuCarte').innerHTML = "Loading: " + categorie;
@@ -34,7 +35,7 @@ function refreshCommande(produitID) {
     var xmlhttp = getxmlhttp();
 
     xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             document.getElementById('commande').innerHTML = xmlhttp.responseText;
         }
         else {
@@ -46,6 +47,5 @@ function refreshCommande(produitID) {
 }
 
 function showHide(element) {
-    
     alert(element);
 }

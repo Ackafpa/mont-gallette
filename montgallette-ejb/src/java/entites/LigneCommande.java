@@ -1,6 +1,7 @@
 package entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,11 +16,16 @@ import javax.persistence.OneToOne;
 public class LigneCommande implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    
+    private static int compteur = 0;
+    private int idLocal = 0;
+    
     @OneToOne
     private Produit produit;
 
@@ -33,8 +39,10 @@ public class LigneCommande implements Serializable {
     private Commande commande;
 
     public LigneCommande() {
-      //  garnitures = new ArrayList();
-     //preferences = new ArrayList();
+     garnitures = new ArrayList();
+     preferences = new ArrayList();
+     compteur++;
+  
     }
 
     public LigneCommande(Produit produit, Integer etat, Commande commande) {
@@ -42,6 +50,8 @@ public class LigneCommande implements Serializable {
         this.produit = produit;
         this.etat = etat;
         this.commande = commande;
+//        this.idLocal = (int) (commande.getId()+compteur);
+        
     }
 
 //    
@@ -65,12 +75,12 @@ public class LigneCommande implements Serializable {
 //        return s;
 //    }
 //    
-    String s = "test";
+   
     @Override
     public String toString() {
         
        // String s = this.toString(etat);
-        return produit + " " + preferences + " " + garnitures + " est " + s;
+        return produit + " " + preferences + " " + garnitures + " est ";
     }
 
     public Long getId() {
@@ -99,6 +109,22 @@ public class LigneCommande implements Serializable {
 
     public Produit getProduit() {
         return produit;
+    }
+
+    public static int getCompteur() {
+        return compteur;
+    }
+
+    public static void setCompteur(int compteur) {
+        LigneCommande.compteur = compteur;
+    }
+
+    public int getIdLocal() {
+        return idLocal;
+    }
+
+    public void setIdLocal(int idLocal) {
+        this.idLocal = idLocal;
     }
 
     public void setProduit(Produit produit) {

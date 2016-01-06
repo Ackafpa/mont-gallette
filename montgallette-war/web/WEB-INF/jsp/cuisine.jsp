@@ -19,18 +19,17 @@
         <h1>Hello Cuisine!</h1>
         <table>
             <c:forEach items="${listeCuisine}" var="l">
-                
-                    <c:set var="idProduit" value="l.produit.id"/>
-                
+
+                <c:set var="idProduit" value="l.produit.id"/>
                 <c:set var="etat" value="l.etat"/>
-                <tr id="${l.produit.id}">
+                <tr>
                     <td>${l.produit}</td>
                     <td>${l.preferences}</td>
-                    <%--
-                        <td><input type="hidden" name="idProduit" value="${l.produit.id}" /></td>
-                    --%>
-                    <td><input type="button" class="CuisineInactif" id="btnPreparation" onclick="preparation(${l.produit.id});changerEtat(${l.produit.id})" value="Préparer"/></td>
-                    <td><input type="button" class="CuisineInactif" id="btnPret" onclick="pret()" value="Prêt"/></td>
+                    <td><input type="hidden" name="idProduit" value="${l.produit.id}" /></td>
+                    <td><input type="button" class="CuisineInactif" id="btnPreparation${l.produit.id}" onclick="preparation(${l.produit.id});
+                            changerEtat(${l.produit.id},${l.produit.id});
+                            return false;" value="Préparer"/></td>
+                    <td><input type="button" class="CuisineInactif" id="btnPret${l.produit.id}" onclick="pret(${l.produit.id})" value="Prêt"/></td>
                     <td><input type="button" class="CuisineIndispo" id="btnIndispo" onclick="indispo()" value="X"/></td>
                     <td>${l.etat}</td>
                 </tr>
