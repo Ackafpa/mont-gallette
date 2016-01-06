@@ -20,9 +20,9 @@ public class Offre implements Serializable {
     private String code;
     private Double prixHT;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "offres")
     private Collection<Produit> produits;
-
+    
     public Offre() {
         produits = new ArrayList();
     }
