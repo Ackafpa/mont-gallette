@@ -13,8 +13,8 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Produit implements Serializable {
-
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,19 +27,19 @@ public class Produit implements Serializable {
     @Column(length = 5000)
     private String descriptionComplete;
     private String photoURL;
-
+    
     @ManyToOne
     private Categorie categorie;
-
-    @ManyToMany(mappedBy = "produits")
+    
+    @ManyToMany
     private Collection<Offre> offres;
-
-    @ManyToMany(mappedBy = "produits")
-    private Collection<Garniture> garnitures;
+    
+//    @ManyToMany(mappedBy = "produits")
+//    private Collection<Garniture> garnitures;
 
     public Produit() {
         offres = new ArrayList();
-        garnitures = new ArrayList();   
+//        garnitures = new ArrayList();   
     }
 
     public Produit(String nom, boolean dispo, boolean preparation, Double prixHT, String descriptionCourte, String descriptionComplete, Categorie categorie, String photoURL) {
@@ -122,13 +122,13 @@ public class Produit implements Serializable {
         this.categorie = categorie;
     }
 
-    public Collection<Garniture> getGarnitures() {
-        return garnitures;
-    }
-
-    public void setGarnitures(Collection<Garniture> garnitures) {
-        this.garnitures = garnitures;
-    }
+//    public Collection<Garniture> getGarnitures() {
+//        return garnitures;
+//    }
+//
+//    public void setGarnitures(Collection<Garniture> garnitures) {
+//        this.garnitures = garnitures;
+//    }
 
     public String getPhotoURL() {
         return photoURL;

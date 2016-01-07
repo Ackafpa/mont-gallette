@@ -42,7 +42,7 @@ public class Login implements ControllerInterface, Serializable {
         if ("login".equalsIgnoreCase(action)) {
 
             String code = request.getParameter("id");
-
+            
             if (session.getAttribute("user") != null) {
 
                 //Si le nouveau code entré ne vient pas du mode client
@@ -83,10 +83,11 @@ public class Login implements ControllerInterface, Serializable {
                             if (code.startsWith("1")) {
                                 url = "garcon.jsp";
                                 session.setAttribute("user", e);
+                                session.setAttribute("prov", "serveur");
                             } else if (code.startsWith("2")) {
                                 url = "cuisine.jsp";
                                 session.setAttribute("user", e);
-                            }
+                            } 
 
                         } catch (CustomException ex) {
 
@@ -114,11 +115,11 @@ public class Login implements ControllerInterface, Serializable {
         }
 
         //Création d'un jeu d'essai
-        if ("test".equalsIgnoreCase(action)) {
-            beanLogin.creerJeuTest();
-            request.setAttribute("msg", "Jeu d'essai crée!");
-            url = "home.jsp";
-        }
+//        if ("test".equalsIgnoreCase(action)) {
+//            beanLogin.creerJeuTest();
+//            request.setAttribute("msg", "Jeu d'essai crée!");
+//            url = "home.jsp";
+//        }
 
         //Déconnexion
         if ("deco".equalsIgnoreCase(action)) {

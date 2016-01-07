@@ -50,7 +50,7 @@ public class LigneCommande implements Serializable {
         this.produit = produit;
         this.etat = etat;
         this.commande = commande;
-        //this.idLocal = (int) (commande.getId()+compteur);
+//        this.idLocal = (int) (commande.getId()+compteur);
         
     }
 

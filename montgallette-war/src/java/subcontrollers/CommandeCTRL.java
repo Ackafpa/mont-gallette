@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -54,6 +53,7 @@ public class CommandeCTRL implements ControllerInterface {
         }
 
         if ("creerTable".equalsIgnoreCase(action)) {
+
             if (beanTablee.recupTablee(beanEmplacement.recupEmplacement(table)) == null) {
 
                 request.setAttribute("creer", true);
@@ -91,11 +91,9 @@ public class CommandeCTRL implements ControllerInterface {
 
 //ANTHO
         if ("modifierEtat".equalsIgnoreCase(action)) {
-            LigneCommande lc = beanLigne.chercherLigne(Integer.parseInt(request.getParameter("idProduit")));
-            
-            if()
-            beanLigne.changerEtatValider(lc.getId());
-            
+
+//            LigneCommande lc = request.getParameter("ligne");
+//            changerEtatValider(lc);
         }
 //ANTHO FIN 
 
@@ -183,7 +181,7 @@ public class CommandeCTRL implements ControllerInterface {
         if ("creerDonnees".equalsIgnoreCase(action)) {
 
             //modifiee TEMP par Kenneth
-            List<LigneCommande> listeLigne = beanCommande.listeLigne(beanMenu.selectAllProduit("boisson"));
+            List<LigneCommande> listeLigne = beanCommande.listeLigne(beanMenu.selectAllProduit("Plat"));
 
             session.setAttribute("liste", listeLigne);
             beanCommande.jeuEssaiCommande(listeLigne, beanTablee.selectTable(2L));
@@ -195,12 +193,12 @@ public class CommandeCTRL implements ControllerInterface {
             url = "home.jsp";
         }
 
-        if ("produits".equalsIgnoreCase(action)) {
-            if (!beanMenu.isJeuxCree()) {
-                beanMenu.creerJeuxDonnees();
-            }
-            url = "home.jsp";
-        }
+//        if ("produits".equalsIgnoreCase(action)) {
+//            if (!beanMenu.isJeuxCree()) {
+//                beanMenu.creerJeuxDonnees();
+//            }
+//            url = "home.jsp";
+//        }
 
         System.out.println(url);
         return url;

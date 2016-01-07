@@ -14,27 +14,26 @@ import sessionBeans.BeanEmplacementLocal;
 import sessionBeans.BeanTableeLocal;
 
 public class Salle implements ControllerInterface, Serializable{
+    
     BeanEmplacementLocal beanEmplacement = lookupBeanEmplacementLocal();
-
     BeanTableeLocal beanTablee = lookupBeanTableeLocal();
-
+    
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response, HttpServlet servlet) {
         String url = "home.jsp";
-        String action = request.getParameter("action");
-        ServletContext application = servlet.getServletContext();
-        
-        if("jeuTables".equalsIgnoreCase(action)){
-            beanTablee.jeuTables();
-            url="home.jsp";
-        }
-        
-        if("jeuEmplacements".equalsIgnoreCase(action)){
-            application.setAttribute("HMemp", beanEmplacement.creerJeu());
-            
-            application.setAttribute("lemp", beanEmplacement.getListeEmplacement());
-            url="home.jsp";
-        }  
+//        String action = request.getParameter("action");
+//        ServletContext application = servlet.getServletContext();
+//        
+//        if("jeuTables".equalsIgnoreCase(action)){
+//            beanTablee.jeuTables();
+//            url="home.jsp";
+//        }
+//        
+//        if("jeuEmplacements".equalsIgnoreCase(action)){
+//            application.setAttribute("HMemp", beanEmplacement.creerJeu());
+//            application.setAttribute("lemp", beanEmplacement.getListeEmplacement());
+//            url="home.jsp";
+//        }  
         return url;
     }
 
@@ -57,7 +56,4 @@ public class Salle implements ControllerInterface, Serializable{
             throw new RuntimeException(ne);
         }
     }
-
-    
-    
 }

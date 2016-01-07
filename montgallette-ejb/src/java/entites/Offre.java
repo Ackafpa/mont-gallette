@@ -11,8 +11,8 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Offre implements Serializable {
-
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,9 +20,9 @@ public class Offre implements Serializable {
     private String code;
     private Double prixHT;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "offres")
     private Collection<Produit> produits;
-
+    
     public Offre() {
         produits = new ArrayList();
     }

@@ -47,6 +47,7 @@ public class BeanTablee implements BeanTableeLocal {
         return t;
     }
 
+    @Override
     public double addition(Tablee t) {
         double somme = 0;
 
