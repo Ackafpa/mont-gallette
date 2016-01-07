@@ -11,4 +11,5 @@ import javax.ejb.Local;
 public interface BeanMenuLocal {
     public void creerJeuxDonnees();
     public List<Produit> selectAllProduit(String categorie);
+    public List<Produit> selectOffres();
 }

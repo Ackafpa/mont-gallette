@@ -133,20 +133,27 @@ public class BeanMenu implements BeanMenuLocal {
 
     @Override
     public List<Produit> selectAllProduit(String categorie) {
-        String req;
-        List<Produit> temp = new ArrayList<>();
-        Query qr;
-
-        if("formule".equals(categorie)){
-            req = "FUCKFUCKFUCK";
-            qr = em.createQuery(req);
-        } else {
-            req = "select p from Produit p where p.categorie.nom =:categorieParam";
-            qr = em.createQuery(req);
-            qr.setParameter("categorieParam", categorie);
-        }
-
-        temp = qr.getResultList();
-        return temp;
+        String req = "select p from Produit p where p.categorie.nom =:categorieParam";
+        Query qr = em.createQuery(req);
+        qr.setParameter("categorieParam", categorie);
+        return qr.getResultList();
     }
+    
+    @Override
+    public List<Produit> selectOffres() {
+        
+        String req = "select p from Produit p ";
+        Query qr = em.createQuery(req);
+        List<Produit> lp = qr.getResultList();
+        
+        req = "select p.offres from Produit p where p = :paramProduit";
+        qr = em.createQuery(req);
+        for (Produit p : lp) {
+            qr.setParameter("paramProduit", p);
+            List<Offre> lo = qr.getResultList();
+            p.setOffres(lo);
+        }
+        return lp;
+    }
+    
 }

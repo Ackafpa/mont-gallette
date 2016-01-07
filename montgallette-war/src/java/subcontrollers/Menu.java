@@ -23,9 +23,15 @@ public class Menu implements ControllerInterface, Serializable {
         String url = "client.jsp";
         String action = request.getParameter("action");
         String categorie = request.getParameter("categorie");
-
+        List<Produit> lp;
+        
         if ("afficher".equalsIgnoreCase(action)) {
-            List<Produit> lp = beanMenu.selectAllProduit(categorie);
+            if("formule".equals(categorie)){
+                lp = beanMenu.selectOffres();
+            } else {
+                lp = beanMenu.selectAllProduit(categorie);
+            }
+            
             request.setAttribute("produits", lp);
             url = "/sub/menuCarte.jsp";
         }
