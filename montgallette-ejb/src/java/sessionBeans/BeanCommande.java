@@ -11,7 +11,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Random;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -33,9 +32,6 @@ public class BeanCommande implements BeanCommandeLocal {
         em.persist(c);
         return c;
     }
-    
-    
-    
 
     // public Commande(Tablee tablee, List<LigneCommande> produits, String numero, Date date)
     @Override
@@ -117,8 +113,6 @@ public class BeanCommande implements BeanCommandeLocal {
             numTable = numTable+e.getNumero();
         }
         
-       
-        
         String num = String.valueOf(d.YEAR+d.MONTH+d.DAY_OF_MONTH+d.HOUR_OF_DAY+d.MINUTE+numTable);
         c.setDate(d.getTime());
         c.setNumero(num);
@@ -132,8 +126,6 @@ public class BeanCommande implements BeanCommandeLocal {
     public String recupNumero(Commande c){
         return c.getNumero();
     }
-    
-    
     
     //Ajout ALC
     @Override
@@ -161,7 +153,6 @@ public class BeanCommande implements BeanCommandeLocal {
 
         return c.getProduits();
     }
-    
 
     @Override
     public void jeuEssaiCommande(List<LigneCommande> liste, Tablee t) {
@@ -174,9 +165,7 @@ public class BeanCommande implements BeanCommandeLocal {
         c.setTablee(t);
 
         em.persist(c);
-
     }
-
 
     @Override
     public Commande ajouterLigne(Produit produit, Integer etat, Commande commande, List<String> preferences, List<Garniture> garnitures) {

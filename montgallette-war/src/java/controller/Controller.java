@@ -15,10 +15,6 @@ import sessionBeans.BeanMenuLocal;
 import sessionBeans.BeanTableeLocal;
 import subcontrollers.ControllerInterface;
 
-/**
- *
- * @author cdi406
- */
 public class Controller extends HttpServlet {
     
     @EJB

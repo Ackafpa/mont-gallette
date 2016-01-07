@@ -23,8 +23,8 @@ public class LigneCommande implements Serializable {
     private Long id;
     
     
-    private static int compteur = 0;
-    private int idLocal = 0;
+    private static int compteur;
+    private int idLocal;
     
     @OneToOne
     private Produit produit;
@@ -50,11 +50,12 @@ public class LigneCommande implements Serializable {
         this.produit = produit;
         this.etat = etat;
         this.commande = commande;
-//        this.idLocal = (int) (commande.getId()+compteur);
+              this.idLocal = (int) (commande.getId()+compteur);
         
     }
 
-//    
+//      --> C'EST QUOI ?????????????????????????
+    
 //    public String S(){
 //        
 //        String s=null;

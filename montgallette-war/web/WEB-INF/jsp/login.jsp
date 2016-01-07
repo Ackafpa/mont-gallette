@@ -40,7 +40,7 @@
         <br>
         <%-- /CLAVIER NUMERIQUE --%>
     </form>
-    <script src="js/clavierLogin.js" type="text/javascript"></script>
+
     <c:if test="${deco}">
         ${msgDeco}${user.prenom} ${user.nom} ?
         <a href="Controller?section=login.acka&action=deco">Déconnexion</a>
@@ -48,6 +48,7 @@
     <p id="err">${msg}${errCode}</p>
     </br>
 </div>
+<script src="js/clavierLogin.js" type="text/javascript"></script>
 <script src="js/menu.js" type="text/javascript"></script>
 
 

@@ -1,14 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 7 déc. 2015, 15:09:49
-    Author     : cdi406
-*/
-
-
 
 #blockLogin{
     text-align: center;
@@ -17,7 +6,6 @@ and open the template in the editor.
     border-width: 2px;
     width: 375px;
     margin: auto;
-    
    
 }
 
@@ -60,6 +48,7 @@ and open the template in the editor.
     border: none;
     font-size: 20px;
     border-radius: 20px;
+    margin-bottom: 5px;
 }
 
 #err{

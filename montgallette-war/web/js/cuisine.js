@@ -38,23 +38,28 @@ function preparation(id) {
 function changerEtat(idProduit, id) {
     var prepa = document.getElementById('btnPreparation' + id);
     var pret = document.getElementById('btnPret' + id);
-    
-    
+
     var xhr = getXhr();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            if (prepa.className === 'CuisineInactif') {
-                changerEtatValider(idProduit);
-            }
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
             if (pret.className === 'CuisineInactif') {
-                changerEtatAnnuler(lc);
+                if (prepa.className === 'CuisineInactif') {
+                    changerEtatValider(idProduit);
+                } else {
+                    changerEtatAnnuler();
+                }
+            } else {
+                //NE FAIT RIEN CAR BOUTON NON CLIQUABLE
             }
-        } else if (xhr.readyState == 4 && xhr.status == 404) {
+            
+        } else if (xhr.readyState === 4 && xhr.status === 404) {
             // to do ....
             print(">>>>>> ERROR XHR");
         }
     }
-
+    xhr.open("POST", "Controller", true);
+    xhr.send("action=modifierEtat");
 }
 
 function validerEtat() {
