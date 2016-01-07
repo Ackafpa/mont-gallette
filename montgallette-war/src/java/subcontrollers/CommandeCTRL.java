@@ -125,20 +125,20 @@ public class CommandeCTRL implements ControllerInterface {
         }
         
         //ATH ancienne partie "su" pour que le jeu d'essai commande fonctionne
-        if ("su".equalsIgnoreCase(action)) {
-
-            Long id = Long.valueOf(request.getParameter("id"));
-            List<LigneCommande> listeComm = (List<LigneCommande>) session.getAttribute("liste");
-            for (LigneCommande l : listeComm) {
-                if (Objects.equals(id, l.getId())) {
-
-                }
-            }
-            System.out.println("supOK");
-
-            url = "client.jsp";
+//        if ("su".equalsIgnoreCase(action)) {
+//
+//            Long id = Long.valueOf(request.getParameter("id"));
+//            List<LigneCommande> listeComm = (List<LigneCommande>) session.getAttribute("liste");
+//            for (LigneCommande l : listeComm) {
+//                if (Objects.equals(id, l.getId())) {
+//
+//                }
+//            }
+//            System.out.println("supOK");
+//
+//            url = "client.jsp";
             //  }
-        }// /ATH FIN
+//        }// /ATH FIN
         
         /*
          if ("su".equalsIgnoreCase(action)) {

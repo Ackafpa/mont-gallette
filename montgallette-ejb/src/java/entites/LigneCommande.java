@@ -23,8 +23,8 @@ public class LigneCommande implements Serializable {
     private Long id;
     
     
-    private static int compteur = 0;
-    //private int idLocal = 0;
+    private static int compteur;
+    private int idLocal;
     
     @OneToOne
     private Produit produit;
@@ -50,7 +50,7 @@ public class LigneCommande implements Serializable {
         this.produit = produit;
         this.etat = etat;
         this.commande = commande;
-//        this.idLocal = (int) (commande.getId()+compteur);
+              this.idLocal = (int) (commande.getId()+compteur);
         
     }
 
@@ -119,7 +119,7 @@ public class LigneCommande implements Serializable {
     public static void setCompteur(int compteur) {
         LigneCommande.compteur = compteur;
     }
-/*
+
     public int getIdLocal() {
         return idLocal;
     }
@@ -127,7 +127,7 @@ public class LigneCommande implements Serializable {
     public void setIdLocal(int idLocal) {
         this.idLocal = idLocal;
     }
-*/
+
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
