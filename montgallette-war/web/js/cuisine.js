@@ -35,20 +35,19 @@ function preparation(id) {
     }
 }
 
-function preparer(idProduit, id) {
+function changerEtat(idProduit, id) {
     var prepa = document.getElementById('btnPreparation' + id);
     var pret = document.getElementById('btnPret' + id);
 
-
     var xhr = getXhr();
-    xhr.onreadystatechange = function () {
+    xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
             if (pret.className === 'CuisineInactif') {
                 if (prepa.className === 'CuisineInactif') {
                     changerEtatValider(idProduit);
                 } else {
-                    changerEtatAnnuler(lc);
+                    changerEtatAnnuler();
                 }
             } else {
                 //NE FAIT RIEN CAR BOUTON NON CLIQUABLE
@@ -59,7 +58,8 @@ function preparer(idProduit, id) {
             print(">>>>>> ERROR XHR");
         }
     }
-
+    xhr.open("POST", "Controller", true);
+    xhr.send("action=modifierEtat");
 }
 
 function validerEtat() {

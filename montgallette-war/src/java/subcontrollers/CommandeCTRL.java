@@ -91,9 +91,11 @@ public class CommandeCTRL implements ControllerInterface {
 
 //ANTHO
         if ("modifierEtat".equalsIgnoreCase(action)) {
-
-//            LigneCommande lc = request.getParameter("ligne");
-//            changerEtatValider(lc);
+            LigneCommande lc = beanLigne.chercherLigne(Integer.parseInt(request.getParameter("idProduit")));
+            
+            if()
+            beanLigne.changerEtatValider(lc.getId());
+            
         }
 //ANTHO FIN 
 
@@ -124,7 +126,7 @@ public class CommandeCTRL implements ControllerInterface {
             application.setAttribute("listeCuisine", listeCuisine);
         }
         
-        //ATH ancienne partie su
+        //ATH ancienne partie "su" pour que le jeu d'essai commande fonctionne
         if ("su".equalsIgnoreCase(action)) {
 
             Long id = Long.valueOf(request.getParameter("id"));
