@@ -115,11 +115,11 @@ public class Login implements ControllerInterface, Serializable {
         }
 
         //Création d'un jeu d'essai
-        if ("test".equalsIgnoreCase(action)) {
-            beanLogin.creerJeuTest();
-            request.setAttribute("msg", "Jeu d'essai crée!");
-            url = "home.jsp";
-        }
+//        if ("test".equalsIgnoreCase(action)) {
+//            beanLogin.creerJeuTest();
+//            request.setAttribute("msg", "Jeu d'essai crée!");
+//            url = "home.jsp";
+//        }
 
         //Déconnexion
         if ("deco".equalsIgnoreCase(action)) {
